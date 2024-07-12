@@ -38,16 +38,16 @@
                                     <a href="#" style="font-size: small;">Forgot password?</a>
                                 </div>
                             </div>
-                            <div class="d-grid gap-2 mt-5 d-inline-flex text-center border" style="width: 80%;">
+                            <div class="d-grid gap-2 mt-5 d-inline-flex text-center" style="width: 80%;">
                                 <button id="BtnLogin" class="btn btn-primary btn-md m-auto" style="width: 50%;">Login</button>
-                                <button id="BtnGoSignup" class="btn btn-warning btn-md m-auto" style="width: 50%;" onclick="signUp()">Signup</button>
+                                <button id="BtnGoSignup" class="btn btn-warning btn-md m-auto" style="width: 50%;" onclick="goToSignUp()">Signup →</button>
                             
                             </div>
                         </div>
                     </div>
 
                     <!-- SIGNUP -->
-                    <div id="SignUpForm" class="col-12 col-lg-6 text-center" style="display: none;">
+                    <div id="SignupForm" class="col-12 col-lg-6 text-center" style="display: none;">
                         <div class="m-auto border" style="width: 90%; padding-bottom: 100px;">
                               <h1 class="text-primary mt-5">Signup</h1>
                             <div class="form-floating m-auto mt-5 mb-3" style="width: 80%;">
@@ -55,20 +55,20 @@
                                 <label for="InputCreateEmail">Enter Email</label>
                             </div>
                             <div class="form-floating m-auto mb-3" style="width: 80%;">
-                                <input type="password" id="InputCreatePass" class="form-control" placeholder="Create Password">
+                                <input type="password" id="InputCreatePass" class="inputPass form-control" placeholder="Create Password">
                                 <label for="InputCreatePass">Create Password</label>                        
                             </div>
                             <div class="form-floating m-auto mb-3" style="width: 80%;">
-                                <input type="password" id="InputComfirmPass" class="form-control" placeholder="Confirm Password">
+                                <input type="password" id="InputComfirmPass" class="inputPass form-control" placeholder="Confirm Password">
                                 <label for="InputComfirmPass">Confirm Password</label>
 
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <button class="btn " style="font-size: small;">Show password</button>
+                                    <button class="btn " style="font-size: small;" onclick="showHideSignupPass()">Show password</button>
                                 </div>
                             </div>
-                            <div class="d-grid gap-2 mt-5 d-inline-flex text-center border" style="width: 80%;">
+                            <div class="d-grid gap-2 mt-5 d-inline-flex text-center" style="width: 80%;">
                                 <button id="BtnSignup" class="btn btn-warning btn-md m-auto" style="width: 50%;" onclick="">Signup</button>
-                                <button id="BtnGoLogin" class="btn btn-primary btn-md m-auto" style="width: 50%;" onclick="logIn()">Login</button>
+                                <button id="BtnGoLogin" class="btn btn-primary btn-md m-auto" style="width: 50%;" onclick="goToLogIn()">← Login</button>
                   
                             </div>
                         </div>
@@ -81,30 +81,9 @@
 
 
 
-
+        <?php include_once("includes/footer.php") ?>
         <!-- JS -->
         <script src="../assets/css/bootstrap-5.3.3-dist/js/bootstrap.min.js"> </script>
-        <script>
-
-            function signUp()
-            {
-                    let logIn = document.getElementById("LoginForm");
-                    logIn.style.display = 'none';
-                 
-                    let signUp = document.getElementById("SignUpForm");
-                    signUp.style.display = 'block';
-
-            };
-
-            function logIn()
-            {
-                    let signUp = document.getElementById("SignUpForm");
-                    signUp.style.display = 'none';
-
-                    let logIn = document.getElementById("LoginForm");
-                    logIn.style.display = "block"
-            };
-
-        </script>
+        <script src="assets/js/index.js"></script>
     </body>
 </html>

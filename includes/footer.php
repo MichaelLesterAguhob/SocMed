@@ -1,11 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width-device-width, initial-scale=1.0">
-        <title>Footer</title>
-    </head>
-    <body>
-        <h1>This is my footer</h1>
-    </body>
-</html>
+<div 
+class="container-fluid m-auto mt-5 border" 
+style="position:relative; bottom: 0; height:200px;">
+    
+<div class="row">
+    <div class="col border">col 1</div>
+    <div class="col border">col 2</div>
+    <div class="col border">col 3</div>
+</div>
+</div>
