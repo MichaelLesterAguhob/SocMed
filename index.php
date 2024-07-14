@@ -63,7 +63,7 @@
                                 <label for="InputComfirmPass">Confirm Password</label>
 
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <button class="btn " style="font-size: small;" onclick="showHideSignupPass()">Show password</button>
+                                    <button id="BtnShowHide" class="btn" style="font-size: small;" onclick="showHideSignupPass()">Show password</button>
                                 </div>
                             </div>
                             <div class="d-grid gap-2 mt-5 d-inline-flex text-center" style="width: 80%;">

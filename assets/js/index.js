@@ -29,7 +29,9 @@
             input_element.forEach(function(input)
             {
                 input.type = 'text';
-                isPassShowed = true;    
+                isPassShowed = true;  
+                document.getElementById('BtnShowHide').innerHTML = "Hide Password";  
+                
             });
         }
         else
@@ -39,6 +41,7 @@
             {
                 input.type = 'password';
                 isPassShowed = false;
+                document.getElementById('BtnShowHide').innerHTML = "Show Password"; 
             });
         }
     }
