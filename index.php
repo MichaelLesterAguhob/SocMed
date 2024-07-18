@@ -24,15 +24,21 @@
                 <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="colapsibleMenu">
-                    <ul class="navbar-nav">
+                    <ul class="navbar-nav me-auto">
                         <li class="nav-item">
                             <a href="" class="nav-link">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a href="" class="nav-link">Video</a>
+                            <a href="" class="nav-link">Messaging</a>
                         </li>
                         <li class="nav-item">
-                            <a href="" class="nav-link">Find People</a>
+                            <a href="" class="nav-link">Profile</a>
+                        </li>
+                       
+                    </ul>
+                    <ul class="navbar-nav">
+                    <li class="nav-item">
+                            <a href="" class="nav-link">Settings</a>
                         </li>
                     </ul>
                 </div>
@@ -40,6 +46,9 @@
         </nav>
         
         <!-- MAIN CONTENT -->
+        <div class="main-content">
+
+        </div>
         
         
         
