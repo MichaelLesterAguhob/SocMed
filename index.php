@@ -6,55 +6,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no"> -->
     <title>SocMed</title>
-    <link rel="stylesheet" href="../assets/css/bootstrap-5.3.3-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/index.css">
+    <link rel="stylesheet" href="assets/bootstrap/bootstrap-5.3.3-dist/css/bootstrap.min.css">
 </head>
+<body class="bg-dark">
 
-<body style="height: 100vh; display:flex; align-items:center;">
+    <div class="main-container container-fluid">
 
-    <!-- HEADER/ NAVIGATION BAR -->
-
-
-
-
-    <!-- MAIN CONTENT -->
-
-    <div style="margin: auto; border: 1px solid black; height:40%; width:40%; display:flex; align-items:center; flex-direction:column;">
-        <h6>String input to Array TRY</h6>
-        <input type="number" id="input_num" style="margin:auto; width:80%;">
-        <button id="btn" style="margin: auto;">Solve</button>
-        <p id="res">result</p>
+        <!-- HEADER/ NAVIGATION BAR -->
+        <nav class="navbar navbar-expand-sm bg-light navbar-light">
+            <div class="container-fluid">
+                <a href="#" class="navbar-brand">
+                    <img src="assets/image/logo.png" alt="logo" class="logo rounded-pill">
+                    <!-- <img src="" alt="logo" class="rounded-pill"> -->
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#colapsibleMenu">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="colapsibleMenu">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a href="" class="nav-link">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="" class="nav-link">Video</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="" class="nav-link">Find People</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+        <!-- MAIN CONTENT -->
+        
+        
+        
+        <!-- FOOTER -->
+    
     </div>
-
-    <script>
-        document.getElementById("btn").addEventListener("click", function() {
-            let array_nums = [];
-            let numbers_entered = document.getElementById("input_num").value;
-            let cntr = numbers_entered.length;
-            let i = 0;
-            while(cntr != 0){
-                array_nums.push(numbers_entered[i])
-                i++;
-                cntr--;
-            };
-
-            
-       
-            document.getElementById("res").innerHTML = "Input converted to array = " + array_nums;
-            alert(i + cntr);
-           
-
-            // document.getElementById("res").innerHTML = array_nums;
-        });
-    </script>
-
-
-    <!-- FOOTER -->
 
 
 
 
     <!-- JAVASCRIPT -->
-    <!-- <script src="../assets/css/bootstrap-5.3.3-dist/js/bootstrap.min.js"> </script> -->
+    <!-- <script src="assets/bootstrap/bootstrap-5.3.3-dist/js/bootstrap.min.js"></script> -->
+    <script src="assets/bootstrap/bootstrap-5.3.3-dist/js/bootstrap.min.js"></script>
     <!-- <script src="assets/js/index.js"></script> -->
 </body>
 
