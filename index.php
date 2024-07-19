@@ -33,7 +33,7 @@
 
     <!-- JAVASCRIPT -->
     <script src="assets/bootstrap/bootstrap-5.3.3-dist/js/bootstrap.min.js"></script>
-    <!-- <script src="assets/js/index.js"></script> -->
+    <script src="assets/js/header.js"></script>
 </body>
 
 </html>
