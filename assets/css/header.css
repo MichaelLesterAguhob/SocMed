@@ -1,0 +1,10 @@
+/* HEADER */
+
+.logo{
+    width: 150px;
+}
+
+.navbar-toggler .navbar-toggler-icon{
+    width: 20px;
+    height: 20px;
+}
