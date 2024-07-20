@@ -8,20 +8,15 @@
     <title>SocMed</title>
     <link rel="stylesheet" href="assets/css/index.css">
     <link rel="stylesheet" href="assets/bootstrap/bootstrap-5.3.3-dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/header.css">
 </head>
 <body class="bg-dark">
 
     <div class="main-container container-fluid">
 
-        <!-- HEADER/ NAVIGATION BAR -->
-       <?php include("includes/header.php") ?>
-        
         <!-- MAIN CONTENT -->
         <div class="main-content">
-
+            <p>top line</p>
         </div>
-        
         
         
         <!-- FOOTER -->
@@ -33,7 +28,6 @@
 
     <!-- JAVASCRIPT -->
     <script src="assets/bootstrap/bootstrap-5.3.3-dist/js/bootstrap.min.js"></script>
-    <script src="assets/js/header.js"></script>
 </body>
 
 </html>

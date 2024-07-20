@@ -6,13 +6,13 @@
 /* MAIN CONTAINER */
 .main-container{
     height: 100vh;
-    /* width: 90vw; */
     border: 1px solid white;
     overflow-y: auto;
 }
 
 /* MAIN-CONTENT */
 .main-content{
-    background-color: lightgrey;
-    height: 90%;
+    background-color: blue;
+    height: 500px;
+    overflow-y: auto;
 }
