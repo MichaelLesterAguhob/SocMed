@@ -10,7 +10,7 @@
                 <div class="collapse navbar-collapse" id="colapsibleMenu">
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a href="" class="nav-link">Home</a>
+                            <a href="../pages/home.php" class="nav-link">Home</a>
                         </li>
                         <li class="nav-item">
                             <a href="" class="nav-link">Messaging</a>

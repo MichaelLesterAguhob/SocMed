@@ -27,15 +27,15 @@
     align-items: center;
 }
 
-#div_login{
+#div_signup{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-#div_login .form-floating, #div_btn{
+#div_signup .form-floating, #div_btn{
     width: 90%;
-    margin-top: 50px;
+    margin-top: 30px;
 }
 
 #div_btn{
