@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="assets/image/fav.ico">
     <title>Login|SocMed</title>
 
     <!-- BOOTSTRAP -->
@@ -36,7 +37,7 @@
                     </div>
 
                     <div id="div_btn">
-                        <button id="btn_login" class="btn btn-primary">Login</button>
+                        <button id="btn_login" class="btn btn-primary" onclick="login()">Login</button>
                         <a href="pages/signup.php">
                             <button id="btn_signup" class="btn btn-warning">SignUp -></button>
                         </a>
@@ -55,6 +56,7 @@
 
     <!-- JAVASCRIPT -->
     <script src="assets/bootstrap/bootstrap-5.3.3-dist/js/bootstrap.min.js"></script>
+    <script src="assets/js/index.js"></script>
 </body>
 
 </html>

@@ -5,12 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no"> -->
+    <link rel="icon" type="image/x-icon" href="../assets/image/fav.ico">
     <title>SocMed</title>
-    <link rel="stylesheet" href="../assets/css/index.css">
+    <!-- <link rel="stylesheet" href="../assets/css/index.css"> -->
     <link rel="stylesheet" href="../assets/bootstrap/bootstrap-5.3.3-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../assets/css/header.css">
 </head>
-<body class="bg-dark">
+<body>
 
     <div class="main-container container-fluid">
 
@@ -18,7 +19,7 @@
        <?php include("../includes/header.php") ?>
         
         <!-- MAIN CONTENT -->
-        <div class="main-content">
+        <div class="main-content border">
             <h1>top line</h1>
         </div>
         
