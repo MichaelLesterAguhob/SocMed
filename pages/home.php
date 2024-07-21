@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"> 
 
 <head>
     <meta charset="UTF-8">
@@ -13,16 +13,22 @@
     <link rel="stylesheet" href="../assets/css/home.css">
     <link rel="stylesheet" href="../assets/css/footer.css">
 </head>
-<body class="bg-dark">
+<body>
 
-    <div class="main-container container-fluid border">
+    <div class="main-container container-fluid">
 
         <!-- HEADER/ NAVIGATION BAR -->
        <?php include("../includes/header.php") ?>
         
         <!-- MAIN CONTENT -->
-        <div class="main-content border">
-            <h1>top line</h1>
+        <div class="feed-container pt-4 pb-4">
+            <div class="feed">
+                <h1>feed11</h1>
+              
+            </div>
+            <div class="feed"><h1>feed2</h1></div>
+            <div class="feed"><h1>feed3</h1></div>
+            <div class="feed"><h1>feed4</h1></div>
         </div>
         
         

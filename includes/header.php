@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-sm bg-light navbar-light">
+<nav class="navbar navbar-expand-sm">
             <div class="container-fluid">
                 <a href="#" class="navbar-brand">
                     <img src="../assets/image/logo.png" alt="logo" class="logo rounded-pill">
@@ -15,13 +15,19 @@
                         <li class="nav-item">
                             <a href="" class="nav-link">Friends</a>
                         </li>
-                        <li class="nav-item">
-                            <a href="" class="nav-link">My Profile</a>
-                        </li>
-                        <li class="nav-item">
+                         <li class="nav-item">
                             <a href="" class="nav-link">Message</a>
                         </li>
-                       
+                        <li class="nav-item">
+                            <a href="" class="nav-link">Profile</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <button class="nav-link">
+                            <img src="../assets/bootstrap/icon/bootstrap-icons-1.11.3/bell.svg" alt="">
+                        </button>
+                       </li>
                     </ul>
                     <ul class="navbar-nav">
                         <li class="nav-item">
