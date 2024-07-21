@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../assets/bootstrap/bootstrap-5.3.3-dist/css/bootstrap.min.css">
     <!-- CSS -->
     <link rel="stylesheet" href="../assets/css/signup.css">
+    <link rel="stylesheet" href="../assets/css/footer.css">
 </head>
 
 <body>
@@ -45,21 +46,21 @@
                     </div>
 
                     <div id="div_btn">
-                    <button id="btn_signup" class="btn btn-success">SignUp</button>
-                    <a href="../index.php">
-                        <button id="btn_login" class="btn btn-primary">Login -></button>
-                    </a>
-                </div>
+                        <button id="btn_signup" class="btn btn-success">SignUp</button>
+                        <a href="../index.php">
+                            <button id="btn_login" class="btn btn-primary">Login -></button>
+                        </a>
+                    </div>
                 </div>
 
-                
+
             </div>
 
         </div>
     </div>
 
     <!-- FOOTER -->
-
+    <?php include('../includes/footer.php'); ?>
     <!-- JAVASCRIPT -->
     <script src="../assets/bootstrap/bootstrap-5.3.3-dist/js/bootstrap.min.js"></script>
     <script src="../assets/js/signup.js"></script>

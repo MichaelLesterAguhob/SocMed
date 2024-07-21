@@ -10,10 +10,12 @@
     <!-- <link rel="stylesheet" href="../assets/css/index.css"> -->
     <link rel="stylesheet" href="../assets/bootstrap/bootstrap-5.3.3-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../assets/css/header.css">
+    <link rel="stylesheet" href="../assets/css/home.css">
+    <link rel="stylesheet" href="../assets/css/footer.css">
 </head>
-<body>
+<body class="bg-dark">
 
-    <div class="main-container container-fluid">
+    <div class="main-container container-fluid border">
 
         <!-- HEADER/ NAVIGATION BAR -->
        <?php include("../includes/header.php") ?>

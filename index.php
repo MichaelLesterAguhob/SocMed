@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="assets/bootstrap/bootstrap-5.3.3-dist/css/bootstrap.min.css">
     <!-- CSS -->
     <link rel="stylesheet" href="assets/css/index.css">
+    <link rel="stylesheet" href="../assets/css/footer.css">
 </head>
 <body>
 
@@ -47,10 +48,10 @@
             </div>
         </div>
         
-        <!-- FOOTER -->
     
     </div>
-
+    <!-- FOOTER -->
+    <?php include("includes/footer.php");?>
 
 
 
