@@ -13,10 +13,13 @@
                             <a href="../pages/home.php" class="nav-link">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a href="" class="nav-link">Messaging</a>
+                            <a href="" class="nav-link">Friends</a>
                         </li>
                         <li class="nav-item">
-                            <a href="" class="nav-link">Profile</a>
+                            <a href="" class="nav-link">My Profile</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="" class="nav-link">Message</a>
                         </li>
                        
                     </ul>
