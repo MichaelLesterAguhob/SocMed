@@ -1,77 +1,48 @@
-// function goToSignUp() {
-//   let logIn = document.getElementById("LoginForm");
-//   logIn.style.display = "none";
 
-//   let signUp = document.getElementById("SignupForm");
-//   signUp.style.display = "block";
-//   clearLoginForm();
-// }
+document.addEventListener("DOMContentLoaded", function()
+{
+  let first_input = document.getElementById('input_email');
+  first_input.focus();
+});
 
-// function goToLogIn() {
-//   let signUp = document.getElementById("SignupForm");
-//   signUp.style.display = "none";
+// Showing and Hiding password 
+let toDo = "Hidden";
+let btn_show_hide = document.getElementById('btn_show_hide');
+let popover = document.getElementById('popover');
+btn_show_hide.addEventListener('click', function()
+{
+  let icon = document.getElementById('eye_icon');
+  if(toDo == "Hidden")
+    {
+      icon.setAttribute('src', 'assets/bootstrap/icon/bootstrap-icons-1.11.3/eye-slash.svg');
+      let input = document.getElementById('input_pass');
+      input.setAttribute('type','text')
+      toDo = "Showed";
+      popover.textContent = "Hide Password";
+    }
+  else
+    {
+      icon.setAttribute('src','assets/bootstrap/icon/bootstrap-icons-1.11.3/eye.svg');
+      let input = document.getElementById('input_pass');
+      input.setAttribute('type','password')
+      toDo = "Hidden";
+      popover.textContent = "Show Password";
+    }
+});
 
-//   let logIn = document.getElementById("LoginForm");
-//   logIn.style.display = "block";
-//   clearSinupForm();
-// }
+// Mouse hover and leave event 
+btn_show_hide.addEventListener('mouseover', function()
+  {
+    popover.style.display = 'inline';
+  });
+btn_show_hide.addEventListener('mouseleave', function()
+  {
+    popover.style.display = 'none';
+  });
 
-// // HIDE AND SHOW PASSWORD INPUT
-// let isPassShowed = false;
-// function showHideSignupPass() {
-//   if (!isPassShowed) {
-//     let input_element = document.querySelectorAll("#SignupForm .inputPass");
-//     input_element.forEach(function (input) {
-//       input.type = "text";
-//       isPassShowed = true;
-//       document.getElementById("BtnShowHide").innerHTML = "Hide Password";
-//     });
-//   } else {
-//     let input_element = document.querySelectorAll("#SignupForm .inputPass");
-//     input_element.forEach(function (input) {
-//       input.type = "password";
-//       isPassShowed = false;
-//       document.getElementById("BtnShowHide").innerHTML = "Show Password";
-//     });
-//   }
-// }
 
-// // CLEAR INPUTS ELEMENT VALUES
-// function clearSinupForm() {
-//   let input_element = document.querySelectorAll("#SignUpForm input");
-//   input_element.forEach(function (input) {
-//     input.value = "";
-//   });
-// }
 
-// function clearLoginForm() {
-//   let input_element = document.querySelectorAll("#LoginForm input");
-//   input_element.forEach(function (input) {
-//     input.value = "";
-//   });
-// }
-
-// let input_createPass = document.getElementById("InputCreatePass");
-// let input_confirmPass = document.getElementById("InputConfirmPass");
-// input_createPass.addEventListener("change", function () {
-//   if (
-//     input_createPass.value != "" &&
-//     input_confirmPass.value != "" &&
-//     input_createPass.value != input_confirmPass.value
-//   ) {
-//     alert("Unmatched");
-//   }
-// });
-// input_confirmPass.addEventListener("change", function () {
-//   if (
-//     input_createPass.value != "" &&
-//     input_confirmPass.value != "" &&
-//     input_createPass.value != input_confirmPass.value
-//   ) {
-//     alert("Unmatched");
-//   }
-// });
-
+// temporary
 function login(){
   window.location.href="pages/home.php";
 }

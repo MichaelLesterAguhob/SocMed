@@ -53,3 +53,11 @@
     width: 150px;
     font-size: large;
 }
+
+#popover{
+    /* border: 1px solid lightgray; */
+    padding: 2px;
+    font-size: small;
+    display: none;
+    
+}

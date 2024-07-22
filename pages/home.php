@@ -16,7 +16,7 @@
 <body>
 
     <div class="main-container container-fluid">
-
+ 
         <!-- HEADER/ NAVIGATION BAR -->
        <?php include("../includes/header.php") ?>
         
