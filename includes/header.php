@@ -46,7 +46,7 @@
                 <button class="btn-close" aria-label="Close" data-bs-dismiss="modal" data-bs-target="#settings-modal"></button>
             </div>
             <div class="modal-body">
-                <h2>I am body</h2>
+                <h2>I am modal body</h2> 
             </div>
         </div>
     </div>
