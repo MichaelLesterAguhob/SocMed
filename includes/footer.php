@@ -21,7 +21,7 @@
         </div>
 
     </div>
-        <h6 class="text-center">SocMed Copyright © 2024 | All rights reserved. | Michael Lester Aguhob </h6>
+        <h6 class="text-center">Michael Lester Aguhob Copyright© 2024 | All rights reserved. </h6>
 
 </div>
 
