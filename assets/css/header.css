@@ -32,6 +32,13 @@
     background-color: lightgray;
 }
 
+@media (max-width: 900px){
+    .modal-dialog{
+        max-width: 30%;
+        margin-right: 0;
+        border: 2px solid green;
+    }
+}
 @media (max-width: 575px){
     .modal-dialog{
         max-width: 50%;
