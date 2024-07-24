@@ -28,6 +28,7 @@ btn_show_hide.addEventListener('click', function()
       toDo = "Hidden";
       popover.textContent = "Show Password";
     }
+    popover.style.display = 'none';
 });
 
 // Mouse hover and leave event 
