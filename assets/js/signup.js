@@ -10,7 +10,19 @@
    let password = document.getElementById('input_signupPass').value;
 
    let xhr = new XMLHttpRequest();
-   xhr.open("POST","php file", true)
+   xhr.open("POST", "../../backend/signup.php", true);
+   xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
+   xhr.onreadystatechange = function(){
+      if(xhr.readyState == 4 && xhr.status == 200){
+         alert(xhr.responseText);
+      }
+   };
 
+   let data = "fullname="+encodeURIComponent(fullname)
+               + "&email="+encodeURIComponent(email)
+               + "&password="+encodeURIComponent(password)
+   ;  
+
+   xhr.send(data);
  }
