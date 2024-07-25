@@ -35,15 +35,22 @@
                     <div class="form-floating">
                         <input type="email" id="input_signupEmail" class="form-control" placeholder="myEmail@gmail.com">
                         <label id="email-label" for="input_signupEmail">Enter Email</label>
-                        <span id="email-warning">Invalid Email</span>
+                        <span id="email-warning" class="text-danger">Invalid Email</span>
                     </div>
                     <div class="form-floating">
-                        <input type="password" id="input_signupPass" class="form-control input-pass" placeholder="Enter Password">
-                        <label for="input_signupPass">Create Password</label>
+                        <input type="password" id="input_signupPass" class="form-control input-pass" placeholder="Enter Password" onchange="isPassMatched()">
+                        <label class="input-pass-label" for="input_signupPass">Create Password</label>
+                        <span class="input-pass-msg text-danger"></span>
                     </div>
                     <div class="form-floating">
-                        <input type="password" id="input_confirmSignupPass" class="form-control input-pass" placeholder="Confirm Password">
-                        <label for="input_confirmSignupPass">Confirm Password</label>
+                        <input type="password" id="input_confirmSignupPass" class="form-control input-pass" placeholder="Confirm Password" onchange="isPassMatched()">
+                        <label class="input-pass-label" for="input_confirmSignupPass">Confirm Password</label>
+                        <span class="input-pass-msg text-danger"></span>
+
+                        <button id="btn_show_hide" class="btn btn-sm">
+                            <img id="eye_icon" src="../assets/bootstrap/icon/bootstrap-icons-1.11.3/eye.svg" alt="Show Password">
+                        </button>
+                        <span id="popover" class="text-muted">Show Password</span>
                     </div>
 
                     <div id="div_btn">

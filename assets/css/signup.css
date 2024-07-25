@@ -43,7 +43,6 @@
     margin-top: 30px;
 }
 #email-warning{
-    color: red;
     display: none;
 }
 
@@ -57,4 +56,8 @@
 #div_btn .btn{
     width: 150px;
     font-size: large;
+}
+
+.input-pass-msg{
+    display: none;
 }

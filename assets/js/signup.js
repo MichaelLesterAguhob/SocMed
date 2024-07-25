@@ -34,7 +34,60 @@ document.getElementById("input_signupEmail").addEventListener("change", function
    }
   });
 
-// CHECK PASSWORD IF MATCHED
+// CHECK PASSWORD IF MATCHED 
+function isPassMatched(){
+   let pass1_entered = document.getElementById('input_signupPass').value;
+   let pass2_entered = document.getElementById('input_confirmSignupPass').value;
+
+   let input_pass = document.querySelectorAll('.input-pass');
+   let input_pass_label = document.querySelectorAll('.input-pass-label');
+   let input_pass_msg = document.querySelectorAll('.input-pass-msg');
+
+   if (pass1_entered != "" && pass2_entered != ""){
+     if (pass1_entered != pass2_entered){
+         input_pass.forEach(input =>{
+            input.style.border = '1px solid red';
+         });
+         input_pass_label.forEach(label =>{
+            label.style.color = 'red';
+         });   
+         input_pass_msg.forEach(function(span){
+            span.style.display = 'block';
+            span.textContent = "Password not matched!"
+         });
+     }
+     else{
+      input_pass.forEach(input =>{
+         input.style.removeProperty("border");
+      });
+      input_pass_label.forEach(label =>{
+         label.style.removeProperty("color");
+      });
+      input_pass_msg.forEach(function(span)
+      {
+         span.style.removeProperty('display');
+         span.textContent = "";
+      });
+     }
+   }
+   else{
+      input_pass.forEach(input =>{
+         input.style.removeProperty("border");
+      });
+      input_pass_label.forEach(label =>{
+         label.style.removeProperty("color");
+      });
+      input_pass_msg.forEach(function(span)
+      {
+         span.style.removeProperty('display');
+         span.textContent = "";
+      });
+     }
+}
+
+
+//SHOW PASSWORD AND HIDE PASSWORD
+let show_hide = 0;
 
 
 
@@ -42,10 +95,7 @@ document.getElementById("input_signupEmail").addEventListener("change", function
 
 
 
-
-
-
-//SignUp
+//REGISTER NUMBER IF EMAIL VERIFICATION CODE IS CORRECT
 function signUp() {
   let fullname = document.getElementById("input_fullName").value;
   let email = document.getElementById("input_signupEmail").value;
