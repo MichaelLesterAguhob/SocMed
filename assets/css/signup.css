@@ -61,3 +61,8 @@
 .input-pass-msg{
     display: none;
 }
+
+#popover{
+    display: none;
+}
+

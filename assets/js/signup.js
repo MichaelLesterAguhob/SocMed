@@ -87,10 +87,42 @@ function isPassMatched(){
 
 
 //SHOW PASSWORD AND HIDE PASSWORD
-let show_hide = 0;
+let isHidden = true;
+function show_hide_pass(){
+   let eye_icon = document.getElementById('eye_icon');
+   let input_pass = document.querySelectorAll('.input-pass');
+
+   if (isHidden){
+      input_pass.forEach(function(input){
+         input.setAttribute('type', 'text');
+      })
+      eye_icon.setAttribute('src', '../assets/bootstrap/icon/bootstrap-icons-1.11.3/eye-slash.svg');
+      isHidden = false;
+      document.getElementById('popover').innerText = "Hide Password";
+      document.getElementById('popover').style.display = 'none';
+   }
+   else{
+      input_pass.forEach(function(input){
+         input.setAttribute('type', 'password');
+      })
+   
+      eye_icon.setAttribute('src', '../assets/bootstrap/icon/bootstrap-icons-1.11.3/eye.svg');
+      isHidden = true;
+      document.getElementById('popover').innerText = "Show Password";
+      document.getElementById('popover').style.display = 'none';
+   }
+}
 
 
+function showPassToolTip(){
+   let tool_tip = document.getElementById('popover');
+   tool_tip.style.display = 'inline';
+}
 
+function hidePassToolTip(){
+   let tool_tip = document.getElementById('popover');
+   tool_tip.style.display = 'none';
+}
 
 
 

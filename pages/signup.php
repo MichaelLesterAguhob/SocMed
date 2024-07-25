@@ -47,7 +47,7 @@
                         <label class="input-pass-label" for="input_confirmSignupPass">Confirm Password</label>
                         <span class="input-pass-msg text-danger"></span>
 
-                        <button id="btn_show_hide" class="btn btn-sm">
+                        <button id="btn_show_hide" class="btn btn-sm" onmouseenter="showPassToolTip()" onmouseleave="hidePassToolTip()" onclick="show_hide_pass()">
                             <img id="eye_icon" src="../assets/bootstrap/icon/bootstrap-icons-1.11.3/eye.svg" alt="Show Password">
                         </button>
                         <span id="popover" class="text-muted">Show Password</span>

@@ -5,6 +5,27 @@ document.addEventListener("DOMContentLoaded", function()
   first_input.focus();
 });
 
+//VALIDATE ENETERED EMAIL
+function validateEmail(){
+  let input_email = document.getElementById('input_email');
+  let email_pattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{3,}$/;
+  let result = email_pattern.test(input_email.value);
+
+  let email_label = document.querySelector('.form-floating .email-label');
+  let email_msg = document.querySelector('.form-floating .email-msg');
+
+  if (!result){
+   input_email.style.borderColor = 'red';
+   email_label.style.color = 'red';
+   email_msg.style.display = 'block';
+  }
+  else{
+    input_email.style.removeProperty('border-color');
+    email_label.style.removeProperty('color');
+    email_msg.style.display = 'none';
+  }
+}
+
 // Showing and Hiding password 
 let toDo = "Hidden";
 let btn_show_hide = document.getElementById('btn_show_hide');

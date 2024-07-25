@@ -29,8 +29,9 @@
                 <div id="div_login" class="col-md-6">
                     <h1 class="text-center">Login</h1>
                     <div class="form-floating">
-                        <input type="email" id="input_email" class="form-control" placeholder="myEmail@gmail.com">
-                        <label for="input_email">Email</label>
+                        <input type="email" id="input_email" class="form-control" placeholder="myEmail@gmail.com" onchange="validateEmail()">
+                        <label class="email-label" for="input_email">Email</label>
+                        <span class="email-msg text-danger" style="display: none;">Invalid Email</span>
                     </div>
                     <div class="form-floating">
                         <input type="password" id="input_pass" class="form-control" placeholder="Enter Password">
