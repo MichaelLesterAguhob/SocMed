@@ -42,6 +42,10 @@
     width: 90%;
     margin-top: 30px;
 }
+#email-warning{
+    color: red;
+    display: none;
+}
 
 #div_btn{
     display: flex;

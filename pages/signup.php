@@ -34,7 +34,8 @@
                     </div>
                     <div class="form-floating">
                         <input type="email" id="input_signupEmail" class="form-control" placeholder="myEmail@gmail.com">
-                        <label for="input_signupEmail">Enter Email</label>
+                        <label id="email-label" for="input_signupEmail">Enter Email</label>
+                        <span id="email-warning">Invalid Email</span>
                     </div>
                     <div class="form-floating">
                         <input type="password" id="input_signupPass" class="form-control input-pass" placeholder="Enter Password">
