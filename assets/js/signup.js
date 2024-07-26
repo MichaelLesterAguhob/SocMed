@@ -124,8 +124,10 @@ function hidePassToolTip(){
    tool_tip.style.display = 'none';
 }
 
-
-
+//VERIFY EMAIL
+function verifyEmail(){
+   
+}
 
 //REGISTER NUMBER IF EMAIL VERIFICATION CODE IS CORRECT
 function signUp() {
