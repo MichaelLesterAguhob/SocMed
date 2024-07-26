@@ -54,7 +54,7 @@
                     </div>
 
                     <div id="div_btn">
-                        <button id="btn_signup" class="btn btn-success" onclick="signUp()">SignUp</button>
+                        <button id="btn_signup" class="btn btn-success" onclick="verifyEmail()">SignUp</button>
                         <a href="../index.php">
                             <button id="btn_login" class="btn btn-primary">Login-></button>
                         </a>

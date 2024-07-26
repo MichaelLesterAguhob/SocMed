@@ -126,7 +126,19 @@ function hidePassToolTip(){
 
 //VERIFY EMAIL
 function verifyEmail(){
-   
+   let email = document.getElementById('input_fullName');
+   let request = new XMLHttpRequest();
+   request.open('POST', '../../backend/signup.php');
+   request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+   request.onreadystatechange = function()
+   {
+      if(request.readyState == 4 && request.status == 200){
+         alert(request.responseText);
+      }
+   }
+   let data = "email" + encodeURIComponent(email);
+   request.send(data);
 }
 
 //REGISTER NUMBER IF EMAIL VERIFICATION CODE IS CORRECT
