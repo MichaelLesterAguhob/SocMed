@@ -66,6 +66,27 @@
 
         </div>
     </div>
+    <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modal_Verification">modal</button>
+
+    <div id="modal_Verification" class="modal fade" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title fs-5">Enter Verification Code:</h3>
+                    <button class="btn-close" aria-label="Close" data-bs-dismiss="modal" data-bs-target="#modal_Verification"></button>
+                  
+                </div>
+                <div class="modal-body">
+                    <h6>Sent to:<span class="receiver-email"></span></h6>   
+                    
+                    <input type="number" id="inpt_vcode" class="form-control">
+                </div>
+                <div class="modal-footer" style="border: none;">
+                    <button class="btn btn-success">Verify</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- FOOTER -->
     <?php include('../includes/footer.php'); ?>

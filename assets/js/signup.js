@@ -129,7 +129,7 @@ let verification_code = 0;
 function verifyEmail(){
    let email = document.getElementById('input_signupEmail').value;
    let request = new XMLHttpRequest();
-   request.open('POST', '../../backend/signup.php');
+   request.open('POST', '../../backend/verify_email.php');
    request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
    request.onreadystatechange = function()
@@ -139,7 +139,9 @@ function verifyEmail(){
         if(response.status == "success")
         {
          verification_code = response.code;
-         alert(response.msg + " - " + verification_code);
+         document.querySelector('.receiver-email').textContent = email;
+         
+         // alert(response.msg + " - " + verification_code);
         }
         else
         {
