@@ -87,6 +87,21 @@
         </div>
     </div>
 
+    <div id="modal_signup_msg" class="modal fade" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 id="modal_siginup_title" class="modal-title"></h3>
+                    <button class="btn-close" aria-label="Close" data-bs-dismiss="modal" data-bs-target="#modal_signup_msg"></button>
+                </div>
+                <div class="modal-body">
+                    <h4 id="signup_msg" class="text-"></h4>
+                </div>
+            
+            </div>
+        </div>
+    </div>
+
     <!-- FOOTER -->
     <?php include('../includes/footer.php'); ?>
     <!-- JAVASCRIPT -->

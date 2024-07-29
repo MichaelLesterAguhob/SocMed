@@ -3,6 +3,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   let first_input = document.getElementById("input_fullName");
   first_input.focus();
+
 });
 
 let isEmailValid = false;
@@ -94,7 +95,6 @@ function isPassMatched(){
      }
 }
 
-
 //SHOW PASSWORD AND HIDE PASSWORD
 let isHidden = true;
 function show_hide_pass(){
@@ -122,12 +122,11 @@ function show_hide_pass(){
    }
 }
 
-
+//showing and hiding tooltip when eye icon is hovered
 function showPassToolTip(){
    let tool_tip = document.getElementById('popover');
    tool_tip.style.display = 'inline';
 }
-
 function hidePassToolTip(){
    let tool_tip = document.getElementById('popover');
    tool_tip.style.display = 'none';
@@ -136,54 +135,128 @@ function hidePassToolTip(){
 //VERIFY EMAIL
 let verification_code = 0;
 function verifyEmail(){
-   let email = document.getElementById('input_signupEmail').value;
-   let request = new XMLHttpRequest();
-   request.open('POST', '../../backend/verify_email.php');
-   request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+   let fullname = document.getElementById("input_fullName").value;
+   let email = document.getElementById("input_signupEmail").value;
+   let password = document.getElementById("input_signupPass").value;
+   let password2 = document.getElementById('input_confirmSignupPass').value;
 
-   request.onreadystatechange = function()
-   {  
-      if(request.readyState == 4 && request.status == 200){
-         let response = JSON.parse(request.responseText);
-        if(response.status == "success")
-        {
-         verification_code = response.code;
-         document.querySelector('.receiver-email').textContent = email;
-         $('#modal_verification').modal('show');
-
-         // let input_verification = document.getElementById('inpt_vcode');
-        }
-        else
-        {
-         alert(response.msg);
-        }
+    // KNOW IF ALL REQUIRED INPUTS ARE NOT BLANKS BEFORE SIGNING UP
+    if(fullname !== "" && email !== "" && password !== "" && password2 !== "")
+      {
+         if(isEmailValid)
+            {
+              if(isPasswordMatched)
+               {
+                  let request = new XMLHttpRequest();
+                  request.open('POST', '../../backend/verify_email.php');
+                  request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+               
+                  request.onreadystatechange = function()
+                  {  
+                     if(request.readyState == 4 && request.status == 200){
+                        let response = JSON.parse(request.responseText);
+                       if(response.status == "success")
+                       {
+                        verification_code = response.code;
+                        document.querySelector('.receiver-email').textContent = email;
+                        $('#modal_verification').modal('show');
+               
+                        // let input_verification = document.getElementById('inpt_vcode');
+                       }
+                       else
+                       {
+                        alert(response.msg);
+                       }
+                     }
+                  }
+                  let data = "email=" + encodeURIComponent(email);
+                  request.send(data);
+               } 
+               else
+               {
+                  // MESSAGE IF PASS NOT MATCHED
+                  document.getElementById('modal_siginup_title').innerText = "Password is not Matched!";
+                  document.getElementById('modal_siginup_title').style.color = "red";
+                  document.getElementById('signup_msg').innerText = "Check your Password and make sure they are matched!";
+                  $('#modal_signup_msg').modal('show');
+               }
+            }
+            else
+            {
+               // MESSAGE IF EMAIL IS INVALID
+               document.getElementById('modal_siginup_title').innerText = "Email is Invalid!";
+               document.getElementById('modal_siginup_title').style.color = "red";
+               document.getElementById('signup_msg').innerText = "Check your Email address and make sure it is valid!";
+               $('#modal_signup_msg').modal('show');
+            }
       }
-   }
-   let data = "email=" + encodeURIComponent(email);
-   request.send(data);
+      else
+      {
+         // IF THERE'S A BLANK INPUT
+          document.getElementById('modal_siginup_title').innerText = "Fill in the blanks!";
+          document.getElementById('modal_siginup_title').style.color = "red";
+          document.getElementById('signup_msg').innerText = "Make sure you filled out all required fields!";
+          $('#modal_signup_msg').modal('show');
+      }
+  
 }
 
 //REGISTER NUMBER IF EMAIL VERIFICATION CODE IS CORRECT
-function signUp() {
-  let fullname = document.getElementById("input_fullName").value;
-  let email = document.getElementById("input_signupEmail").value;
-  let password = document.getElementById("input_signupPass").value;
+function signUp() 
+{
+   let fullname = document.getElementById("input_fullName").value;
+   let email = document.getElementById("input_signupEmail").value;
+   let password = document.getElementById("input_signupPass").value;
+   let password2 = document.getElementById('input_confirmSignupPass').value;
 
-  let xhr = new XMLHttpRequest();
-  xhr.open("POST", "../../backend/signup.php", true);
-  xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+   // KNOW IF ALL REQUIRED INPUTS ARE NOT BLANKS BEFORE SIGNING UP
+   if(fullname !== "" && email !== "" && password !== "" && password2 !== "")
+      {
+         if(isEmailValid)
+            {
+              if(isPasswordMatched)
+               {
+                  let xhr = new XMLHttpRequest();
+                  xhr.open("POST", "../../backend/signup.php", true);
+                  xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
-  xhr.onreadystatechange = function () {
-    if (xhr.readyState == 4 && xhr.status == 200) {
-      alert(xhr.responseText);
-    }
-  };
+                  xhr.onreadystatechange = function () {
+                     if (xhr.readyState == 4 && xhr.status == 200) {
+                        alert(xhr.responseText);
+                     }
+                  };
+                  let data ="fullname=" + encodeURIComponent(fullname) +
+                              "&email=" +encodeURIComponent(email) +
+                              "&password=" +encodeURIComponent(password);
 
-  let data ="fullname=" + encodeURIComponent(fullname) +
-            "&email=" +encodeURIComponent(email) +
-            "&password=" +encodeURIComponent(password);
-
-  xhr.send(data);
+                  xhr.send(data);
+               } 
+               else
+               {
+                   // MESSAGE IF PASS NOT MATCHED
+                   document.getElementById('modal_siginup_title').innerText = "Password is not Matched!";
+                   document.getElementById('modal_siginup_title').style.color = "red";
+                   document.getElementById('signup_msg').innerText = "Check your Password and make sure they are matched!";
+                   $('#modal_signup_msg').modal('show');
+               }
+            }
+            else
+            {
+                // MESSAGE IF EMAIL IS INVALID
+               document.getElementById('modal_siginup_title').innerText = "Email is Invalid!";
+               document.getElementById('modal_siginup_title').style.color = "red";
+               document.getElementById('signup_msg').innerText = "Check your Email address and make sure it is valid!";
+               $('#modal_signup_msg').modal('show');
+            }
+      }
+      else
+      {
+         // IF THERE'S A BLANK INPUT
+         document.getElementById('modal_siginup_title').innerText = "Fill in the blanks!";
+         document.getElementById('modal_siginup_title').style.color = "red";
+         document.getElementById('signup_msg').innerText = "Make sure you filled out all required fields!";
+         $('#modal_signup_msg').modal('show');
+      }
 }
 
 
