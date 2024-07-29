@@ -158,10 +158,8 @@ function verifyEmail(){
                        if(response.status == "success")
                        {
                         verification_code = response.code;
-                        document.querySelector('.receiver-email').textContent = email;
+                        document.querySelector('.receiver-email').textContent = email + " - " + verification_code;
                         $('#modal_verification').modal('show');
-               
-                        // let input_verification = document.getElementById('inpt_vcode');
                        }
                        else
                        {
@@ -201,6 +199,29 @@ function verifyEmail(){
   
 }
 
+//Verify code inputted and successfully signed up the user
+document.getElementById('btn_verify_signup').addEventListener('click', function()
+{
+    let inputted_verification = document.getElementById('inpt_vcode');
+    if(inputted_verification.value != "")
+    {
+      if(verification_code == inputted_verification.value)
+      {
+         signUp();
+      }
+      else
+      {
+         $('.modal_verification_inpt_code_msg').text('Incorrect Verification Code! Try Again.').fadeIn(100).fadeOut(5000);
+      }
+         
+    }
+    else
+    {
+      $('.modal_verification_inpt_code_msg').text('Enter the verification code sent to your email address.').fadeIn(100).fadeOut(5000);
+    }
+
+});
+
 //REGISTER NUMBER IF EMAIL VERIFICATION CODE IS CORRECT
 function signUp() 
 {
@@ -222,13 +243,41 @@ function signUp()
 
                   xhr.onreadystatechange = function () {
                      if (xhr.readyState == 4 && xhr.status == 200) {
-                        alert(xhr.responseText);
+          
+                        let response = JSON.parse(xhr.responseText);
+                        if(response.status == "success")
+                        {
+                           let inputs_elements = document.querySelectorAll('#div_signup .form-control');
+                           inputs_elements.forEach(function(input){
+                              input.value = "";
+                           });
+                           document.getElementById('inpt_vcode').value = "";
+                           $('#modal_verification').modal('hide');
+
+                           setTimeout(function(){        
+                              document.getElementById('modal_siginup_title').innerText = response.msg;
+                              document.getElementById('modal_siginup_title').style.color = "Green";
+                              document.getElementById('signup_msg').innerText = "You will be redirected to Login page.";
+                              $('#modal_signup_msg').modal('show');
+                           }, 500)
+
+                           setTimeout(function(){        
+                                $('#modal_signup_msg').modal('hide');
+                           }, 3800)
+                           
+                           setTimeout(function(){
+                              window.location.href='../index.php';
+                           }, 5000);
+             
+                        }
+                        else{
+                           alert(response.msg);
+                        }
                      }
                   };
                   let data ="fullname=" + encodeURIComponent(fullname) +
                               "&email=" +encodeURIComponent(email) +
                               "&password=" +encodeURIComponent(password);
-
                   xhr.send(data);
                } 
                else

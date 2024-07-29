@@ -67,11 +67,12 @@
         </div>
     </div>
 
+    <!-- This modal is input field for user's verification code -->
     <div id="modal_verification" class="modal fade" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3 class="modal-title fs-5">Enter Verification Code:</h3>
+                    <h3 class="modal-title fs-5">Enter Verification Code</h3>
                     <button class="btn-close" aria-label="Close" data-bs-dismiss="modal" data-bs-target="#modal_verification"></button>
                   
                 </div>
@@ -79,9 +80,10 @@
                     <h6>Sent to:&nbsp;<span class="receiver-email text-primary"></span></h6>   
                     
                     <input type="number" id="inpt_vcode" class="form-control">
+                    <span class="modal_verification_inpt_code_msg text-danger"></span>
                 </div>
                 <div class="modal-footer" style="border: none;">
-                    <button class="btn btn-success">Verify</button>
+                    <button id="btn_verify_signup" class="btn btn-success" >Verify</button>
                 </div>
             </div>
         </div>
