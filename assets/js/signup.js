@@ -5,6 +5,9 @@ document.addEventListener("DOMContentLoaded", function () {
   first_input.focus();
 });
 
+let isEmailValid = false;
+let isPasswordMatched = false;
+
 // INITIAL VALIDATION OF EMAIL | CHECKING ITS FORMAT
 document.getElementById("input_signupEmail").addEventListener("change", function () {
       let input_email = document.getElementById("input_signupEmail");
@@ -20,17 +23,20 @@ document.getElementById("input_signupEmail").addEventListener("change", function
        input_email.style = "border-color: red;";
        email_label.style = "color: red;";
        email_warning.style = "display: block;";
+       isEmailValid = false;
       } 
       else {
          input_email.style.removeProperty("border-color");
          email_label.style.removeProperty("color");
          email_warning.style.display = "none";
+         isEmailValid = true;
       }
    }
    else{
       input_email.style.removeProperty("border-color");
       email_label.style.removeProperty("color");
       email_warning.style.display = "none";
+      isEmailValid = false;
    }
   });
 
@@ -55,6 +61,7 @@ function isPassMatched(){
             span.style.display = 'block';
             span.textContent = "Password not matched!"
          });
+         isPasswordMatched = false
      }
      else{
       input_pass.forEach(input =>{
@@ -68,6 +75,7 @@ function isPassMatched(){
          span.style.removeProperty('display');
          span.textContent = "";
       });
+      isPasswordMatched = true;
      }
    }
    else{
@@ -82,6 +90,7 @@ function isPassMatched(){
          span.style.removeProperty('display');
          span.textContent = "";
       });
+      isPasswordMatched = false
      }
 }
 
@@ -140,8 +149,9 @@ function verifyEmail(){
         {
          verification_code = response.code;
          document.querySelector('.receiver-email').textContent = email;
-         
-         // alert(response.msg + " - " + verification_code);
+         $('#modal_verification').modal('show');
+
+         // let input_verification = document.getElementById('inpt_vcode');
         }
         else
         {
@@ -175,3 +185,5 @@ function signUp() {
 
   xhr.send(data);
 }
+
+
