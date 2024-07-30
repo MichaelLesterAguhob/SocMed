@@ -1,10 +1,10 @@
 
 // FOCUS ON FIRST INPUT ELEMENT WHEN DOCUMENT IS LOADED
 document.addEventListener("DOMContentLoaded", function () {
-  let first_input = document.getElementById("input_fullName");
+  let first_input = document.getElementById("input_fullname");
   first_input.focus();
 
-});
+}); 
 
 let isEmailValid = false;
 let isPasswordMatched = false;
@@ -135,7 +135,7 @@ function hidePassToolTip(){
 //VERIFY EMAIL
 let verification_code = 0;
 function verifyEmail(){
-   let fullname = document.getElementById("input_fullName").value;
+   let fullname = document.getElementById("input_fullname").value;
    let email = document.getElementById("input_signupEmail").value;
    let password = document.getElementById("input_signupPass").value;
    let password2 = document.getElementById('input_confirmSignupPass').value;
@@ -147,6 +147,7 @@ function verifyEmail(){
             {
               if(isPasswordMatched)
                {
+                  // IF ALL CONDITIONS WERE MET, SEND VERIFICATION CODE TO EMAIL
                   let request = new XMLHttpRequest();
                   request.open('POST', '../../backend/verify_email.php');
                   request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
@@ -158,8 +159,13 @@ function verifyEmail(){
                        if(response.status == "success")
                        {
                         verification_code = response.code;
-                        document.querySelector('.receiver-email').textContent = email + " - " + verification_code;
+                        document.querySelector('.receiver-email').textContent = email;
                         $('#modal_verification').modal('show');
+                        setTimeout(function()
+                        {
+                           document.getElementById('inpt_vcode').focus();
+                        }, 500);
+                     
                        }
                        else
                        {
@@ -167,13 +173,14 @@ function verifyEmail(){
                        }
                      }
                   }
-                  let data = "email=" + encodeURIComponent(email);
+                  let data = "email=" + encodeURIComponent(email)
+                              +"&name=" + encodeURIComponent(fullname);
                   request.send(data);
                } 
                else
                {
                   // MESSAGE IF PASS NOT MATCHED
-                  document.getElementById('modal_siginup_title').innerText = "Password is not Matched!";
+                  document.getElementById('modal_siginup_title').innerText = "Password did not Matched!";
                   document.getElementById('modal_siginup_title').style.color = "red";
                   document.getElementById('signup_msg').innerText = "Check your Password and make sure they are matched!";
                   $('#modal_signup_msg').modal('show');
@@ -182,9 +189,9 @@ function verifyEmail(){
             else
             {
                // MESSAGE IF EMAIL IS INVALID
-               document.getElementById('modal_siginup_title').innerText = "Email is Invalid!";
+               document.getElementById('modal_siginup_title').innerText = "Invalid Email!";
                document.getElementById('modal_siginup_title').style.color = "red";
-               document.getElementById('signup_msg').innerText = "Check your Email address and make sure it is valid!";
+               document.getElementById('signup_msg').innerText = "Make sure you have entered a valid email!";
                $('#modal_signup_msg').modal('show');
             }
       }
@@ -196,7 +203,6 @@ function verifyEmail(){
           document.getElementById('signup_msg').innerText = "Make sure you filled out all required fields!";
           $('#modal_signup_msg').modal('show');
       }
-  
 }
 
 //Verify code inputted and successfully signed up the user
@@ -211,21 +217,19 @@ document.getElementById('btn_verify_signup').addEventListener('click', function(
       }
       else
       {
-         $('.modal_verification_inpt_code_msg').text('Incorrect Verification Code! Try Again.').fadeIn(100).fadeOut(5000);
+         $('.modal_verification_inpt_code_msg').text('Incorrect Verification Code! Please Try Again.').fadeIn(100).fadeOut(5000);
       }
-         
     }
     else
     {
       $('.modal_verification_inpt_code_msg').text('Enter the verification code sent to your email address.').fadeIn(100).fadeOut(5000);
     }
-
 });
 
 //REGISTER NUMBER IF EMAIL VERIFICATION CODE IS CORRECT
 function signUp() 
 {
-   let fullname = document.getElementById("input_fullName").value;
+   let fullname = document.getElementById("input_fullname").value;
    let email = document.getElementById("input_signupEmail").value;
    let password = document.getElementById("input_signupPass").value;
    let password2 = document.getElementById('input_confirmSignupPass').value;
@@ -268,7 +272,6 @@ function signUp()
                            setTimeout(function(){
                               window.location.href='../index.php';
                            }, 5000);
-             
                         }
                         else{
                            alert(response.msg);
@@ -283,7 +286,7 @@ function signUp()
                else
                {
                    // MESSAGE IF PASS NOT MATCHED
-                   document.getElementById('modal_siginup_title').innerText = "Password is not Matched!";
+                   document.getElementById('modal_siginup_title').innerText = "Password did not Matched!";
                    document.getElementById('modal_siginup_title').style.color = "red";
                    document.getElementById('signup_msg').innerText = "Check your Password and make sure they are matched!";
                    $('#modal_signup_msg').modal('show');
@@ -292,9 +295,9 @@ function signUp()
             else
             {
                 // MESSAGE IF EMAIL IS INVALID
-               document.getElementById('modal_siginup_title').innerText = "Email is Invalid!";
+               document.getElementById('modal_siginup_title').innerText = "Invalid Email!";
                document.getElementById('modal_siginup_title').style.color = "red";
-               document.getElementById('signup_msg').innerText = "Check your Email address and make sure it is valid!";
+               document.getElementById('signup_msg').innerText = "Make sure you have entered a valid email!";
                $('#modal_signup_msg').modal('show');
             }
       }
@@ -308,4 +311,38 @@ function signUp()
       }
 }
 
+//DETECT IF ENTER KEY IS PRESSED AND CHANGE THE FOCUS TO NEXT INPUT
+document.getElementById('input_fullname').addEventListener('keydown', function(e)
+{
+   if(e.key === 'Enter')
+      {
+         document.getElementById('input_signupEmail').focus();
+      }
+});
 
+//email input
+document.getElementById('input_signupEmail').addEventListener('keydown', function(e)
+{
+   if(e.key === 'Enter')
+      {
+         document.getElementById('input_signupPass').focus();
+      }
+});
+
+//input 1st pass
+document.getElementById('input_signupPass').addEventListener('keydown', function(e)
+{
+   if(e.key === 'Enter')
+      {
+         document.getElementById('input_confirmSignupPass').focus();
+      }
+});
+
+//input 2nd pass
+document.getElementById('input_confirmSignupPass').addEventListener('keydown', function(e)
+{
+   if(e.key === 'Enter')
+      {
+         document.getElementById('btn_signup').focus();
+      }
+});

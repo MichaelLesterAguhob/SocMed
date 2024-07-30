@@ -14,6 +14,7 @@ $verification_code = 0;
 try
 {
     $email = trim($_POST['email']);
+    $fullname = trim($_POST['name']);
     $verification_code = rand(10000, 99999);
     
     //mail configuration
@@ -33,7 +34,24 @@ try
     $mail->addAddress($email);
     $mail->isHTML(true);
     $mail->Subject = "Verification Code";
-    $mail->Body = "Your verification code: " . $verification_code;
+
+    $mail_design = '<div style="font-family: "Courier New", Courier, monospace; padding: 10px; height: 95vh; word-wrap: break-word;">
+
+        <h1 style="color: blue; font-size: 3rem;">SocMed | Verification Code: </h1>
+
+        <div style="width: auto; display: flex; justify-content: center;">
+            <h1 style="font-size: 5ch; color: maroon;">'. $verification_code .'</h1>
+        </div>
+        <br>
+        <h2>Hi! &nbsp;'.$fullname.',&nbsp;Enter this Verification Code to Create Your Account on SocMed</h2>
+        <br>
+        <h3 style="margin-top: 50%; width: 100%; text-align: center;">Thank you for using SocMed! Have a great day!</h3>
+        <h2 style="width: 100%; text-align: center; color: blue;">SOCMED © 2024</h2>
+        <h3 style="width: 100%; text-align: center; color: maroon;">Developer: Michael Lester Aguhob</h3>
+        <br>
+    </div>';
+
+    $mail->Body = $mail_design;
     
     //send mail
     $mail->send();

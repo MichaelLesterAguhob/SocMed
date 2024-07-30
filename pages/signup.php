@@ -18,7 +18,7 @@
     <div class="main-container container-fluid">
 
         <div class="container">
-            <div class="row">
+            <div class="row"> 
 
                 <!-- LOGO COLUMN -->
                 <div id="div_logo" class="col-md-6">
@@ -29,8 +29,8 @@
                 <div id="div_signup" class="col-md-6">
                     <h1 class="text-center">SignUp</h1>
                     <div class="form-floating">
-                        <input type="text" id="input_fullName" class="form-control" placeholder="your name">
-                        <label for="input_fullName">Enter Fullname</label>
+                        <input type="text" id="input_fullname" class="form-control" placeholder="your name">
+                        <label for="input_fullname">Enter Fullname</label>
                     </div>
                     <div class="form-floating">
                         <input type="email" id="input_signupEmail" class="form-control" placeholder="myEmail@gmail.com">
@@ -54,9 +54,9 @@
                     </div>
 
                     <div id="div_btn">
-                        <button id="btn_signup" class="btn btn-success" onclick="verifyEmail()">SignUp</button>
+                        <button id="btn_signup" class="btn btn-primary" onclick="verifyEmail()">SignUp</button>
                         <a href="../index.php">
-                            <button id="btn_login" class="btn btn-primary">Login-></button>
+                            <button id="btn_login" class="btn btn-warning">Login-></button>
                         </a>
                     </div>
                 </div>
@@ -77,10 +77,10 @@
                   
                 </div>
                 <div class="modal-body">
-                    <h6>Sent to:&nbsp;<span class="receiver-email text-primary"></span></h6>   
+                    <h5>Sent to:&nbsp;<span class="receiver-email"></span></h5>   
                     
-                    <input type="number" id="inpt_vcode" class="form-control">
-                    <span class="modal_verification_inpt_code_msg text-danger"></span>
+                    <input type="number" id="inpt_vcode" class="form-control"><br>
+                    <span class="modal_verification_inpt_code_msg text-danger mt-3"></span>
                 </div>
                 <div class="modal-footer" style="border: none;">
                     <button id="btn_verify_signup" class="btn btn-success" >Verify</button>
