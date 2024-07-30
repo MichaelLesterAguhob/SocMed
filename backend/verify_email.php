@@ -7,10 +7,7 @@ use Random\Engine\Secure;
 require ('../includes/PHPMailer/src/PHPMailer.php');
 require ('../includes/PHPMailer/src/SMTP.php');
 require ('../includes/PHPMailer/src/Exception.php');
-// require_once('../includes/connection.php');
-
 $verification_code = 0;
-
 try
 {
     $email = trim($_POST['email']);
@@ -36,11 +33,9 @@ try
     $mail->Subject = "Verification Code";
 
     $mail_design = '<div style="font-family: "Courier New", Courier, monospace; padding: 10px; height: 95vh; word-wrap: break-word;">
-
         <h1 style="color: blue; font-size: 3rem;">SocMed | Verification Code: </h1>
-
         <div style="width: auto; display: flex; justify-content: center;">
-            <h1 style="font-size: 5ch; color: maroon;">'. $verification_code .'</h1>
+            <h1 style="color: maroon;">'. $verification_code .'</h1>
         </div>
         <br>
         <h2>Hi! &nbsp;'.$fullname.',&nbsp;Enter this Verification Code to Create Your Account on SocMed</h2>
@@ -56,11 +51,11 @@ try
     //send mail
     $mail->send();
     echo json_encode(['status'=>'success', 'msg'=>"Verification Code Sent!",'code'=>$verification_code]);
-
 }
 catch (Exception $ex)
 {
-    echo json_encode(['status'=>'failed', 'msg'=>"Error Occurred! : " . $ex]);
+    echo 'Error Occurred' . $ex;
+    exit;
 }
 
 ?>

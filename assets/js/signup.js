@@ -155,7 +155,14 @@ function verifyEmail(){
                   request.onreadystatechange = function()
                   {  
                      if(request.readyState == 4 && request.status == 200){
-                        let response = JSON.parse(request.responseText);
+                        let response;
+                        try{
+                           response = JSON.parse(request.responseText);
+                        }catch(e){
+                           alert('Error Occurred :' + request.responseText)
+                           return;
+                        }
+                       
                        if(response.status == "success")
                        {
                         verification_code = response.code;
@@ -241,14 +248,22 @@ function signUp()
             {
               if(isPasswordMatched)
                {
+                 
                   let xhr = new XMLHttpRequest();
                   xhr.open("POST", "../../backend/signup.php", true);
                   xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
                   xhr.onreadystatechange = function () {
-                     if (xhr.readyState == 4 && xhr.status == 200) {
-          
-                        let response = JSON.parse(xhr.responseText);
+                     if (xhr.readyState == 4 && xhr.status == 200) 
+                     {
+                        let response;
+                        try{
+                           response = JSON.parse(xhr.responseText);
+                        }catch(e){
+                           alert('Error Occurred :' + xhr.responseText)
+                           return;
+                        }
+                 
                         if(response.status == "success")
                         {
                            let inputs_elements = document.querySelectorAll('#div_signup .form-control');
@@ -310,6 +325,15 @@ function signUp()
          $('#modal_signup_msg').modal('show');
       }
 }
+
+document.getElementById('inpt_vcode').addEventListener('keydown', function(e)
+{
+   if(e.key == 'Enter')
+   {
+      document.getElementById('btn_verify_signup').click();
+      document.getElementById('inpt_vcode').focus();
+   }
+});
 
 //DETECT IF ENTER KEY IS PRESSED AND CHANGE THE FOCUS TO NEXT INPUT
 document.getElementById('input_fullname').addEventListener('keydown', function(e)

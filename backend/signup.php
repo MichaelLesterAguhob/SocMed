@@ -1,6 +1,6 @@
 <?php 
 require_once('../includes/connection.php');
-
+require_once('../backend/welcome_mail_message.php');
 if($_SERVER['REQUEST_METHOD'] == 'POST')
 {
     $fullname = trim($_POST['fullname']);
@@ -14,15 +14,16 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
         if($query)
         {
             echo json_encode(['status'=>'success','msg'=>'Successfully Created Account!']);
+            sendGreetings($email, $fullname);
         }
         else{
             echo json_encode(['status'=>'failed','msg'=>'Unknown Error Occurred.']);
         }
     }
     catch(Exception $ex){
-        echo json_encode(['status'=>'failed','msg'=>' Error Occurred.' . $ex ]);
+        echo 'Error Occurred' . $ex;
+        exit;
     }
-
 }
 
 ?>
