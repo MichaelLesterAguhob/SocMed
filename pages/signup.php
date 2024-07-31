@@ -21,42 +21,42 @@
             <div class="row"> 
 
                 <!-- LOGO COLUMN -->
-                <div id="div_logo" class="col-md-6">
+                <div id="divLogo" class="col-md-6">
                     <img src="../assets/image/logo.png" alt="SocMed Logo" class="img-fluid">
                 </div>
 
                 <!-- SIGNUP COLUMN -->
-                <div id="div_signup" class="col-md-6">
+                <div id="divSignup" class="col-md-6">
                     <h1 class="text-center">SignUp</h1>
                     <div class="form-floating">
-                        <input type="text" id="input_fullname" class="form-control" placeholder="your name">
-                        <label for="input_fullname">Enter Fullname</label>
+                        <input type="text" id="inputFullname" class="form-control" placeholder="your name">
+                        <label for="inputFullname">Enter Fullname</label>
                     </div>
                     <div class="form-floating">
-                        <input type="email" id="input_signupEmail" class="form-control" placeholder="myEmail@gmail.com">
-                        <label id="email-label" for="input_signupEmail">Enter Email</label>
-                        <span id="email-warning" class="text-danger">Invalid Email</span>
+                        <input type="email" id="inputEmail" class="form-control" placeholder="myEmail@gmail.com">
+                        <label id="emailLabel" for="inputEmail">Enter Email</label>
+                        <span id="emailWarningMsg" class="text-danger">Invalid Email</span>
                     </div>
                     <div class="form-floating">
-                        <input type="password" id="input_signupPass" class="form-control input-pass" placeholder="Enter Password" onchange="isPassMatched()">
-                        <label class="input-pass-label" for="input_signupPass">Create Password</label>
+                        <input type="password" id="inputPassword" class="form-control input-pass" placeholder="Enter Password" onchange="isPassMatched()">
+                        <label class="input-pass-label" for="inputPassword">Create Password</label>
                         <span class="input-pass-msg text-danger"></span>
                     </div>
                     <div class="form-floating">
-                        <input type="password" id="input_confirmSignupPass" class="form-control input-pass" placeholder="Confirm Password" onchange="isPassMatched()">
-                        <label class="input-pass-label" for="input_confirmSignupPass">Confirm Password</label>
+                        <input type="password" id="inputConfirmPassword" class="form-control input-pass" placeholder="Confirm Password" onchange="isPassMatched()">
+                        <label class="input-pass-label" for="inputConfirmPassword">Confirm Password</label>
                         <span class="input-pass-msg text-danger"></span>
 
-                        <button id="btn_show_hide" class="btn btn-sm" onmouseenter="showPassToolTip()" onmouseleave="hidePassToolTip()" onclick="show_hide_pass()">
-                            <img id="eye_icon" src="../assets/bootstrap/icon/bootstrap-icons-1.11.3/eye.svg" alt="Show Password">
+                        <button id="btnShowHide" class="btn btn-sm" onmouseenter="showPassToolTip()" onmouseleave="hidePassToolTip()" onclick="show_hide_pass()">
+                            <img id="eyeIcon" src="../assets/bootstrap/icon/bootstrap-icons-1.11.3/eye.svg" alt="Show Password">
                         </button>
-                        <span id="popover" class="text-muted">Show Password</span>
+                        <span id="showHideToolTip" class="text-muted">Show Password</span>
                     </div>
 
-                    <div id="div_btn">
-                        <button id="btn_signup" class="btn btn-primary" onclick="verifyEmail()">SignUp</button>
+                    <div id="divBtnContainer">
+                        <button id="btnSignup" class="btn btn-primary" onclick="verifyEmail()">SignUp</button>
                         <a href="../index.php">
-                            <button id="btn_login" class="btn btn-warning">Login-></button>
+                            <button id="btnGoToLogin" class="btn btn-warning">Login-></button>
                         </a>
                     </div>
                 </div>
@@ -68,36 +68,36 @@
     </div>
 
     <!-- This modal is input field for user's verification code -->
-    <div id="modal_verification" class="modal fade" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div id="modaVerification" class="modal fade" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <h3 class="modal-title fs-5">Enter Verification Code</h3>
-                    <button class="btn-close" aria-label="Close" data-bs-dismiss="modal" data-bs-target="#modal_verification"></button>
+                    <button class="btn-close" aria-label="Close" data-bs-dismiss="modal" data-bs-target="#modaVerification"></button>
                   
                 </div>
                 <div class="modal-body">
                     <h5>Sent to:&nbsp;<span class="receiver-email"></span></h5>   
                     
-                    <input type="number" id="inpt_vcode" class="form-control"><br>
-                    <span class="modal_verification_inpt_code_msg text-danger mt-3"></span>
+                    <input type="number" id="inputVerificationCode" class="form-control"><br>
+                    <span class="modalVerificationMsg text-danger mt-3"></span>
                 </div>
                 <div class="modal-footer" style="border: none;">
-                    <button id="btn_verify_signup" class="btn btn-success" >Verify</button>
+                    <button id="btnVerifySignup" class="btn btn-success" >Verify</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <div id="modal_signup_msg" class="modal fade" tabindex="-1">
+    <div id="modalSignupMsg" class="modal fade" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3 id="modal_siginup_title" class="modal-title"></h3>
-                    <button class="btn-close" aria-label="Close" data-bs-dismiss="modal" data-bs-target="#modal_signup_msg"></button>
+                    <h3 id="modalSignupMsgTitle" class="modal-title"></h3>
+                    <button class="btn-close" aria-label="Close" data-bs-dismiss="modal" data-bs-target="#modalSignupMsg"></button>
                 </div>
                 <div class="modal-body">
-                    <h4 id="signup_msg" class="text-"></h4>
+                    <h4 id="modalSignupMsgContent" class="text-"></h4>
                 </div>
             
             </div>

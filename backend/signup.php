@@ -3,24 +3,26 @@ require_once('../includes/connection.php');
 require_once('../backend/welcome_mail_message.php');
 if($_SERVER['REQUEST_METHOD'] == 'POST')
 {
-    $fullname = trim($_POST['fullname']);
+    $fullName = trim($_POST['fullName']);
     $email = trim($_POST['email']);
-    $plain_password = trim($_POST['password']);
-    $hashed_password = password_hash($plain_password, PASSWORD_DEFAULT);
+    $plainPassword = trim($_POST['password']);
+    $hashedPassword = password_hash($plainPassword, PASSWORD_DEFAULT);
     try
     {
-        $query_txt = "INSERT INTO user_accounts VALUES('', 123, '$fullname','$email', '$hashed_password') ";
-        $query = mysqli_query($con, $query_txt);
+        $queryCommandTxt = "INSERT INTO user_accounts VALUES('', 123, '$fullName','$email', '$hashedPassword') ";
+        $query = mysqli_query($con, $queryCommandTxt);
         if($query)
         {
             echo json_encode(['status'=>'success','msg'=>'Successfully Created Account!']);
-            sendGreetings($email, $fullname);
+            sendGreetings($email, $fullName);
         }
-        else{
+        else
+        {
             echo json_encode(['status'=>'failed','msg'=>'Unknown Error Occurred.']);
         }
     }
-    catch(Exception $ex){
+    catch(Exception $ex)
+    {
         echo 'Error Occurred' . $ex;
         exit;
     }

@@ -29,11 +29,12 @@ function sendGreetings($email, $fullname)
         $mail->addAddress($email);
         $mail->isHTML(true);
         $mail->Subject = "SignUp Successfully!";
-
-        $mail_design = '<div style="font-family: "Courier New", Courier, monospace; padding: 10px; height: 95vh; word-wrap: break-word;">
-            <h1 style="color: blue; font-size: 2.5rem;">Greetings from SocMed! </h1>
+        $mail->addEmbeddedImage('../assets/image/logo.png', 'logo');
+        $mailMsgDesign = '<div style="font-family: "Courier New", Courier, monospace; padding: 10px; height: 95vh; word-wrap: break-word;">
+            <img src="cid:logo" alt="Socmed Logo" style="max-width: 330px; max-height:105px;">
+            <h1 style="color: blue;">Greetings from SocMed! </h1>
             <div style="width: auto; display: flex; justify-content: center;">
-                <h1 style="color: maroon;">HI! &nbsp;'.$fullname.', &nbsp; you have Successfully Created your SocMed Account. You can now login and manage your account, talk to someone, find friend and many more!</h1>
+                <h3 style="color: maroon;">HI &nbsp;'.$fullname.'!, &nbsp; you have Successfully Created your SocMed Account. <br> You can now login and manage your account, Talk to someone, Find friends and many more!</h3>
                 <br>
             </div>
             <br>
@@ -42,9 +43,7 @@ function sendGreetings($email, $fullname)
             <h3 style="width: 100%; text-align: center; color: maroon;">Developer: Michael Lester Aguhob</h3>
             <br>
         </div>';
-
-        $mail->Body = $mail_design;
-        
+        $mail->Body = $mailMsgDesign;
         //send mail
         $mail->send();
     }

@@ -7,12 +7,12 @@ use Random\Engine\Secure;
 require ('../includes/PHPMailer/src/PHPMailer.php');
 require ('../includes/PHPMailer/src/SMTP.php');
 require ('../includes/PHPMailer/src/Exception.php');
-$verification_code = 0;
+$verificationCode = 0;
 try
 {
     $email = trim($_POST['email']);
-    $fullname = trim($_POST['name']);
-    $verification_code = rand(10000, 99999);
+    $fullName = trim($_POST['fullName']);
+    $verificationCode = rand(10000, 99999);
     
     //mail configuration
     $mail = new PHPMailer(true);
@@ -32,13 +32,15 @@ try
     $mail->isHTML(true);
     $mail->Subject = "Verification Code";
 
-    $mail_design = '<div style="font-family: "Courier New", Courier, monospace; padding: 10px; height: 95vh; word-wrap: break-word;">
-        <h1 style="color: blue; font-size: 3rem;">SocMed | Verification Code: </h1>
+    $mail->addEmbeddedImage('../assets/image/logo.png','logo');
+    $mailMsgDesign = '<div style="font-family: "Courier New", Courier, monospace; padding: 10px; height: 95vh; word-wrap: break-word;">
+        <img src="cid:logo" alt="socmed logo" style="max-width: 330px; max-height:105px; margin: auto;">
+        <h1 style="color: blue;">Verification Code: </h1>
         <div style="width: auto; display: flex; justify-content: center;">
-            <h1 style="color: maroon;">'. $verification_code .'</h1>
+            <h1 style="color: maroon;">'. $verificationCode .'</h1>
         </div>
         <br>
-        <h2>Hi! &nbsp;'.$fullname.',&nbsp;Enter this Verification Code to Create Your Account on SocMed</h2>
+        <h2>Hi! &nbsp;'.$fullName.',&nbsp;Enter this Verification Code to Create Your Account on SocMed</h2>
         <br>
         <h3 style="margin-top: 50%; width: 100%; text-align: center;">Thank you for using SocMed! Have a great day!</h3>
         <h2 style="width: 100%; text-align: center; color: blue;">SOCMED © 2024</h2>
@@ -46,11 +48,11 @@ try
         <br>
     </div>';
 
-    $mail->Body = $mail_design;
+    $mail->Body = $mailMsgDesign;
     
     //send mail
     $mail->send();
-    echo json_encode(['status'=>'success', 'msg'=>"Verification Code Sent!",'code'=>$verification_code]);
+    echo json_encode(['status'=>'success', 'msg'=>"Verification Code Sent!",'code'=>$verificationCode]);
 }
 catch (Exception $ex)
 {

@@ -21,39 +21,39 @@
 .row{
     height: 100%;
 }
-#div_logo{
+#divLogo{
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-#div_signup{
+#divSignup{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-#div_signup h1{
+#divSignup h1{
     font-weight: bolder;
 }
 
-#div_signup .form-floating, #div_btn{
+#divSignup .form-floating, #divBtnContainer{
     width: 90%;
     margin-top: 30px;
 }
-#email-warning{
+#emailWarningMsg{
     display: none;
 }
 
-#div_btn{
+#divBtnContainer{
     display: flex;
     justify-content: center;
     gap:30px;
   
 }
 
-#div_btn .btn{
+#divBtnContainer .btn{
     width: 150px;
     font-size: large;
 }
@@ -62,7 +62,7 @@
     display: none;
 }
 
-#popover{
+#showHideToolTip{
     display: none;
 }
 
@@ -70,7 +70,8 @@
     font-size: large;
     color: maroon;
 }
-#inpt_vcode{
+
+#inputVerificationCode{
     text-align: center;
     width: 50%;
     border: none;

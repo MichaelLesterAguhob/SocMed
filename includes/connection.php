@@ -4,10 +4,12 @@ $username = "root";
 $password = "";
 $database = "socmed";
 
-try{
+try
+{
     $con = mysqli_connect($server, $username, $password, $database);
- 
-}catch(Exception $ex){
+}
+catch(Exception $ex)
+{
     echo 'Connection Error Occurred' . $ex;
     exit;
 }
