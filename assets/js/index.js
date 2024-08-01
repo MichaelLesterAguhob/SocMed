@@ -58,18 +58,35 @@ btnShowHide.addEventListener('click', function()
 
 // Mouse hover and leave event 
 btnShowHide.addEventListener('mouseover', function()
-  {
-    popover.style.display = 'inline';
-  });
+{
+  popover.style.display = 'inline';
+});
 btnShowHide.addEventListener('mouseleave', function()
-  {
-    popover.style.display = 'none';
-  });
+{
+  popover.style.display = 'none';
+});
 
 
 
 // temporary
 function login()
 {
-  window.location.href="pages/home.php";
+  let email = document.getElementById('inputEmail').value;
+  let password = document.getElementById('inputPassword').value;
+
+  let request = new XMLHttpRequest();
+  request.open('POST', '../../backend/login.php');
+  request.setRequestHeader('Content-Type', 'Application/x-www-form-urlencoded');
+
+  request.onreadystatechange = function()
+  {
+    if(request.readyState == 4 && request.status == 200)
+    {
+      alert(request.responseText);
+    }
+  };
+
+  let data = 'email=' + encodeURIComponent(email) + '&password=' + encodeURIComponent(password);
+  
+  request.send(data);
 }
