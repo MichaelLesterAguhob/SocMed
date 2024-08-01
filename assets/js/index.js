@@ -1,63 +1,67 @@
 
 document.addEventListener("DOMContentLoaded", function()
 {
-  let first_input = document.getElementById('input_email');
+  let first_input = document.getElementById('inputEmail');
   first_input.focus();
 });
-
+ 
 //VALIDATE ENETERED EMAIL
-function validateEmail(){
-  let input_email = document.getElementById('input_email');
+function validateEmail()
+{
+  let inputEmail = document.getElementById('inputEmail');
   let email_pattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{3,}$/;
-  let result = email_pattern.test(input_email.value);
+  let result = email_pattern.test(inputEmail.value);
 
-  let email_label = document.querySelector('.form-floating .email-label');
-  let email_msg = document.querySelector('.form-floating .email-msg');
+  let emailLabel = document.querySelector('.form-floating .email-label');
+  let emailMsg = document.querySelector('.form-floating .email-msg');
 
-  if (!result){
-   input_email.style.borderColor = 'red';
-   email_label.style.color = 'red';
-   email_msg.style.display = 'block';
+  if (!result)
+  {
+   inputEmail.style.borderColor = 'red';
+   emailLabel.style.color = 'red';
+   emailMsg.style.display = 'block';
   }
-  else{
-    input_email.style.removeProperty('border-color');
-    email_label.style.removeProperty('color');
-    email_msg.style.display = 'none';
+  else
+  {
+    inputEmail.style.removeProperty('border-color');
+    emailLabel.style.removeProperty('color');
+    emailMsg.style.display = 'none';
   }
 }
 
 // Showing and Hiding password 
 let toDo = "Hidden";
-let btn_show_hide = document.getElementById('btn_show_hide');
+let btnShowHide = document.getElementById('btnShowHide');
 let popover = document.getElementById('popover');
-btn_show_hide.addEventListener('click', function()
+
+btnShowHide.addEventListener('click', function()
 {
-  let icon = document.getElementById('eye_icon');
+  let icon = document.getElementById('eyeIcon');
   if(toDo == "Hidden")
-    {
-      icon.setAttribute('src', 'assets/bootstrap/icon/bootstrap-icons-1.11.3/eye-slash.svg');
-      let input = document.getElementById('input_pass');
-      input.setAttribute('type','text')
-      toDo = "Showed";
-      popover.textContent = "Hide Password";
-    }
+  {
+    icon.setAttribute('src', 'assets/bootstrap/icon/bootstrap-icons-1.11.3/eye-slash.svg');
+    let input = document.getElementById('inputPassword');
+    input.setAttribute('type','text')
+    toDo = "Showed";
+    popover.textContent = "Hide Password";
+  }
   else
-    {
-      icon.setAttribute('src','assets/bootstrap/icon/bootstrap-icons-1.11.3/eye.svg');
-      let input = document.getElementById('input_pass');
-      input.setAttribute('type','password')
-      toDo = "Hidden";
-      popover.textContent = "Show Password";
-    }
-    popover.style.display = 'none';
+  {
+    icon.setAttribute('src','assets/bootstrap/icon/bootstrap-icons-1.11.3/eye.svg');
+    let input = document.getElementById('inputPassword');
+    input.setAttribute('type','password')
+    toDo = "Hidden";
+    popover.textContent = "Show Password";
+  }
+  popover.style.display = 'none';
 });
 
 // Mouse hover and leave event 
-btn_show_hide.addEventListener('mouseover', function()
+btnShowHide.addEventListener('mouseover', function()
   {
     popover.style.display = 'inline';
   });
-btn_show_hide.addEventListener('mouseleave', function()
+btnShowHide.addEventListener('mouseleave', function()
   {
     popover.style.display = 'none';
   });
@@ -65,6 +69,7 @@ btn_show_hide.addEventListener('mouseleave', function()
 
 
 // temporary
-function login(){
+function login()
+{
   window.location.href="pages/home.php";
 }

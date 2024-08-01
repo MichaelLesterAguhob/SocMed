@@ -1,6 +1,6 @@
 *{
     padding: 0; 
-    margin: 0;
+    margin: 0; 
     color: blue;
     font-family: 'Courier New', Courier, monospace;
     /* border: 1px solid black; */
@@ -22,34 +22,35 @@
 .row{
     height: 100%;
 }
-#div_logo{
+#divLogo{
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-#div_login{
+#divLogin{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-#div_login h1{
+
+#divLogin h1{
     font-weight: bolder;
 }
-#div_login .form-floating, #div_btn{
+
+#divLogin .form-floating, #divBtn{
     width: 90%;
     margin-top: 50px;
 }
 
-#div_btn{
+#divBtn{
     display: flex;
     justify-content: center;
     gap:30px;
-  
 }
 
-#div_btn .btn{
+#divBtn .btn{
     width: 150px;
     font-size: large;
 }
