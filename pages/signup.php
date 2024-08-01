@@ -83,7 +83,8 @@
                     <span class="modalVerificationMsg text-danger mt-3"></span>
                 </div>
                 <div class="modal-footer" style="border: none;">
-                    <button id="btnVerifySignup" class="btn btn-success" >Verify</button>
+                    <button id="btnVerifySignup" class="btn btn-success">Verify</button>
+                    <button id="btnResendCode" class="btn btn-warning" disabled>Resend&nbsp;<span id="resendCountdown"></span></button>
                 </div>
             </div>
         </div>
@@ -98,8 +99,7 @@
                 </div>
                 <div class="modal-body">
                     <h4 id="modalSignupMsgContent" class="text-"></h4>
-                </div>
-            
+                </div> 
             </div>
         </div>
     </div>

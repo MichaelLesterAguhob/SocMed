@@ -6,7 +6,7 @@
     <link rel="icon" type="image/x-icon" href="assets/image/fav.ico">
     <title>Login|SocMed</title>
 
-    <!-- BOOTSTRAP -->
+    <!-- BOOTSTRAP --> 
     <link rel="stylesheet" href="assets/bootstrap/bootstrap-5.3.3-dist/css/bootstrap.min.css">
     <!-- CSS -->
     <link rel="stylesheet" href="assets/css/index.css">

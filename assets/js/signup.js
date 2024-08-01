@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", function ()
 
 let isEmailValid = false;
 let isPasswordMatched = false;
+let secs = 30;
 
 // INITIAL VALIDATION OF EMAIL | CHECKING ITS FORMAT
 document.getElementById("inputEmail").addEventListener("change", function () 
@@ -162,6 +163,10 @@ function hidePassToolTip()
 let verificationCode = 0;
 function verifyEmail()
 {
+   let btnResendCode = document.getElementById('btnResendCode');
+   btnResendCode.setAttribute('disabled', 'disabled');
+   secs = 30;
+
    let fullName = document.getElementById("inputFullname").value;
    let email = document.getElementById("inputEmail").value;
    let password = document.getElementById("inputPassword").value;
@@ -203,6 +208,7 @@ function verifyEmail()
                      setTimeout(function()
                      {
                         document.getElementById('inputVerificationCode').focus();
+                        startResendCountdown();
                      }, 500);
                   }
                   else
@@ -241,6 +247,34 @@ function verifyEmail()
          $('#modalSignupMsg').modal('show');
    }
 }
+
+//RESEND COUNTDOWN
+function startResendCountdown()
+{
+      let countDownInterval = setInterval(function()
+      {
+         if(secs > 0)
+         {
+            secs--;
+            document.getElementById('resendCountdown').innerText = secs.toString();
+         }
+         else
+         {
+            clearInterval(countDownInterval);
+            let btnResendCode = document.getElementById('btnResendCode');
+            btnResendCode.removeAttribute('disabled');
+            document.getElementById('resendCountdown').innerText = "";
+         }
+      }, 1000);
+}
+
+//RESENDING VERIFICATION CODE
+document.getElementById('btnResendCode').addEventListener('click', function()
+{
+   secs = 30;
+   verifyEmail();
+
+});
 
 //Verify code inputted and successfully signed up the user
 document.getElementById('btnVerifySignup').addEventListener('click', function()
@@ -394,7 +428,7 @@ document.getElementById('inputEmail').addEventListener('keydown', function(e)
 
 //input 1st pass
 document.getElementById('inputPassword').addEventListener('keydown', function(e)
-{
+{ 
    if(e.key === 'Enter')
    {
       document.getElementById('inputConfirmPassword').focus();

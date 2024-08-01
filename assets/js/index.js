@@ -4,8 +4,8 @@ document.addEventListener("DOMContentLoaded", function()
   let first_input = document.getElementById('inputEmail');
   first_input.focus();
 });
- 
-//VALIDATE ENETERED EMAIL
+  
+//VALIDATE ENTERED EMAIL
 function validateEmail()
 {
   let inputEmail = document.getElementById('inputEmail');
