@@ -10,7 +10,6 @@ try
 }
 catch(Exception $ex)
 {
-    echo 'Connection Error Occurred: ' . $ex;
-    exit;
+    die ('Connection Error | ' . $ex);
 }
 ?>

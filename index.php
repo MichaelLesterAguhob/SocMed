@@ -53,13 +53,32 @@
             </div>
         </div>
     </div>
+
+    <div id="loginMsg" class="modal fade" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 id="loginMsgTitle" class="modal-title">Title</h3>
+                    <button class="btn-close" aria-label="Close" data-bs-dismiss="modal" data-bs-target="#loginModal"></button>
+                </div>
+                <div class="modal-body">
+                    <h5 id="loginMsgContent">Message</h5>
+                </div>
+                <div id="loginMsgFooter" class="modal-footer">
+                    <button class="btn btn-warning" data-bs-dismiss="modal" data-bs-target="#loginMsg">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
     <!-- FOOTER -->
     <?php include("includes/footer.php");?>
 
-
-
     <!-- JAVASCRIPT -->
     <script src="assets/bootstrap/bootstrap-5.3.3-dist/js/bootstrap.min.js"></script>
+    <script src="assets/bootstrap/bootstrap-5.3.3-dist/js/jquery-3.7.1.js"></script>
+ 
     <script src="assets/js/index.js"></script>
 </body>
 

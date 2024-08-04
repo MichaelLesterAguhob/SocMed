@@ -196,7 +196,7 @@ function verifyEmail()
                   }
                   catch(e)
                   {
-                     alert('Error Occurred :' + request.responseText)
+                     console.log('Error Occurred :' + request.responseText);
                      return;
                   }
                   
@@ -213,7 +213,7 @@ function verifyEmail()
                   }
                   else
                   {
-                     alert(response.msg);
+                     console.log(response.msg);
                   }
                }
             }
@@ -328,7 +328,7 @@ function signUp()
                   }
                   catch(e)
                   {
-                     alert('Error Occurred :' + xhr.responseText)
+                     console.log('Error Occurred :' + xhr.responseText)
                      return;
                   }
             
@@ -363,7 +363,7 @@ function signUp()
                   }
                   else
                   {
-                     alert(response.msg);
+                     console.log(response.msg);
                   }
                }
             };

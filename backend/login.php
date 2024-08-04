@@ -1,33 +1,39 @@
 <?php
 require_once('../includes/connection.php');
-
 try
 {
     $email = trim($_POST['email']);
     $password = trim($_POST['password']);
 
     //GET USER ACCOUNT USING ITS EMAIL
-    $commandText = "SELECT * FROM `user_accounts` WHERE user_email = ? ";
-    $stmt = $con->prepare($commandText);
+    $query = "SELECT * FROM `user_accounts` WHERE user_email = ? ";
+    $stmt = $con->prepare($query);
 
     // CHECK IF PREPARATION IS FAILED
     if($stmt === false)
     {
         die("Prepare Failed: " . htmlspecialchars($con->error));
     }
-
+    // binding parameter
     $stmt->bind_param('s', $email);
     $stmt->execute();
-
     $result = $stmt->get_result()->fetch_array();
 
     if($result)
     {
-        echo $result['user_email'] . "-" . $result['user_password'];
+        $isPassCorrect = password_verify($password, $result['user_password']);
+        if($isPassCorrect)
+        {
+            echo json_encode(['status'=>'success', 'msg'=>'Login Successfully']);
+        }
+        else
+        {
+            echo json_encode(['status'=>'failed', 'msg'=>"Account doesn't exist!"]);
+        }
     }
     else
     {
-        echo json_encode(['status'=>'failed', 'msg'=>'Noaccount found!']);
+        echo json_encode(['status'=>'failed', 'msg'=>'Account does not exist!']);
     }
 
     $stmt->close();
@@ -35,9 +41,9 @@ try
 }
 catch(Exception $ex)
 {
-    echo "error";
     $stmt->close();
     $con->close();
+    die ('Login Error | ' . $ex);
 }
 
 

@@ -81,6 +81,11 @@ btnShowHide.addEventListener('mouseleave', function()
 function login()
 {
   validateEmail();
+  // modal
+  let loginMsgTitle = document.getElementById('loginMsgTitle');
+  let loginMsgContent = document.getElementById('loginMsgContent');
+  let loginMsgFooter = document.getElementById('loginMsgFooter');
+  //user inputs
   let email = document.getElementById('inputEmail').value;
   let password = document.getElementById('inputPassword').value;
 
@@ -94,9 +99,49 @@ function login()
         
         request.onreadystatechange = function()
         {
-        if(request.readyState == 4 && request.status == 200)
+          let response;
+          if(request.readyState == 4 && request.status == 200)
           {
-            alert(request.responseText);
+            // Handle invalid JSON format from backend response
+            try
+            {
+              response = JSON.parse(request.responseText);
+            }
+            catch(e)
+            {
+              console.log("Login Error Occurred: " + request.responseText);
+              return;
+            }
+           
+            if(response.status == "success")
+            {
+              loginMsgFooter.style.display = "none";
+              loginMsgTitle.innerText = response.msg;
+              loginMsgTitle.style.color = "Green";
+              loginMsgContent.innerText = "Please Wait...";
+              $('#loginMsg').modal('show');
+
+              setTimeout(function()
+              {
+                $('#loginMsg').modal('hide');
+                loginMsgFooter.style.display = "flex";
+              }, 1000);
+
+            }
+            else
+            {
+              loginMsgFooter.style.display = "none";
+              loginMsgTitle.innerText = response.msg;
+              loginMsgTitle.style.color = "red";
+              loginMsgContent.innerText = "Check your input detail if there's typo. Click 'Forgot Password' if you can't remember your password";
+              $('#loginMsg').modal('show');
+
+              setTimeout(function()
+              {
+                $('#loginMsg').modal('hide');
+                loginMsgFooter.style.display = "flex";
+              }, 7000);
+            }
           }
         };
         let data = 'email=' + encodeURIComponent(email) + '&password=' + encodeURIComponent(password);
@@ -104,11 +149,33 @@ function login()
     }
     else
     {
-      alert('Fill in the blank(s).');
+      loginMsgTitle.innerText = "Fill in the blank(s)."
+      loginMsgTitle.style.color = "red";
+      loginMsgContent.innerText = "Check your inputs and fill in the blanks.";
+      $('#loginMsg').modal('show');
     }
   }
   else
   {
-    alert('invalid email');
+    loginMsgTitle.innerText = "Invalid Email Address."
+    loginMsgTitle.style.color = "red";
+    loginMsgContent.innerText = "Make sure you enter a Valid Email Address";
+    $('#loginMsg').modal('show');
   }
 }
+
+document.getElementById('inputEmail').addEventListener('keydown', function(e)
+{
+  let email = document.getElementById('inputEmail');
+  if(e.key == "Enter")
+  {
+    if(isEmailValid)
+    {
+      alert('valid');
+    }
+    else
+    {
+      alert('sadas');
+    }
+  }
+});
