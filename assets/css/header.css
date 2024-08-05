@@ -32,6 +32,12 @@
     background-color: lightgray;
 }
 
+#logout{
+    text-decoration: none;
+}
+
+
+
 @media (max-width: 900px){
     .modal-dialog{
         max-width: 30%;

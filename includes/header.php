@@ -38,6 +38,7 @@
     </div>
 </nav>
 
+<!-- Modal for settings -->
 <div id="settings-modal" class="modal fade" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -46,7 +47,7 @@
                 <button class="btn-close" aria-label="Close" data-bs-dismiss="modal" data-bs-target="#settings-modal"></button>
             </div>
             <div class="modal-body">
-                <h2>I am modal body</h2> 
+                <h5><a id="logout" href="../backend/logout.php">Logout</a></h5> 
             </div>
         </div>
     </div>

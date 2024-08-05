@@ -65,6 +65,7 @@ btnShowHide.addEventListener('click', function()
   }
   popover.style.display = 'none';
 });
+
 // Mouse hover and leave event 
 btnShowHide.addEventListener('mouseover', function()
 {
@@ -76,106 +77,141 @@ btnShowHide.addEventListener('mouseleave', function()
 });
 
 
-
 // LOGIN ACCOUNT
 function login()
-{
-  validateEmail();
-  // modal
-  let loginMsgTitle = document.getElementById('loginMsgTitle');
-  let loginMsgContent = document.getElementById('loginMsgContent');
-  let loginMsgFooter = document.getElementById('loginMsgFooter');
-  //user inputs
-  let email = document.getElementById('inputEmail').value;
-  let password = document.getElementById('inputPassword').value;
-
-  if(isEmailValid)
   {
-    if(email != "" && password != "")
-    {
-        let request = new XMLHttpRequest();
-        request.open('POST', '../../backend/login.php');
-        request.setRequestHeader('Content-Type', 'Application/x-www-form-urlencoded');
-        
-        request.onreadystatechange = function()
-        {
-          let response;
-          if(request.readyState == 4 && request.status == 200)
-          {
-            // Handle invalid JSON format from backend response
-            try
-            {
-              response = JSON.parse(request.responseText);
-            }
-            catch(e)
-            {
-              console.log("Login Error Occurred: " + request.responseText);
-              return;
-            }
-           
-            if(response.status == "success")
-            {
-              loginMsgFooter.style.display = "none";
-              loginMsgTitle.innerText = response.msg;
-              loginMsgTitle.style.color = "Green";
-              loginMsgContent.innerText = "Please Wait...";
-              $('#loginMsg').modal('show');
+    validateEmail();
+    //user inputs
+    let email = document.getElementById('inputEmail').value;
+    let password = document.getElementById('inputPassword').value;
 
-              setTimeout(function()
-              {
-                $('#loginMsg').modal('hide');
-                loginMsgFooter.style.display = "flex";
-              }, 1000);
-
-            }
-            else
-            {
-              loginMsgFooter.style.display = "none";
-              loginMsgTitle.innerText = response.msg;
-              loginMsgTitle.style.color = "red";
-              loginMsgContent.innerText = "Check your input detail if there's typo. Click 'Forgot Password' if you can't remember your password";
-              $('#loginMsg').modal('show');
-
-              setTimeout(function()
-              {
-                $('#loginMsg').modal('hide');
-                loginMsgFooter.style.display = "flex";
-              }, 7000);
-            }
-          }
-        };
-        let data = 'email=' + encodeURIComponent(email) + '&password=' + encodeURIComponent(password);
-        request.send(data);
-    }
-    else
-    {
-      loginMsgTitle.innerText = "Fill in the blank(s)."
-      loginMsgTitle.style.color = "red";
-      loginMsgContent.innerText = "Check your inputs and fill in the blanks.";
-      $('#loginMsg').modal('show');
-    }
-  }
-  else
-  {
-    loginMsgTitle.innerText = "Invalid Email Address."
-    loginMsgTitle.style.color = "red";
-    loginMsgContent.innerText = "Make sure you enter a Valid Email Address";
-    $('#loginMsg').modal('show');
-  }
-}
-
-document.getElementById('inputEmail').addEventListener('keydown', function(e)
-{
-  let email = document.getElementById('inputEmail');
-  if(e.key == "Enter")
-  {
     if(isEmailValid)
-    {
-      alert('valid');
-    }
+      {
+        if(email != "" && password != "")
+          {
+              let request = new XMLHttpRequest();
+              request.open('POST', '../../backend/login.php');
+              request.setRequestHeader('Content-Type', 'Application/x-www-form-urlencoded');
+              
+              request.onreadystatechange = function()
+                {
+                  let response;
+                  if(request.readyState == 4 && request.status == 200)
+                    {
+                      // Handle invalid JSON format from backend response
+                      try
+                        {
+                          response = JSON.parse(request.responseText);
+                        }
+                      catch(e)
+                        {
+                          console.log("Login Error Occurred: " + request.responseText);
+                          return;
+                        }
+                    
+                      // Handle response
+                      if(response.status == "success")
+                        {
+                          showLoginModalMsg(response.msg, "Green", "Please Wait...", "NO", "none", 1000);
+                          setTimeout(function()
+                            {
+                              window.location = "pages/home.php";
+                            }, 1000);
+                        }
+                      else
+                        {
+                          let loginModalTextContent = "Check your input detail if there's typo. Click 'Forgot Password' if you can't remember your password";
+                          showLoginModalMsg(response.msg, "red", loginModalTextContent, "YES", "inputPassword", 5000);
+                        }
+                    }
+                };
+
+              // data to be sent to backend
+              let data = 'email=' + encodeURIComponent(email) + '&password=' + encodeURIComponent(password);
+              request.send(data);
+          }
+        else
+          { 
+            showLoginModalMsg("Fill in the blank(s)", "red", "Check your inputs and fill in the blanks.", "NO", "inputEmail", 2500);
+          }
+      }
     else
-    {
-      alert('sadas');
-    }
+      {
+        showLoginModalMsg("Invalid!", "red", "Please Enter a Valid Email Address.", "NO", "inputEmail", 2500);
+      }
   }
-});
+
+// HANDLE ENTER KEYDOWN ON EMAIL AND PASSWORD INPUT
+document.getElementById('inputEmail').addEventListener('keydown', function(e)
+  {
+    if(e.key == "Enter")
+      { 
+        validateEmail();
+        if(isEmailValid)
+          {
+            document.getElementById('inputPassword').focus();
+          }
+        else
+          {
+            showLoginModalMsg("Invalid!", "red", "Please Enter a Valid Email Address.", "NO", "inputEmail", 2500);
+          }
+      }
+  });
+
+document.getElementById('inputPassword').addEventListener('keydown', function(e)
+  {
+    if(e.key == "Enter")
+    { 
+      validateEmail();
+      if(isEmailValid && document.getElementById('inputPassword').value != "")
+        {
+          document.getElementById('btnLogin').click();
+        }
+      else
+        {
+          showLoginModalMsg("Invalid!", "red", "Please Fill in the blank(s) or Enter a Valid Email Address.", "NO", "inputPassword", 2500);
+        }
+    }
+  });
+
+// Login modal message dialog
+function showLoginModalMsg(title, titleColor, msgContent, showFooter, focusTo, duration)
+  {
+    let loginMsgTitle = document.getElementById('loginMsgTitle');
+    let loginMsgContent = document.getElementById('loginMsgContent');
+    let loginMsgFooter = document.getElementById('loginMsgFooter');
+
+    loginMsgTitle.innerText = title;
+    loginMsgTitle.style.color = titleColor;
+    loginMsgContent.innerText = msgContent;
+
+    // determine if need to show the modal footer
+    setTimeout(function()
+      {
+        if(showFooter == "NO")
+          {
+            loginMsgFooter.style.display = "none";
+          }
+        else
+          {
+            loginMsgFooter.style.display = "flex";
+          }
+      }, 1);
+
+    // showing login modal message
+    $('#loginMsg').modal('show');
+
+    // hiding login modal message
+    setTimeout(function()
+    {
+      $('#loginMsg').modal('hide');
+
+      // set where to focus after hiding modal
+      if(focusTo != "none")
+      {
+        let element = document.getElementById(focusTo);
+        element.focus();
+      }
+    }, duration);
+
+  };

@@ -24,4 +24,3 @@ document.addEventListener("DOMContentLoaded", function()
         if(mediaQuery.matches && isToggled == 1) handleWidthChange();
     });
 });
-

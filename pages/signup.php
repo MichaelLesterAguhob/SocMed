@@ -1,6 +1,17 @@
+
+<?php 
+   session_start();
+   if(isset($_SESSION['loggedin']))
+    {
+        if($_SESSION['loggedin'] == true)
+            {
+                header("location: home.php");
+                exit();
+            }
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,7 +23,6 @@
     <link rel="stylesheet" href="../assets/css/signup.css">
     <link rel="stylesheet" href="../assets/css/footer.css">
 </head>
-
 <body>
 
     <div class="main-container container-fluid">

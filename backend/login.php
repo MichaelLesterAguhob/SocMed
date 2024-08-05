@@ -2,6 +2,7 @@
 require_once('../includes/connection.php');
 try
 {
+    $_SESSION['loggedin'] = false;
     $email = trim($_POST['email']);
     $password = trim($_POST['password']);
 
@@ -21,13 +22,18 @@ try
 
     if($result)
     {
+        session_start();
         $isPassCorrect = password_verify($password, $result['user_password']);
         if($isPassCorrect)
         {
+            $_SESSION['user_email'] = $email;
+            $_SESSION['loggedin'] = true;
+
             echo json_encode(['status'=>'success', 'msg'=>'Login Successfully']);
         }
         else
         {
+            $_SESSION['loggedin'] = false;
             echo json_encode(['status'=>'failed', 'msg'=>"Account doesn't exist!"]);
         }
     }
