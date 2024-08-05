@@ -7,10 +7,28 @@ use Random\Engine\Secure;
 require ('../includes/PHPMailer/src/PHPMailer.php');
 require ('../includes/PHPMailer/src/SMTP.php');
 require ('../includes/PHPMailer/src/Exception.php');
-$verificationCode = 0;
+require('../includes/connection.php');
+
 try
 {
     $email = trim($_POST['email']);
+
+     // CHECK IF EMAIL IS ALREADY EXISTS
+    $stmt2 = $con->prepare("SELECT user_email FROM user_accounts WHERE user_email=? ");
+    $stmt2->bind_param('s', $email);
+    if($stmt2 == false)
+    {
+        die("Prepare failed : " . htmlspecialchars($con->error)); 
+    }
+    $stmt2->execute();
+    $result = $stmt2->get_result()->fetch_array();
+    if($result)
+    {
+        echo json_encode(['status'=>'existing','msg'=>'Email is already exists. If you forgot your account, just click Forgot Password']);
+        return;
+    }
+
+    // SEND VERIFICATION ONCE THE EMAIL IS UNIQUE
     $fullName = trim($_POST['fullName']);
     $verificationCode = rand(10000, 99999);
     

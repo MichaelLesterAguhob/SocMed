@@ -211,6 +211,10 @@ function verifyEmail()
                         startResendCountdown();
                      }, 500);
                   }
+                  else if(response.status == "existing")
+                  {
+                     showSignupModalMsg("Already Exists!", "red", response.msg, true, 2000, "inputEmail");
+                  }
                   else
                   {
                      console.log(response.msg);
@@ -328,7 +332,7 @@ function signUp()
             setTimeout(function()
             {
                window.location.href='../index.php';
-            }, 3000);
+            }, 2000);
          }
          else
          {

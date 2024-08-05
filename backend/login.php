@@ -28,7 +28,6 @@ try
         {
             $_SESSION['user_email'] = $email;
             $_SESSION['loggedin'] = true;
-
             echo json_encode(['status'=>'success', 'msg'=>'Login Successfully']);
         }
         else
