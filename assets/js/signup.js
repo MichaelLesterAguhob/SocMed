@@ -165,7 +165,8 @@ function verifyEmail()
 {
    let btnResendCode = document.getElementById('btnResendCode');
    btnResendCode.setAttribute('disabled', 'disabled');
-   secs = 30;
+   let btnSignup = document.getElementById('btnSignup');
+   btnSignup.setAttribute('disabled', 'disabled');
 
    let fullName = document.getElementById("inputFullname").value;
    let email = document.getElementById("inputEmail").value;
@@ -209,6 +210,8 @@ function verifyEmail()
                      {
                         document.getElementById('inputVerificationCode').focus();
                         startResendCountdown();
+                        let btnSignup = document.getElementById('btnSignup');
+                        btnSignup.removeAttribute('disabled');
                      }, 500);
                   }
                   else if(response.status == "existing")
@@ -228,18 +231,21 @@ function verifyEmail()
          {
             // MESSAGE IF PASS NOT MATCHED
             showSignupModalMsg("Password did not Matched!", "red", "Check your Password and make sure they are matched!", true, 2000, "inputConfirmPassword");
+            btnSignup.removeAttribute('disabled');
          }
       }
       else
       {
          // MESSAGE IF EMAIL IS INVALID
          showSignupModalMsg("Invalid Email!", "red", "Make sure you have entered a valid email!", true, 2000, "inputEmail");
+         btnSignup.removeAttribute('disabled');
       }
    }
    else
    {
       // IF THERE'S A BLANK INPUT
       showSignupModalMsg("Fill in the blank(s)", "red", "Make sure you filled out all required fields!", true, 2000, "inputFullname");
+      btnSignup.removeAttribute('disabled');
    }
 }
 
@@ -271,7 +277,7 @@ document.getElementById('btnResendCode').addEventListener('click', function()
 });
 
 //Verify code inputted and successfully signed up the user
-document.getElementById('btnVerifySignup').addEventListener('click', function()
+function verifyAndSignup()
 {
    let VerificationCode = document.getElementById('inputVerificationCode');
    
@@ -283,14 +289,14 @@ document.getElementById('btnVerifySignup').addEventListener('click', function()
       }
       else
       {
-         $('.modalVerificationMsg').text('Incorrect Verification Code! Please Try Again.').fadeIn(100).fadeOut(5000);
+         $('.modalVerificationMsg').text('Incorrect Verification Code! Please Try Again.').fadeIn(100).fadeOut(3000);
       }
    }
    else
    {
       $('.modalVerificationMsg').text('Enter the verification code sent to your email address.').fadeIn(100).fadeOut(5000);
    }
-});
+}
 
 //REGISTER NUMBER IF EMAIL VERIFICATION CODE IS CORRECT
 function signUp() 
@@ -298,7 +304,7 @@ function signUp()
    let fullName = document.getElementById("inputFullname").value;
    let email = document.getElementById("inputEmail").value;
    let password = document.getElementById("inputPassword").value;
-   let confirmPassword = document.getElementById('inputConfirmPassword').value;
+   // let confirmPassword = document.getElementById('inputConfirmPassword').value;
 
    let xhr = new XMLHttpRequest();
    xhr.open("POST", "../../backend/signup.php", true);
@@ -414,6 +420,7 @@ document.getElementById('inputConfirmPassword').addEventListener('keydown', func
    if(e.key === 'Enter')
    {
       document.getElementById('btnSignup').focus();
+      document.getElementById('btnSignup').click();
    }
 });
 

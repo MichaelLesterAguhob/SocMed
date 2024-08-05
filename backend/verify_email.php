@@ -24,7 +24,7 @@ try
     $result = $stmt2->get_result()->fetch_array();
     if($result)
     {
-        echo json_encode(['status'=>'existing','msg'=>'Email is already exists. If you forgot your account, just click Forgot Password']);
+        echo json_encode(['status'=>'existing','msg'=>'Email is already exists. If you forgot your account, just click Forgot Password in login page']);
         return;
     }
 
