@@ -223,28 +223,19 @@ function verifyEmail()
          else
          {
             // MESSAGE IF PASS NOT MATCHED
-            document.getElementById('modalSignupMsgTitle').innerText = "Password did not Matched!";
-            document.getElementById('modalSignupMsgTitle').style.color = "red";
-            document.getElementById('modalSignupMsgContent').innerText = "Check your Password and make sure they are matched!";
-            $('#modalSignupMsg').modal('show');
+            showSignupModalMsg("Password did not Matched!", "red", "Check your Password and make sure they are matched!", true, 2000, "inputConfirmPassword");
          }
       }
       else
       {
          // MESSAGE IF EMAIL IS INVALID
-         document.getElementById('modalSignupMsgTitle').innerText = "Invalid Email!";
-         document.getElementById('modalSignupMsgTitle').style.color = "red";
-         document.getElementById('modalSignupMsgContent').innerText = "Make sure you have entered a valid email!";
-         $('#modalSignupMsg').modal('show');
+         showSignupModalMsg("Invalid Email!", "red", "Make sure you have entered a valid email!", true, 2000, "inputEmail");
       }
    }
    else
    {
       // IF THERE'S A BLANK INPUT
-         document.getElementById('modalSignupMsgTitle').innerText = "Fill in the blanks!";
-         document.getElementById('modalSignupMsgTitle').style.color = "red";
-         document.getElementById('modalSignupMsgContent').innerText = "Make sure you filled out all required fields!";
-         $('#modalSignupMsg').modal('show');
+      showSignupModalMsg("Fill in the blank(s)", "red", "Make sure you filled out all required fields!", true, 2000, "inputFullname");
    }
 }
 
@@ -273,7 +264,6 @@ document.getElementById('btnResendCode').addEventListener('click', function()
 {
    secs = 30;
    verifyEmail();
-
 });
 
 //Verify code inputted and successfully signed up the user
@@ -306,97 +296,76 @@ function signUp()
    let password = document.getElementById("inputPassword").value;
    let confirmPassword = document.getElementById('inputConfirmPassword').value;
 
-   // KNOW IF ALL REQUIRED INPUTS ARE NOT BLANKS BEFORE SIGNING UP
-   if(fullName !== "" && email !== "" && password !== "" && confirmPassword !== "")
+   let xhr = new XMLHttpRequest();
+   xhr.open("POST", "../../backend/signup.php", true);
+   xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+   xhr.onreadystatechange = function () 
    {
-      if(isEmailValid)
+      if (xhr.readyState == 4 && xhr.status == 200) 
       {
-         if(isPasswordMatched)
+         let response;
+         try
          {
-            let xhr = new XMLHttpRequest();
-            xhr.open("POST", "../../backend/signup.php", true);
-            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            response = JSON.parse(xhr.responseText);
+         }
+         catch(e)
+         {
+            console.log('Error Occurred :' + xhr.responseText)
+            return;
+         }
+   
+         //IF SIGNUP SUCCESSFULLY
+         if(response.status == "success")
+         {
+            clearInputs();
+            document.getElementById('inputVerificationCode').value = "";
+            $('#modaVerification').modal('hide');
 
-            xhr.onreadystatechange = function () 
-            {
-               if (xhr.readyState == 4 && xhr.status == 200) 
-               {
-                  let response;
-                  try
-                  {
-                     response = JSON.parse(xhr.responseText);
-                  }
-                  catch(e)
-                  {
-                     console.log('Error Occurred :' + xhr.responseText)
-                     return;
-                  }
+            // Message after successful signup
+            showSignupModalMsg(response.msg, "green", "You will be redirected to Login page.", true, 300, "none");
             
-                  if(response.status == "success")
-                  {
-                     let inputsElements = document.querySelectorAll('#divSignup .form-control');
-                     inputsElements.forEach(function(input)
-                     {
-                        input.value = "";
-                     });
-
-                     document.getElementById('inputVerificationCode').value = "";
-                     $('#modaVerification').modal('hide');
-
-                     setTimeout(function()
-                     {        
-                        document.getElementById('modalSignupMsgTitle').innerText = response.msg;
-                        document.getElementById('modalSignupMsgTitle').style.color = "Green";
-                        document.getElementById('modalSignupMsgContent').innerText = "You will be redirected to Login page.";
-                        $('#modalSignupMsg').modal('show');
-                     }, 300);
-
-                     setTimeout(function()
-                     {        
-                        $('#modalSignupMsg').modal('hide');
-                     }, 2000);
-                     
-                     setTimeout(function()
-                     {
-                        window.location.href='../index.php';
-                     }, 3000);
-                  }
-                  else
-                  {
-                     console.log(response.msg);
-                  }
-               }
-            };
-            let data ="fullName=" + encodeURIComponent(fullName) + "&email=" + encodeURIComponent(email) + "&password=" + encodeURIComponent(password);
-            xhr.send(data);
-         } 
+            setTimeout(function()
+            {
+               window.location.href='../index.php';
+            }, 3000);
+         }
          else
          {
-            // MESSAGE IF PASS NOT MATCHED
-            document.getElementById('modalSignupMsgTitle').innerText = "Password did not Matched!";
-            document.getElementById('modalSignupMsgTitle').style.color = "red";
-            document.getElementById('modalSignupMsgContent').innerText = "Check your Password and make sure they are matched!";
-            $('#modalSignupMsg').modal('show');
+            console.log(response.msg);
          }
       }
-      else
-      {
-            // MESSAGE IF EMAIL IS INVALID
-         document.getElementById('modalSignupMsgTitle').innerText = "Invalid Email!";
-         document.getElementById('modalSignupMsgTitle').style.color = "red";
-         document.getElementById('modalSignupMsgContent').innerText = "Make sure you have entered a valid email!";
-         $('#modalSignupMsg').modal('show');
-      }
-   }
-   else
-   {
-      // IF THERE'S A BLANK INPUT
-      document.getElementById('modalSignupMsgTitle').innerText = "Fill in the blanks!";
-      document.getElementById('modalSignupMsgTitle').style.color = "red";
-      document.getElementById('modalSignupMsgContent').innerText = "Make sure you filled out all required fields!";
-      $('#modalSignupMsg').modal('show');
-   }
+   };
+   let data ="fullName=" + encodeURIComponent(fullName) + "&email=" + encodeURIComponent(email) + "&password=" + encodeURIComponent(password);
+   xhr.send(data);
 }
+
+// SIGNUP MODAL MESSAGE DIALOG
+function showSignupModalMsg(msgTitle, msgTitleColor, msgContent, showFooter, msgDuration, focusTo)
+   {
+      document.getElementById('modalSignupMsgTitle').innerText = msgTitle;
+      document.getElementById('modalSignupMsgTitle').style.color = msgTitleColor;
+      document.getElementById('modalSignupMsgContent').innerText = msgContent;
+
+      if(!showFooter)
+         {
+            document.getElementById('signupModalFooter').style.display = "none";
+         }
+      else
+         {
+            document.getElementById('signupModalFooter').style.display = "flex";
+         }
+
+      $('#modalSignupMsg').modal('show');
+      setTimeout(function()
+         {
+            $('#modalSignupMsg').modal('hide');
+            if(focusTo != "none")
+            {
+               document.getElementById(focusTo).focus();
+            }
+         }, msgDuration);
+   }     
 
 //HANDLE ENTER KEY
 document.getElementById('inputVerificationCode').addEventListener('keydown', function(e)
@@ -443,3 +412,12 @@ document.getElementById('inputConfirmPassword').addEventListener('keydown', func
       document.getElementById('btnSignup').focus();
    }
 });
+
+function clearInputs()
+   {
+      let inputFields = document.querySelectorAll('.form-control');
+      inputFields.forEach(function(input)
+         {
+            input.value = "";
+         });
+   }

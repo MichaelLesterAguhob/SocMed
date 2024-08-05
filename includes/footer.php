@@ -3,7 +3,7 @@
 
         <div class="col-sm-4 p-3">
             <h5 class="text-primary footer-header">Developer</h5>
-            <p>Micahel Lester Aguhob</p>
+            <p>Michael Lester Aguhob</p>
         </div>
 
         <div class="col-sm-4 p-3">

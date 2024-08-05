@@ -112,6 +112,8 @@ function login()
                       // Handle response
                       if(response.status == "success")
                         {
+                          email.value="";
+                          password.value="";
                           showLoginModalMsg(response.msg, "Green", "Please Wait...", "NO", "none", 1000);
                           setTimeout(function()
                             {

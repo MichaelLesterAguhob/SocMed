@@ -28,11 +28,11 @@ function sendGreetings($email, $fullname)
         $mail->setFrom('systememailmichael@gmail.com');
         $mail->addAddress($email);
         $mail->isHTML(true);
-        $mail->Subject = "SignUp Successfully!";
+        $mail->Subject = "Signup Successfully!";
         $mail->addEmbeddedImage('../assets/image/logo.png', 'logo');
         $mailMsgDesign = '<div style="font-family: "Courier New", Courier, monospace; padding: 10px; height: 95vh; word-wrap: break-word;">
             <img src="cid:logo" alt="Socmed Logo" style="max-width: 330px; max-height:105px;">
-            <h1 style="color: blue;">Greetings from SocMed! </h1>
+            <h1 style="color: blue;">Greetings! </h1>
             <div style="width: auto; display: flex; justify-content: center;">
                 <h3 style="color: maroon;">HI &nbsp;'.$fullname.'!, &nbsp; you have Successfully Created your SocMed Account. <br> You can now login and manage your account, Talk to someone, Find friends and many more!</h3>
                 <br>

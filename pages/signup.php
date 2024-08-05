@@ -70,10 +70,7 @@
                         </a>
                     </div>
                 </div>
-
-
             </div>
-
         </div>
     </div>
 
@@ -100,6 +97,7 @@
         </div>
     </div>
 
+    <!-- Modal for signup message -->
     <div id="modalSignupMsg" class="modal fade" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -110,6 +108,9 @@
                 <div class="modal-body">
                     <h4 id="modalSignupMsgContent" class="text-"></h4>
                 </div> 
+                <div id="signupModalFooter" class="modal-footer">
+                    <button class="btn btn-warning" data-bs-dismiss="modal" data-bs-target="#modalSignupMsg">Okay</button>    
+                </div>
             </div>
         </div>
     </div>
