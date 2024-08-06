@@ -210,17 +210,18 @@ function verifyEmail()
                      {
                         document.getElementById('inputVerificationCode').focus();
                         startResendCountdown();
-                        let btnSignup = document.getElementById('btnSignup');
                         btnSignup.removeAttribute('disabled');
                      }, 500);
                   }
                   else if(response.status == "existing")
                   {
                      showSignupModalMsg("Already Exists!", "red", response.msg, true, 2000, "inputEmail");
+                     btnSignup.removeAttribute('disabled');
                   }
                   else
                   {
                      console.log(response.msg);
+                     btnSignup.removeAttribute('disabled');
                   }
                }
             }

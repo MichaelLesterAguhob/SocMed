@@ -10,16 +10,16 @@
         <div class="collapse navbar-collapse" id="colapsibleMenu">
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
-                    <a href="../pages/home.php" class="nav-link">Home</a>
+                    <a id="btnHome" href="../pages/home.php" class="nav-link" onclick="navClick('feedTab')">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a href="" class="nav-link">Friends</a>
+                    <a id="btnFriends" href="" class="nav-link" onclick="navClick('friendsTab')">Friends</a>
                 </li>
                     <li class="nav-item">
-                    <a href="" class="nav-link">Message</a>
+                    <a id="btnMessage" href="" class="nav-link" onclick="navClick('messagesTab')">Messages</a>
                 </li>
                 <li class="nav-item">
-                    <a href="" class="nav-link">Profile</a>
+                    <a id="btnProfile" href="" class="nav-link" onclick="navClick('profileTab')">Profile</a>
                 </li>
             </ul>
             <ul class="navbar-nav">

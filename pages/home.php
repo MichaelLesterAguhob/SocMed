@@ -22,19 +22,30 @@
         <!-- HEADER/ NAVIGATION BAR -->
        <?php include("../includes/header.php") ?>
         
-        <!-- MAIN CONTENT -->
-        <div class="feed-container pt-4 pb-4">
-            <div class="feed">
-                <h1>feed11</h1>
-              
-            </div>
+        <!-- FEED | HOME-->
+        <div id="feedTab" class="pt-4 pb-4 tabs">
+            <div class="feed"><h1>feed1</h1></div>
             <div class="feed"><h1>feed2</h1></div>
             <div class="feed"><h1>feed3</h1></div>
             <div class="feed"><h1>feed4</h1></div>
         </div>
-        
+
+        <!-- FRIENDS -->
+        <div id="friendsTab" class="pt-4 pb-4 hidden-tab tabs">
+            <h1>Friends tab</h1>
+        </div>
        
-    
+        <!-- MESSAGES -->
+        <div id="messagesTab" class="pt-4 pb-4 hidden-tab tabs">
+            <h1>message tab</h1>
+        </div>
+       
+        <!-- PROFILE -->
+        <div id="profileTab" class="pt-4 pb-4 hidden-tab tabs">
+            <h1>profile tab</h1>
+        </div>
+
+
     </div>
 
      <!-- FOOTER -->
@@ -44,6 +55,7 @@
     <!-- JAVASCRIPT -->
     <script src="../assets/bootstrap/bootstrap-5.3.3-dist/js/bootstrap.min.js"></script>
     <script src="../assets/js/header.js"></script>
+    <script src="../assets/js/home.js"></script>
 </body>
 
 </html>
