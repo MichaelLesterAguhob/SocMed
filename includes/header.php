@@ -10,7 +10,7 @@
         <div class="collapse navbar-collapse" id="colapsibleMenu">
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
-                    <a id="btnHome" href="../pages/home.php" class="nav-link" onclick="navClick('feedTab')">Home</a>
+                    <a id="btnHome" href="" class="nav-link" onclick="navClick('feedTab')">Home</a>
                 </li>
                 <li class="nav-item">
                     <a id="btnFriends" href="" class="nav-link" onclick="navClick('friendsTab')">Friends</a>
@@ -23,10 +23,10 @@
                 </li>
             </ul>
             <ul class="navbar-nav">
-            <li class="nav-item">
-                <button class="nav-link">
-                    <img src="../assets/bootstrap/icon/bootstrap-icons-1.11.3/bell.svg" alt="">
-                </button>
+                <li class="nav-item">
+                    <button class="nav-link">
+                        <img src="../assets/bootstrap/icon/bootstrap-icons-1.11.3/bell.svg" alt="">
+                    </button>
                 </li>
             </ul>
             <ul class="navbar-nav">

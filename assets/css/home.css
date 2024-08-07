@@ -33,10 +33,25 @@
     display: none;
 }
 
-.friends-tab{
+/* FRIENDS TAB */
+#friendsTab{
     height: 87vh;
     flex-direction: column;
     gap: 30px;
     overflow-y: auto;
     background-color: gray;
+}
+
+.friendsTabContainer{
+    width: 60%;
+    height: 100%;
+    margin: auto;
+    background-color: whitesmoke;
+}
+
+/* PROFILE CONTAINER */
+#profileContainer{
+    height: 90vh;
+    width: 100%;
+    background-color: grey;
 }
