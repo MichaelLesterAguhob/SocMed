@@ -8,14 +8,25 @@
 .main-container{
     /* border: 1px solid black; */
     height: 100vh;
+    background-color: lightblue;
 }
 
 /* PROFILE CONTAINER */
 #profileContainer{
     height: 90vh;
     width: 100%;
+    margin: auto;
     background-color: grey;
 }
-#profile{
 
+/* #profile{
+
+} */
+
+#profilePicture{
+    max-width: 20%;
 }
+
+/* #profilePost{
+    border: 2px solid red;
+} */

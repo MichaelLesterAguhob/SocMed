@@ -23,18 +23,15 @@
        <?php include("../includes/header.php") ?>
        
         <!-- PROFILE -->
-        <div id="profileTab" class="container-fluid pt-2 pb-2 hidden-tab tabs">
-            <!-- <h1>profile tab</h1> -->
-            <div id="profileContainer" class="row">
-                <div id="profile" class="col-lg-4 border">
-                    <img id="profilePicture" src="../assets/image/logo.png" alt="Your Profile">
+        <div id="profileContainer" class="row">
+            <div id="profile" class="col-lg-4 border">
+                <img id="profilePicture" src="../assets/image/logo.png" alt="Your Profile">
 
-                </div>
-                <div id="profilePost" class="col-lg-8 border">9asdasdsadasdsa</div>
+            </div>
+            <div id="profilePost" class="col-lg-8">9asdasdsadasdsa
+
             </div>
         </div>
-
-
     </div>
 
      <!-- FOOTER -->
