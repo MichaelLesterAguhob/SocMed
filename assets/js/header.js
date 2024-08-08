@@ -24,25 +24,3 @@ document.addEventListener("DOMContentLoaded", function()
         if(mediaQuery.matches && isToggled == 1) handleWidthChange();
     });
 });
-
- // Handle preventing the default action of a tag
- let btnHome = document.getElementById('btnHome');
- btnHome.addEventListener('click', function(event)
- {
-     event.preventDefault();
- });
- let btnFriends = document.getElementById('btnFriends');
- btnFriends.addEventListener('click', function(event)
- {
-     event.preventDefault();
- });
- let btnMessage = document.getElementById('btnMessage');
- btnMessage.addEventListener('click', function(event)
- {
-     event.preventDefault();
- });
- let btnProfile = document.getElementById('btnProfile');
- btnProfile.addEventListener('click', function(event)
- {
-     event.preventDefault();
- });

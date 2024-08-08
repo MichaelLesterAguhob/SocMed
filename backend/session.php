@@ -2,12 +2,10 @@
 session_start();
 
 if(!$_SESSION['loggedin'])
-    {
-        header("location: ../index.php");
-        exit();
-    }
-
-
+{
+    header("location: ../index.php");
+    exit();
+}
 
 
 ?>

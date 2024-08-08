@@ -1,0 +1,21 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: 'Courier New', Courier, monospace;
+    /* color: aliceblue;  */
+}
+
+.main-container{
+    /* border: 1px solid black; */
+    height: 100vh;
+}
+
+/* PROFILE CONTAINER */
+#profileContainer{
+    height: 90vh;
+    width: 100%;
+    background-color: grey;
+}
+#profile{
+
+}

@@ -1,3 +1,4 @@
+
 *{
     padding: 0;
     margin: 0;
@@ -10,28 +11,19 @@
     height: 100vh;
 }
 
-#feedTab{
+/* FRIENDS TAB */
+#friendsTab{
     height: 87vh;
-    /* border: 1px solid green; */
-    display: flex;
     flex-direction: column;
     gap: 30px;
     overflow-y: auto;
     background-color: gray;
 }
 
-.feed{
+.friendsTabContainer{
+    width: 60%;
+    height: 100%;
     margin: auto;
-    border: 1px solid gray;
-    width: 70%;
-    min-height: 90%;
     background-color: whitesmoke;
-} 
-
-/* Hidden tab by default */
-.hidden-tab{
-    display: none;
 }
-
-
 

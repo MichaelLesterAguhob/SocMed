@@ -10,22 +10,22 @@
         <div class="collapse navbar-collapse" id="colapsibleMenu">
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
-                    <a id="btnHome" href="" class="nav-link" onclick="navClick('feedTab')">Home</a>
+                    <a id="btnHome" href="../pages/home.php" class="nav-link" >Home</a>
                 </li>
                 <li class="nav-item">
-                    <a id="btnFriends" href="" class="nav-link" onclick="navClick('friendsTab')">Friends</a>
+                    <a id="btnFriends" href="../pages/friends.php" class="nav-link" >Friends</a>
                 </li>
                     <li class="nav-item">
-                    <a id="btnMessage" href="" class="nav-link" onclick="navClick('messagesTab')">Messages</a>
+                    <a id="btnMessage" href="../pages/messages.php" class="nav-link" >Messages</a>
                 </li>
                 <li class="nav-item">
-                    <a id="btnProfile" href="" class="nav-link" onclick="navClick('profileTab')">Profile</a>
+                    <a id="btnProfile" href="../pages/profile.php" class="nav-link" >Profile</a>
                 </li>
             </ul>
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <button class="nav-link">
-                        <img src="../assets/bootstrap/icon/bootstrap-icons-1.11.3/bell.svg" alt="">
+                        <img src="../assets/bootstrap/icon/bootstrap-icons-1.11.3/bell.svg" alt="Notif">
                     </button>
                 </li>
             </ul>

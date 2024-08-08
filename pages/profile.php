@@ -12,7 +12,7 @@
     <!-- <link rel="stylesheet" href="../assets/css/index.css"> -->
     <link rel="stylesheet" href="../assets/bootstrap/bootstrap-5.3.3-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../assets/css/header.css">
-    <link rel="stylesheet" href="../assets/css/home.css">
+    <link rel="stylesheet" href="../assets/css/profile.css">
     <link rel="stylesheet" href="../assets/css/footer.css">
 </head>
 <body>
@@ -21,19 +21,25 @@
  
         <!-- HEADER/ NAVIGATION BAR -->
        <?php include("../includes/header.php") ?>
-        
-        <!-- FEED | HOME-->
-        <div id="feedTab" class="pt-2 pb-2 tabs">
-            <div class="feed"><h1>feed1</h1></div>
-            <div class="feed"><h1>feed2</h1></div>
-            <div class="feed"><h1>feed3</h1></div>
-            <div class="feed"><h1>feed4</h1></div>
+       
+        <!-- PROFILE -->
+        <div id="profileTab" class="container-fluid pt-2 pb-2 hidden-tab tabs">
+            <!-- <h1>profile tab</h1> -->
+            <div id="profileContainer" class="row">
+                <div id="profile" class="col-lg-4 border">
+                    <img id="profilePicture" src="../assets/image/logo.png" alt="Your Profile">
+
+                </div>
+                <div id="profilePost" class="col-lg-8 border">9asdasdsadasdsa</div>
+            </div>
         </div>
+
 
     </div>
 
      <!-- FOOTER -->
         <?php include('../includes/footer.php'); ?>
+
 
     <!-- JAVASCRIPT -->
     <script src="../assets/bootstrap/bootstrap-5.3.3-dist/js/bootstrap.min.js"></script>
