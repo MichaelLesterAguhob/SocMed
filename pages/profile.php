@@ -24,12 +24,32 @@
        
         <!-- PROFILE -->
         <div id="profileContainer" class="row">
-            <div id="profile" class="col-lg-4 border">
-                <img id="profilePicture" src="../assets/image/logo.png" alt="Your Profile">
 
+            <div id="profile" class="col-lg-4">
+                <img id="profilePicture" src="../assets/image/default_image.jpg" alt="Your Profile">
+                <h2 id="userName" class="pt-4 pb-4">Your Name here</h2>
+
+                <div id="socialsCont" class="mb-3">
+                    <h6 class="text-muted">Social/Contact</h6>
+                    <ul>
+                        <li><a href="">Facebook</a></li>
+                        <li><a href="">Instagram</a></li>
+                        <li><a href="">Gmail</a></li>
+                    </ul>
+                </div>
+
+                <div id="bioCont" class="mb-3">
+                    <h6 class="text-muted">Bio</h6>
+                    <p class="text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam voluptatem in error corrupti quaerat, voluptates laudantium sed impedit iste mollitia ad soluta nobis expedita eligendi esse cumque optio sit explicabo!</p>
+                </div>
+
+                <button class="btn btn-warning">Edit Profile</button>
+                <button class="btn btn-primary">Create Post</button>
             </div>
-            <div id="profilePost" class="col-lg-8">9asdasdsadasdsa
 
+
+            <div id="profilePost" class="col-lg-8 pt-3">
+                <h2>Post</h2>
             </div>
         </div>
     </div>
