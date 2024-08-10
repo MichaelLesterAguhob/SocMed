@@ -46,8 +46,6 @@ try
 }
 catch(Exception $ex)
 {
-    $stmt->close();
-    $con->close();
     die ('Login Error | ' . $ex);
 }
 

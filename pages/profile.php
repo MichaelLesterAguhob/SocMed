@@ -44,7 +44,7 @@
                 </div>
 
                 <button class="btn btn-warning">Edit Profile</button>
-                <button class="btn btn-primary">Create Post</button>
+                <button class="btn btn-primary" onclick="loadProfile()">Create Post</button>
             </div>
 
 
@@ -61,7 +61,7 @@
     <!-- JAVASCRIPT -->
     <script src="../assets/bootstrap/bootstrap-5.3.3-dist/js/bootstrap.min.js"></script>
     <script src="../assets/js/header.js"></script>
-    <script src="../assets/js/home.js"></script>
+    <script src="../assets/js/profile.js"></script>
 </body>
 
 </html>
