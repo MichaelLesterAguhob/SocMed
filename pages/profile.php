@@ -25,9 +25,22 @@
         <!-- PROFILE -->
         <div id="profileContainer" class="row">
 
-            <div id="profile" class="col-lg-4">
-                <img id="profilePicture" src="../assets/image/default_image.jpg" alt="Your Profile">
-                <h2 id="userName" class="pt-4 pb-4">Your Name here</h2>
+            <div id="profileColumn" class="col-lg-4">
+
+                <!-- Profile Picture Container -->
+                <div id="profilePicCont">
+
+                    <!-- Profile Picture -->
+                    <img id="profilePicture" src="../assets/image/default_image.jpg" alt="Your Profile">
+
+                    <!-- Upload Button -->
+                    <button id="btnUploadProfilePic"></button>
+                    <!-- Edit Button -->
+                    <button id="btnEditProfilePic"></button>
+                </div>
+
+                <!-- User name -->
+                    <h2 id="userName" class="pt-4 pb-4">Your Name here</h2>
 
                 <div id="socialsCont" class="mb-3">
                     <h6 class="text-muted">Social/Contact</h6>
