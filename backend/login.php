@@ -27,6 +27,7 @@ try
         if($isPassCorrect)
         {
             $_SESSION['user_email'] = $email;
+            $_SESSION['user_id'] =  $result['user_id'];
             $_SESSION['loggedin'] = true;
             echo json_encode(['status'=>'success', 'msg'=>'Login Successfully']);
         }

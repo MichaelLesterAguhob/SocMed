@@ -34,8 +34,9 @@ function loadProfile(){
     xhr.send();
 }
 
-// CLICKING UPLOAD ICON TO TRIGGER CLICKED ON INPUT ELEMENT TYPE FILE 
+// CLICKING UPLOAD ICON WILL TRIGGER CLICKED ON INPUT ELEMENT TYPE FILE 
 document.getElementById('btnUploadProfilePic').addEventListener('click', function()
 {
     document.getElementById('profilePictureInput').click();
-})
+});
+

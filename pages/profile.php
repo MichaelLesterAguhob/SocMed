@@ -6,7 +6,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no"> -->
     <link rel="icon" type="image/x-icon" href="../assets/image/fav.ico">
     <title>SocMed</title>
     <!-- <link rel="stylesheet" href="../assets/css/index.css"> -->
@@ -18,7 +17,6 @@
 <body>
 
     <div class="main-container container-fluid">
- 
         <!-- HEADER/ NAVIGATION BAR -->
        <?php include("../includes/header.php") ?>
        
@@ -26,7 +24,8 @@
         <div id="profileContainer" class="row">
 
             <div id="profileColumn" class="col-lg-4">
-                <!-- Profile Picture Container -->
+
+                <!-- PROFILE PICTURE CONTAINER -->
                 <div id="profilePicCont">
                     <!-- Profile Picture -->
                     <img id="profilePicture" src="../assets/image/default_image.jpg" alt="Your Profile">
@@ -35,6 +34,7 @@
                     <button id="btnUploadProfilePic"></button>
                     <button id="btnEditProfilePic"></button>
                 </div>
+
                 <!-- image file input -->
                 <input id="profilePictureInput" type="file">
                 <!-- User name -->
@@ -43,9 +43,10 @@
                 <!-- USER BIO -->
                 <div id="bioCont">
                     <h6 class="text-muted">Bio</h6>
-                    <p id="bioContent" class="text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam voluptatem in error corrupti quaerat, voluptates laudantium sed impedit iste mollitia ad soluta nobis expedita eligendi esse cumque optio sit explicabo!</p>
+                    <p id="bioContent" class="text-muted">I am Web Developer</p>
                 </div>
 
+                <!-- PROFILE EDIT PROFILE AND CREATE POST CONTAINER -->
                 <div id="btnCont">
                     <button class="btn btn-warning">Edit Profile</button>
                     <button class="btn btn-primary">Create Post</button>
@@ -56,17 +57,17 @@
             <div id="profilePost" class="col-lg-8 pt-3">
                 <h2>Post</h2>
             </div>
+
         </div>
+
     </div>
 
      <!-- FOOTER -->
-        <?php include('../includes/footer.php'); ?>
-
+    <?php include('../includes/footer.php'); ?>
 
     <!-- JAVASCRIPT -->
     <script src="../assets/bootstrap/bootstrap-5.3.3-dist/js/bootstrap.min.js"></script>
     <script src="../assets/js/header.js"></script>
     <script src="../assets/js/profile.js"></script>
 </body>
-
 </html>
