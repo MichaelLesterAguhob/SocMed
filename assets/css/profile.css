@@ -23,6 +23,7 @@
     flex-direction: column;
     text-align: center;
     padding-top: 50px;
+   height: 100%;
 }
 
 /* Profile Picture Container */
@@ -70,7 +71,11 @@
 
 /* Bio Container */
 #bioCont{
-    /* border: 1px solid lightgray; */
+    text-align: center;
+}
+
+.bio-title{
+    width: 100%;
     text-align: left;
 }
 
@@ -84,4 +89,6 @@
 /* Post in profile tab */
 #profilePost{
     border-left: 1px solid lightgray;
+    overflow: auto;
+    height: 100%;
 }

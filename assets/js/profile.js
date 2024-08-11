@@ -40,3 +40,39 @@ document.getElementById('btnUploadProfilePic').addEventListener('click', functio
     document.getElementById('profilePictureInput').click();
 });
 
+// SAVE UPLOADED FILE IN IMAGE FOLDER AND PATH IN DATABASE
+function saveUploadedFile()
+{
+    let inputFile = document.getElementById('profilePictureInput');
+    let file = inputFile.files[0];
+
+    // Check first if there is already selected file
+    if(!file)
+    {
+        alert("No file selected");
+        return;
+    }
+
+    let formData = new FormData();
+    formData.append('file', file);
+
+    let xhr = new XMLHttpRequest();
+    xhr.open('POST', '../../backend/profile//uploadProfilePicture.php');
+    
+    xhr.onreadystatechange = function()
+    {
+        if(xhr.readyState === XMLHttpRequest.DONE)
+        {
+            if(xhr.status === 200)
+            {
+                let response = JSON.parse(xhr.responseText);
+
+                if(response.status == "success")
+                {
+                    console.log(response.file);
+                }
+            } 
+        }
+    }
+    xhr.send(formData);
+} 

@@ -32,17 +32,17 @@
 
                     <!-- Upload adn edit Button -->
                     <button id="btnUploadProfilePic"></button>
-                    <button id="btnEditProfilePic"></button>
+                    <button id="btnEditProfilePic" onclick="saveUploadedFile()"></button>
                 </div>
 
-                <!-- image file input -->
-                <input id="profilePictureInput" type="file">
+                <!-- IMAGE FILE INPUT -->
+                <input id="profilePictureInput" type="file" accept=".jpeg, .jpg">
                 <!-- User name -->
                 <h2 id="userName" class="pt-4 pb-4">Your Name here</h2>
 
                 <!-- USER BIO -->
                 <div id="bioCont">
-                    <h6 class="text-muted">Bio</h6>
+                    <h6 class="text-primary bio-title">Bio</h6>
                     <p id="bioContent" class="text-muted">I am Web Developer</p>
                 </div>
 
@@ -56,6 +56,15 @@
             <!-- POST IN PROFILE PAGE -->
             <div id="profilePost" class="col-lg-8 pt-3">
                 <h2>Post</h2>
+                <div class="post mt-3" style="height: 300px; width: 100%; background-color: lightgray;">
+                   <h4>Your Post</h4>
+                </div>
+                <div class="post mt-3" style="height: 300px; width: 100%; background-color: lightgray;">
+                   <h4>Your Post</h4>
+                </div>
+                <div class="post mt-3" style="height: 300px; width: 100%; background-color: lightgray;">
+                   <h4>Your Post</h4>
+                </div>
             </div>
 
         </div>
