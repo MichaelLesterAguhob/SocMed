@@ -26,41 +26,33 @@
         <div id="profileContainer" class="row">
 
             <div id="profileColumn" class="col-lg-4">
-
                 <!-- Profile Picture Container -->
                 <div id="profilePicCont">
-
                     <!-- Profile Picture -->
                     <img id="profilePicture" src="../assets/image/default_image.jpg" alt="Your Profile">
 
-                    <!-- Upload Button -->
+                    <!-- Upload adn edit Button -->
                     <button id="btnUploadProfilePic"></button>
-                    <!-- Edit Button -->
                     <button id="btnEditProfilePic"></button>
                 </div>
-
+                <!-- image file input -->
+                <input id="profilePictureInput" type="file">
                 <!-- User name -->
-                    <h2 id="userName" class="pt-4 pb-4">Your Name here</h2>
+                <h2 id="userName" class="pt-4 pb-4">Your Name here</h2>
 
-                <div id="socialsCont" class="mb-3">
-                    <h6 class="text-muted">Social/Contact</h6>
-                    <ul>
-                        <li><a href="">Facebook</a></li>
-                        <li><a href="">Instagram</a></li>
-                        <li><a href="">Gmail</a></li>
-                    </ul>
-                </div>
-
-                <div id="bioCont" class="mb-3">
+                <!-- USER BIO -->
+                <div id="bioCont">
                     <h6 class="text-muted">Bio</h6>
-                    <p class="text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam voluptatem in error corrupti quaerat, voluptates laudantium sed impedit iste mollitia ad soluta nobis expedita eligendi esse cumque optio sit explicabo!</p>
+                    <p id="bioContent" class="text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam voluptatem in error corrupti quaerat, voluptates laudantium sed impedit iste mollitia ad soluta nobis expedita eligendi esse cumque optio sit explicabo!</p>
                 </div>
 
-                <button class="btn btn-warning">Edit Profile</button>
-                <button class="btn btn-primary" onclick="loadProfile()">Create Post</button>
+                <div id="btnCont">
+                    <button class="btn btn-warning">Edit Profile</button>
+                    <button class="btn btn-primary">Create Post</button>
+                </div>
             </div>
 
-
+            <!-- POST IN PROFILE PAGE -->
             <div id="profilePost" class="col-lg-8 pt-3">
                 <h2>Post</h2>
             </div>

@@ -1,6 +1,10 @@
 
-function loadProfile(){
+document.addEventListener('DOMContentLoaded', function()
+{
+    loadProfile();
+});
 
+function loadProfile(){
     let xhr = new XMLHttpRequest();
     xhr.open('POST', '../../backend/profile/loadProfileDetails.php');
     xhr.setRequestHeader('Content-Type', 'Application/x-www-form-urlencoded');
@@ -10,6 +14,7 @@ function loadProfile(){
         let response;
         if(xhr.readyState == 4 && xhr.status == 200)
         {
+            // CATCH PARSING ERROR WHEN BACKEND RESPONSE WITH INVALID JSON
             try
             {
                 response = JSON.parse(xhr.responseText);
@@ -27,5 +32,10 @@ function loadProfile(){
         }
     }
     xhr.send();
-    
 }
+
+// CLICKING UPLOAD ICON TO TRIGGER CLICKED ON INPUT ELEMENT TYPE FILE 
+document.getElementById('btnUploadProfilePic').addEventListener('click', function()
+{
+    document.getElementById('profilePictureInput').click();
+})
