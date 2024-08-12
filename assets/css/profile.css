@@ -29,8 +29,8 @@
 /* Profile Picture Container */
 #profilePicCont{
     display: flex;
-    justify-content: center;
-    align-items: end;
+    flex-direction:column;
+    align-items: center;
 }
 
 #profilePicture{
@@ -38,35 +38,43 @@
     width: 200px;
     height: 200px;
     border-radius: 50%;
+    margin-bottom: 10px;
 }
 
 #profilePictureInput{
     font-size: 5px;
-    visibility: hidden;
+    display: none;
+}
+
+.uploadEditPictureCont{
+    width: 100%;
 }
 
 /* button upload and edit profile picture */
 #btnUploadProfilePic{
     width: 15px;
     height: 15px;
-    margin-bottom: 10px;
     background-image: url('../bootstrap/icon/bootstrap-icons-1.11.3/upload.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: none;
+    background-color: inherit;
+    display: none;
+}
+
+#btnEditProfilePic{ 
+    width: 15px;
+    height: 15px;
+    background-image: url('../bootstrap/icon/bootstrap-icons-1.11.3/pencil.svg');
     background-repeat: no-repeat;
     background-size: cover;
     border: none;
     background-color: inherit;
 }
 
-#btnEditProfilePic{ 
-    width: 15px;
-    height: 15px;
-    margin-bottom: 10px;
-    background-image: url('../bootstrap/icon/bootstrap-icons-1.11.3/pencil.svg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    border: none;
-    background-color: inherit;
-    margin-left: 20px;
+.btnSaveDiscard{
+    font-size: x-small;
+    display: none;
 }
 
 /* Bio Container */

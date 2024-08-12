@@ -4,6 +4,32 @@ document.addEventListener('DOMContentLoaded', function()
     loadProfile();
 });
 
+// EDIT PROFILE BUTTON
+document.getElementById('btnEditProfilePic').addEventListener('click', function()
+{
+    document.getElementById('btnUploadProfilePic').style.display = "inline-flex";
+    document.getElementById('btnEditProfilePic').style.display = "none";
+
+    let btn = document.querySelectorAll('.btnSaveDiscard');
+    btn.forEach(function(button)
+    {
+        button.style.display = "inline-flex"
+    });
+});
+
+// DISCARD PROFILE BUTTON
+document.getElementById('btnDiscardDp').addEventListener('click', function()
+{
+    document.getElementById('btnUploadProfilePic').style.display = "none";
+    document.getElementById('btnEditProfilePic').style.display = "inline-flex";
+
+    let btn = document.querySelectorAll('.btnSaveDiscard');
+    btn.forEach(function(button)
+    {
+        button.style.display = "none"
+    });
+});
+
 function loadProfile(){
     let xhr = new XMLHttpRequest();
     xhr.open('POST', '../../backend/profile/loadProfileDetails.php');

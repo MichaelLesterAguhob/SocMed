@@ -30,9 +30,15 @@
                     <!-- Profile Picture -->
                     <img id="profilePicture" src="../assets/image/default_image.jpg" alt="Your Profile">
 
-                    <!-- Upload adn edit Button -->
-                    <button id="btnUploadProfilePic"></button>
-                    <button id="btnEditProfilePic" onclick="saveUploadedFile()"></button>
+                    <!-- Upload and edit Button -->
+                     <div class="uploadEditPictureCont">
+                         <button id="btnUploadProfilePic"></button>
+                         <button id="btnEditProfilePic"></button>
+
+                         <!-- save and cancel uploaded profile-->
+                         <button class="btn btn-sm btn-success btnSaveDiscard" id="btnSaveDp" onclick="saveUploadedFile()">Save</button>
+                         <button class="btn btn-sm btn-warning btnSaveDiscard" id="btnDiscardDp">Discard</button>
+                    </div>
                 </div>
 
                 <!-- IMAGE FILE INPUT -->
