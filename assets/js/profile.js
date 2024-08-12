@@ -1,4 +1,4 @@
-
+let file;
 document.addEventListener('DOMContentLoaded', function()
 {
     loadProfile();
@@ -28,8 +28,11 @@ document.getElementById('btnDiscardDp').addEventListener('click', function()
     {
         button.style.display = "none"
     });
+    file = null;
+    loadProfile();
 });
 
+// LOAD THE PROFILE DATA
 function loadProfile(){
     let xhr = new XMLHttpRequest();
     xhr.open('POST', '../../backend/profile/loadProfileDetails.php');
@@ -54,6 +57,15 @@ function loadProfile(){
             if(response.status == "success")
             {
                 document.getElementById('userName').innerText = response.name;
+                let profilePicture = document.getElementById('profilePicture');
+                if(response.userPicture == null)
+                {
+                    profilePicture.src = "../assets/image/default_image.jpg";
+                }
+                else
+                {
+                    profilePicture.src = response.userPicture;
+                }
             }
         }
     }
@@ -66,11 +78,30 @@ document.getElementById('btnUploadProfilePic').addEventListener('click', functio
     document.getElementById('profilePictureInput').click();
 });
 
+// KNOW IF USER ALREADY SELECTED AN IMAGE 
+document.getElementById('profilePictureInput').addEventListener('change', function()
+{
+    let previewFile = this.files[0];
+
+    if(previewFile)
+    {
+        let fileReader = new FileReader();
+        fileReader.onload = function(event)
+        {
+            let image = event.target.result;
+            let profilePicture = document.getElementById('profilePicture');
+            profilePicture.src = image;
+        };
+
+        fileReader.readAsDataURL(previewFile);
+    }
+});
+
 // SAVE UPLOADED FILE IN IMAGE FOLDER AND PATH IN DATABASE
 function saveUploadedFile()
 {
     let inputFile = document.getElementById('profilePictureInput');
-    let file = inputFile.files[0];
+    file = inputFile.files[0];
 
     // Check first if there is already selected file
     if(!file)
@@ -91,11 +122,26 @@ function saveUploadedFile()
         {
             if(xhr.status === 200)
             {
-                let response = JSON.parse(xhr.responseText);
+                let response;
+                try
+                {
+                    response = JSON.parse(xhr.responseText);
+                }
+                catch(e)
+                {
+                    console.log(xhr.responseText);
+                    return;
+                }
 
+                // IF JSON PARSING IS SUCCESSFUL
                 if(response.status == "success")
                 {
-                    console.log(response.file);
+                    loadProfile();
+                    console.log(response.msg);
+                }
+                else
+                {
+                    console.log(response.msg);
                 }
             } 
         }

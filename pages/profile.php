@@ -28,7 +28,7 @@
                 <!-- PROFILE PICTURE CONTAINER -->
                 <div id="profilePicCont">
                     <!-- Profile Picture -->
-                    <img id="profilePicture" src="../assets/image/default_image.jpg" alt="Your Profile">
+                    <img id="profilePicture" src="" alt="Your Profile Picture">
 
                     <!-- Upload and edit Button -->
                      <div class="uploadEditPictureCont">

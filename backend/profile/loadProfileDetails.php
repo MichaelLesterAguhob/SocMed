@@ -1,11 +1,16 @@
 <?php 
 include_once('../../includes/connection.php');
-session_start();
+include_once('../../backend/session.php');
+
 try
 {
     $userID = $_SESSION['user_id'];
 
-    $query = "SELECT * FROM user_accounts WHERE user_id = ?";
+    $query = "SELECT user_accounts.*, user_profile.* 
+            FROM user_accounts 
+            LEFT JOIN user_profile 
+            ON user_accounts.user_id = user_profile.user_id
+            WHERE user_accounts.user_id = ?";
     $stmt = $con->prepare($query);
     $stmt->bind_param('s', $userID);
     $stmt->execute();
@@ -16,7 +21,8 @@ try
         echo json_encode([
                             'status'=>'success', 
                             'name'=>$result['user_name'], 
-                            'email'=>$result['user_email']
+                            'email'=>$result['user_email'],
+                            'userPicture'=>$result['file_path']
                         ]);
     }
     else
