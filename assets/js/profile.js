@@ -65,6 +65,7 @@ function loadProfile(){
                 else
                 {
                     profilePicture.src = response.userPicture;
+                    
                 }
             }
         }
@@ -136,8 +137,17 @@ function saveUploadedFile()
                 // IF JSON PARSING IS SUCCESSFUL
                 if(response.status == "success")
                 {
-                    loadProfile();
                     console.log(response.msg);
+                    document.getElementById('btnUploadProfilePic').style.display = "none";
+                    document.getElementById('btnEditProfilePic').style.display = "inline-flex";
+                
+                    let btn = document.querySelectorAll('.btnSaveDiscard');
+                    btn.forEach(function(button)
+                    {
+                        button.style.display = "none"
+                    });
+                    file = null;
+                    loadProfile();
                 }
                 else
                 {

@@ -10,7 +10,7 @@ try
             FROM user_accounts 
             LEFT JOIN user_profile 
             ON user_accounts.user_id = user_profile.user_id
-            WHERE user_accounts.user_id = ?";
+            WHERE user_accounts.user_id = ? AND user_profile.in_use = 'yes' ";
     $stmt = $con->prepare($query);
     $stmt->bind_param('s', $userID);
     $stmt->execute();

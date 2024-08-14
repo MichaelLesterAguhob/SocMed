@@ -27,11 +27,21 @@ try
         $uploadDestination = "../../uploads/profile_picture/" . $fileName;
         if(move_uploaded_file($fileInTempPath, $uploadDestination))
         {
-            $query = "INSERT INTO user_profile(`user_id`, `file_path`, `file_name`, `file_size`) VALUES(?,?,?,?)";
+            // updating the in use status of other profile to 'NO'
+            $query2 = "UPDATE user_profile SET `in_use`= 'no' WHERE `user_id` = ?";
+            $stmt2 = $con->prepare($query2);
+            $stmt2->bind_param('s', $user_id);
+            $stmt2->execute();
+            
+        
+            // insert new profile
+            $query = "INSERT INTO user_profile(`user_id`, `file_path`, `file_name`, `file_size`, `in_use`) VALUES(?,?,?,?,'yes')";
             $stmt = $con->prepare($query);
             $stmt->bind_param('sssi', $user_id, $uploadDestination, $fileName, $fileSize);
             $stmt->execute();
-            
+            $stmt->close();
+            $con->close();
+
             echo json_encode(['status'=>'success', 'msg'=>"Uploaded Successfully"]);
         }
         else
