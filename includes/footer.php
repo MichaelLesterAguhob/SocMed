@@ -8,7 +8,7 @@
 
         <div class="col-sm-4 p-3">
             <h5 class="text-primary footer-header">About Us</h5>
-        </div>
+        </div> 
 
         <div class="col-sm-4 p-3">
             <h5 class="text-primary footer-header">Follow us</h5>

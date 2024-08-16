@@ -1,11 +1,15 @@
+
+// Load the profile when document is fully loaded
+let selectedImage = document.getElementById('profilePictureInput');
 let file;
 document.addEventListener('DOMContentLoaded', function()
 {
     loadProfile();
 });
 
-// EDIT PROFILE BUTTON
-document.getElementById('btnEditProfilePic').addEventListener('click', function()
+
+// show profile actions buttons
+function showProfileActionBtn()
 {
     document.getElementById('btnUploadProfilePic').style.display = "inline-flex";
     document.getElementById('btnEditProfilePic').style.display = "none";
@@ -15,10 +19,11 @@ document.getElementById('btnEditProfilePic').addEventListener('click', function(
     {
         button.style.display = "inline-flex"
     });
-});
+} 
 
-// DISCARD PROFILE BUTTON
-document.getElementById('btnDiscardDp').addEventListener('click', function()
+
+// Hide profile actions buttons
+function hideProfileActionBtn()
 {
     document.getElementById('btnUploadProfilePic').style.display = "none";
     document.getElementById('btnEditProfilePic').style.display = "inline-flex";
@@ -28,11 +33,50 @@ document.getElementById('btnDiscardDp').addEventListener('click', function()
     {
         button.style.display = "none"
     });
-    file = null;
-    loadProfile();
+    selectedImage.value = "";
+} 
+
+
+// button edit profile will shows upload, save and discard buttons
+document.getElementById('btnEditProfilePic').addEventListener('click', function()
+{
+    showProfileActionBtn()
 });
 
-// LOAD THE PROFILE DATA
+
+// button discard must hide all upload, save, and discard buttons and show only the edit button
+document.getElementById('btnDiscardDp').addEventListener('click', function()
+{
+    hideProfileActionBtn();
+});
+
+// trigger the click on file input element with this upload button with icon
+document.getElementById('btnUploadProfilePic').addEventListener('click', function()
+{
+    document.getElementById('profilePictureInput').click();
+});
+
+// display the selected image of user
+document.getElementById('profilePictureInput').addEventListener('change', function()
+{
+    let previewFile = this.files[0];
+
+    if(previewFile)
+    {
+        let fileReader = new FileReader();
+        fileReader.onload = function(event)
+        {
+            let image = event.target.result;
+            let profilePicture = document.getElementById('profilePicture');
+            profilePicture.src = image;
+        };
+
+        fileReader.readAsDataURL(previewFile);
+    }
+});
+
+
+// functions to load the profile data
 function loadProfile(){
     let xhr = new XMLHttpRequest();
     xhr.open('POST', '../../backend/profile/loadProfileDetails.php');
@@ -43,7 +87,7 @@ function loadProfile(){
         let response;
         if(xhr.readyState == 4 && xhr.status == 200)
         {
-            // CATCH PARSING ERROR WHEN BACKEND RESPONSE WITH INVALID JSON
+            //catch the invalid JSON format responsed by the backend
             try
             {
                 response = JSON.parse(xhr.responseText);
@@ -73,29 +117,10 @@ function loadProfile(){
     xhr.send();
 }
 
-// CLICKING UPLOAD ICON WILL TRIGGER CLICKED ON INPUT ELEMENT TYPE FILE 
-document.getElementById('btnUploadProfilePic').addEventListener('click', function()
+
+document.getElementById('btnSaveProfilePict').addEventListener("click", function()
 {
-    document.getElementById('profilePictureInput').click();
-});
-
-// KNOW IF USER ALREADY SELECTED AN IMAGE 
-document.getElementById('profilePictureInput').addEventListener('change', function()
-{
-    let previewFile = this.files[0];
-
-    if(previewFile)
-    {
-        let fileReader = new FileReader();
-        fileReader.onload = function(event)
-        {
-            let image = event.target.result;
-            let profilePicture = document.getElementById('profilePicture');
-            profilePicture.src = image;
-        };
-
-        fileReader.readAsDataURL(previewFile);
-    }
+    saveUploadedFile();
 });
 
 // SAVE UPLOADED FILE IN IMAGE FOLDER AND PATH IN DATABASE
@@ -138,15 +163,7 @@ function saveUploadedFile()
                 if(response.status == "success")
                 {
                     console.log(response.msg);
-                    document.getElementById('btnUploadProfilePic').style.display = "none";
-                    document.getElementById('btnEditProfilePic').style.display = "inline-flex";
-                
-                    let btn = document.querySelectorAll('.btnSaveDiscard');
-                    btn.forEach(function(button)
-                    {
-                        button.style.display = "none"
-                    });
-                    file = null;
+                    hideProfileActionBtn();
                     loadProfile();
                 }
                 else

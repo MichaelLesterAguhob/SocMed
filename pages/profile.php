@@ -36,7 +36,7 @@
                          <button id="btnEditProfilePic"></button>
 
                          <!-- save and cancel uploaded profile-->
-                         <button class="btn btn-sm btn-success btnSaveDiscard" id="btnSaveDp" onclick="saveUploadedFile()">Save</button>
+                         <button class="btn btn-sm btn-success btnSaveDiscard" id="btnSaveProfilePict">Save</button>
                          <button class="btn btn-sm btn-warning btnSaveDiscard" id="btnDiscardDp">Discard</button>
                     </div>
                 </div>
@@ -48,8 +48,18 @@
 
                 <!-- USER BIO -->
                 <div id="bioCont">
-                    <h6 class="text-primary bio-title">Bio</h6>
+                    <h6 class="text-primary cont">Bio</h6>
                     <p id="bioContent" class="text-muted">I am Web Developer</p>
+                </div>
+
+                <!-- USER SOCIALS/CONTACT -->
+                <div id="socialCont">
+                    <h6 class="text-primary cont">Social</h6>
+                    <p id="socialContent" class="text-muted">My facebook</p>
+                </div>
+                <div id="contactCont">
+                    <h6 class="text-primary cont">Contact</h6>
+                    <p id="contactContent" class="text-muted">My Email</p>
                 </div>
 
                 <!-- PROFILE EDIT PROFILE AND CREATE POST CONTAINER -->
