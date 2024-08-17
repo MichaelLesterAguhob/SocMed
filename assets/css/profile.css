@@ -104,3 +104,16 @@
     overflow: auto;
     height: 100%;
 }
+
+
+
+.create-post-dialog{
+    margin: auto;
+    margin-top: 15vh;
+    height: 500px;
+    width: 90%;
+}
+.modal-body{
+    background-color: rgb(70, 108, 210);
+    height: 500px;
+}

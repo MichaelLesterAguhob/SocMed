@@ -11,8 +11,8 @@
     <!-- <link rel="stylesheet" href="../assets/css/index.css"> -->
     <link rel="stylesheet" href="../assets/bootstrap/bootstrap-5.3.3-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../assets/css/header.css">
-    <link rel="stylesheet" href="../assets/css/profile.css">
     <link rel="stylesheet" href="../assets/css/footer.css">
+    <link rel="stylesheet" href="../assets/css/profile.css">
 </head>
 <body>
 
@@ -64,8 +64,8 @@
 
                 <!-- PROFILE EDIT PROFILE AND CREATE POST CONTAINER -->
                 <div id="btnCont">
-                    <button class="btn btn-warning">Edit Profile</button>
-                    <button class="btn btn-primary">Create Post</button>
+                    <button class="btn btn-warning btn-sm">Edit Profile</button>
+                    <button class="btn btn-primary btn-sm">Create Post</button>
                 </div>
             </div>
 
@@ -84,8 +84,25 @@
             </div>
 
         </div>
+        <button data-bs-toggle="modal" data-bs-target="#createPostModal">create</button>
+
+        <div id="createPostModal" class="modal fade" tabindex="-1">
+            <div class="modal-dialog create-post-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="modal-title">Post</h2>
+                        <button class="btn-close" aria-label="Close" data-bs-dismiss="modal" data-bs-target="#createPostModal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <h3>I am body</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     </div>
+
+
 
      <!-- FOOTER -->
     <?php include('../includes/footer.php'); ?>

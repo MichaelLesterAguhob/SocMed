@@ -14,21 +14,21 @@
     height: 20px;
 }
 
-.modal-dialog{
+.settings-dialog{
     border-radius: 0%;
     margin-top: 0;
     margin-right: 0;
     height: 100vh;
     max-width: 20%;
 }
-.modal-content{
+.settings-content{
     border-radius: 0%;
     height: 100%;
 }
-.modal-header{
+.settings-header{
     border-radius: 0%;
 }
-.modal-body{
+.settings-body{
     border-radius: 0%;
     background-color: lightgray;
 }
@@ -40,14 +40,14 @@
 
 
 @media (max-width: 900px){
-    .modal-dialog{
+    .settings-dialog{
         max-width: 30%;
         margin-right: 0;
         border: 2px solid green;
     }
 }
 @media (max-width: 575px){
-    .modal-dialog{
+    .settings-dialog{
         max-width: 50%;
         margin-right: 0;
         border: 2px solid green;

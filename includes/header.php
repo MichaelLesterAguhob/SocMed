@@ -40,15 +40,15 @@
 
 <!-- Modal for settings -->
 <div id="settings-modal" class="modal fade" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
+    <div class="modal-dialog settings-dialog">
+        <div class="modal-content settings-content">
+            <div class="modal-header settings-header">
                 <h3 class="modal-title fs-5">Settings</h3>
                 <button class="btn-close" aria-label="Close" data-bs-dismiss="modal" data-bs-target="#settings-modal"></button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body settings-body">
                 <h5><a id="logout" href="../backend/logout.php">Logout</a></h5> 
-            </div>
+            </div> 
         </div>
     </div>
 </div>
