@@ -65,7 +65,7 @@
                 <!-- PROFILE EDIT PROFILE AND CREATE POST CONTAINER -->
                 <div id="btnCont">
                     <button class="btn btn-warning btn-sm">Edit Profile</button>
-                    <button class="btn btn-primary btn-sm">Create Post</button>
+                    <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#createPostModal">Create Post</button>
                 </div>
             </div>
 
@@ -75,26 +75,33 @@
                 <div class="post mt-3" style="height: 300px; width: 100%; background-color: lightgray;">
                    <h4>Your Post</h4>
                 </div>
-                <div class="post mt-3" style="height: 300px; width: 100%; background-color: lightgray;">
-                   <h4>Your Post</h4>
-                </div>
-                <div class="post mt-3" style="height: 300px; width: 100%; background-color: lightgray;">
-                   <h4>Your Post</h4>
-                </div>
             </div>
 
         </div>
-        <button data-bs-toggle="modal" data-bs-target="#createPostModal">create</button>
 
+        <!-- Modal where user can create a post -->
         <div id="createPostModal" class="modal fade" tabindex="-1">
             <div class="modal-dialog create-post-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h2 class="modal-title">Post</h2>
+                        <h2 class="modal-title user-select-none">Post</h2>
                         <button class="btn-close" aria-label="Close" data-bs-dismiss="modal" data-bs-target="#createPostModal"></button>
                     </div>
-                    <div class="modal-body">
-                        <h3>I am body</h3>
+                    <div class="modal-body create-post-modal-body">
+                        <div class="form-floating mb-3">
+                             <textarea id="postCaptions" class="form-control" placeholder="Start typing here"></textarea>
+                            <label class="user-select-none" for="postCaptions">Say Something</label>
+                        </div>
+                        
+                       <h4 class="user-select-none">Upload image</h4>
+                       <div>
+                            <h5>image here</h5>
+                       </div>
+                    </div>
+
+                    <div class="modal-footer create-post-modal-footer">
+                        <button id="btnPost" class="btn btn-success createPostBtn">Post</button>
+                        <button id="btnDiscardPost" class="btn btn-warning createPostBtn">Discard</button>
                     </div>
                 </div>
             </div>

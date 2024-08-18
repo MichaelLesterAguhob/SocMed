@@ -7,6 +7,22 @@ document.addEventListener('DOMContentLoaded', function()
     loadProfile();
 });
 
+//Get the date and time
+function getDateTime()
+{
+    const dateTimeConfig = {
+        hour: "numeric",
+        minute: "numeric",
+        hour12: true,
+        month: "long",
+        day: "numeric",
+        year: "numeric",
+        timeZone: "Asia/Manila"
+    }
+    const dateTime = new Date();
+    const formattedDateTime = dateTime.toLocaleString("en-US", dateTimeConfig).replace("at", " | ").replace("AM", "am").replace("PM", "pm");
+    return formattedDateTime;
+} 
 
 // show profile actions buttons
 function showProfileActionBtn()
@@ -175,3 +191,31 @@ function saveUploadedFile()
     }
     xhr.send(formData);
 } 
+
+// posting created post
+function uploadPost()
+{
+    const dateTimeNow = getDateTime();
+    let postCaptions = document.getElementById('postCaptions').value;
+
+    let xhr = new XMLHttpRequest();
+    xhr.open('POST', '../../backend/createPost.php');
+    xhr.setRequestHeader('Content-Type', 'Application/x-www-form-urlencoded');
+
+    xhr.onreadystatechange = function()
+    {
+        if(xhr.readyState == XMLHttpRequest.DONE)
+        {
+            if(xhr.status == 200)
+            {
+                console.log(xhr.responseText);
+            }
+        }
+    }
+    xhr.send('dateTime=' + encodeURIComponent(dateTimeNow) + '&postCaptions=' + encodeURIComponent(postCaptions));
+}
+
+document.getElementById('btnPost').addEventListener('click', function()
+{
+    uploadPost();
+});

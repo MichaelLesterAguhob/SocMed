@@ -25,11 +25,6 @@ try
                             'userPicture'=>$result['file_path']
                         ]);
     }
-    else
-    {
-       echo "Unknown Problem Occurred.";
-       return;
-    }
 
     $stmt->close();
     $con->close();
