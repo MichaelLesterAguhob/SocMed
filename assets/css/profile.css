@@ -99,7 +99,7 @@
 }
 
 /* Post in profile tab */
-#profilePost{
+.profilePost{
     border-left: 1px solid lightgray;
     overflow: auto;
     height: 100%;

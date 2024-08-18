@@ -5,6 +5,7 @@ let file;
 document.addEventListener('DOMContentLoaded', function()
 {
     loadProfile();
+    loadPosts();
 });
 
 //Get the date and time
@@ -219,3 +220,10 @@ document.getElementById('btnPost').addEventListener('click', function()
 {
     uploadPost();
 });
+
+
+// Loading all posts
+function loadPosts()
+{
+
+}

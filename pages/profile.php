@@ -1,5 +1,5 @@
 
-<?php include_once('../backend/session.php');?>
+<?php include_once('../backend/session.php'); ?>
 
 <!DOCTYPE html>
 <html lang="en"> 
@@ -70,7 +70,7 @@
             </div>
 
             <!-- POST IN PROFILE PAGE -->
-            <div id="profilePost" class="col-lg-8 pt-3">
+            <div id="profilePost" class="col-lg-8 pt-3 profilePost">
                 <h2>Post</h2>
                 <div class="post mt-3" style="height: 300px; width: 100%; background-color: lightgray;">
                    <h4>Your Post</h4>
