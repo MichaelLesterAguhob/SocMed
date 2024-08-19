@@ -8,7 +8,6 @@
 .main-container{
     /* border: 1px solid black; */
     height: 100vh;
-    /* background-color: lightblue; */
 }
 
 /* PROFILE CONTAINER */
@@ -98,12 +97,6 @@
     margin: auto;
 }
 
-/* Post in profile tab */
-.profilePost{
-    border-left: 1px solid lightgray;
-    overflow: auto;
-    height: 100%;
-}
 .create-post-dialog{
     margin: auto;
     margin-top: 15vh;
@@ -123,4 +116,58 @@
 }
 .createPostBtn{
     min-width: 120px;
+}
+
+
+/* Posts column in profile tab */
+#profilePost{
+    border-left: 1px solid lightgray;
+    overflow: auto;
+    height: 100%;
+}
+
+/* the container of post */
+.post{
+    height: 50%; 
+    width: 90%; 
+    background-color: #e4f6ff;
+    padding: 10px;
+    border-radius: 10px;
+    margin: auto;
+}
+
+/* container of name and profile picture of every post */
+.post-image-name{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    width: 100%;
+}
+
+/* the small image */
+.postSmallImage{
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.date-time{
+    width: 100%;
+}
+
+.date-time-content{
+    margin: 0;
+    margin-left: 45px;
+    font-size: small;
+}
+
+.post-captions{
+    width: 90%;
+    min-height: 100px;
+    max-height: 200px;
+    margin: auto;
+    margin-top: 10px;
+    border: 1px solid lightgray;
+    font-size: larger;
 }

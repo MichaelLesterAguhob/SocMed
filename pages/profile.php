@@ -70,11 +70,9 @@
             </div>
 
             <!-- POST IN PROFILE PAGE -->
-            <div id="profilePost" class="col-lg-8 pt-3 profilePost">
-                <h2>Post</h2>
-                <div class="post mt-3" style="height: 300px; width: 100%; background-color: lightgray;">
-                   <h4>Your Post</h4>
-                </div>
+            <div id="profilePost" class="col-lg-8 pt-3">
+                
+
             </div>
 
         </div>
@@ -101,7 +99,7 @@
 
                     <div class="modal-footer create-post-modal-footer">
                         <button id="btnPost" class="btn btn-success createPostBtn">Post</button>
-                        <button id="btnDiscardPost" class="btn btn-warning createPostBtn">Discard</button>
+                        <button id="btnDiscardPost" class="btn btn-warning createPostBtn" data-bs-dismiss="modal" data-bs-target="#createPostModal">Discard</button>
                     </div>
                 </div>
             </div>

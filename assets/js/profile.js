@@ -1,11 +1,16 @@
 
 // Load the profile when document is fully loaded
+let userName = "";
+let imageSrc = "";
 let selectedImage = document.getElementById('profilePictureInput');
+let profilePicture = document.getElementById('profilePicture');
+
 let file;
+
 document.addEventListener('DOMContentLoaded', function()
 {
     loadProfile();
-    loadPosts();
+ 
 });
 
 //Get the date and time
@@ -84,7 +89,6 @@ document.getElementById('profilePictureInput').addEventListener('change', functi
         fileReader.onload = function(event)
         {
             let image = event.target.result;
-            let profilePicture = document.getElementById('profilePicture');
             profilePicture.src = image;
         };
 
@@ -117,22 +121,29 @@ function loadProfile(){
 
             if(response.status == "success")
             {
-                document.getElementById('userName').innerText = response.name;
-                let profilePicture = document.getElementById('profilePicture');
+                userName = response.name;
+                document.getElementById('userName').innerText = userName;
+  
+                // checkin if there's no user profile picture
                 if(response.userPicture == null)
                 {
+                    // set default image if no profile pict has uploaded
                     profilePicture.src = "../assets/image/default_image.jpg";
                 }
                 else
                 {
-                    profilePicture.src = response.userPicture;
-                    
+                    imageSrc = response.userPicture;
+                    profilePicture.src = imageSrc;
+
+                   
                 }
+                loadPosts();
             }
         }
     }
     xhr.send();
 }
+
 
 
 document.getElementById('btnSaveProfilePict').addEventListener("click", function()
@@ -210,6 +221,9 @@ function uploadPost()
             if(xhr.status == 200)
             {
                 console.log(xhr.responseText);
+                document.getElementById('postCaptions').value = "";
+                document.getElementById('btnDiscardPost').click();
+                loadPosts();
             }
         }
     }
@@ -225,5 +239,46 @@ document.getElementById('btnPost').addEventListener('click', function()
 // Loading all posts
 function loadPosts()
 {
+    let xhr = new XMLHttpRequest();
+    xhr.open('POST', '../../backend/profile/loadPosts.php');
+    // xhr.setRequestHeader('Content-type', 'Application/x-www-form-urlencoded');
+    xhr.onreadystatechange = function()
+    {
+        if(xhr.readyState == XMLHttpRequest.DONE)
+        {
+            if(xhr.status == 200)
+            {
+                document.getElementById('profilePost').innerHTML = xhr.responseText;
+                
+                setTimeout(function()
+                {
+                    let postsImages = document.querySelectorAll('.postSmallImage');
+                    let postsNames = document.querySelectorAll('.postsNames');
 
+                    // Setting the names in every post
+                    postsNames.forEach(function(h6)
+                    {
+                        h6.innerHTML = userName;
+                    });
+
+                    // Setting the default mages in every post
+                    postsImages.forEach(function(img)
+                    {
+                        img.src = "../assets/image/default_image.jpg";
+                    });
+
+                    // Setting the images in every post
+                    postsImages.forEach(function(img)
+                    {
+                        img.src = imageSrc;
+                    });
+                }, 300);
+            }
+            else
+            {
+                console.log(xhr.responseText);
+            }
+        }
+    }
+    xhr.send();
 }
