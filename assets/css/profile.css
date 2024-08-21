@@ -139,7 +139,8 @@
 
 /* the container of post */
 .post{
-    height: 50%; 
+    min-height: 20%; 
+    max-height: 90%; 
     width: 90%; 
     background-color: #e4f6ff;
     padding: 10px;
@@ -166,6 +167,7 @@
 
 .date-time{
     width: 100%;
+    border-bottom: 1px solid rgb(232, 228, 228);
 }
 
 .date-time-content{
@@ -176,11 +178,44 @@
 
 .post-captions{
     width: 90%;
-    min-height: 100px;
-    max-height: 200px;
+    max-height: 300px;
     margin: auto;
     margin-top: 10px;
-    border: 1px solid rgb(235, 232, 232);
+    margin-bottom: 10px;
+    overflow-y: scroll;
+    padding: 2px;
     font-size: larger;
-    padding: 10px;
+}
+
+.post-captions-content{
+    margin: 0;
+    overflow-y: scroll;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.post-image-video{
+    width: 90%;
+    height: 280px;
+    margin: auto;
+    border: 1px solid black;
+    display: none;
+    display: block;
+}
+
+.post-reactions-comment-share{
+    border-top: 1px solid rgb(232, 228, 228);
+    display: flex;
+    justify-content:space-around;
+    padding: 5px;
+}
+
+.btn-prcs{
+    background-color: transparent;
+    border: none;
+    width: 25%;
+    height: 100%;
+}
+.btn-prcs:hover{
+    background-color: rgb(218, 235, 244);
 }

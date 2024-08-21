@@ -45,7 +45,24 @@
                         <p class="post-captions-content">'.$row2['captions'].'</p>
                     </div>
 
-                    <div><h5 class="m-5">This space is for image/video</h5></div>
+                    <div class="post-image-video">
+                        <h5>This space is for image/video</h5>
+                    </div>
+
+                     <div class="post-reactions-comment-share">
+                        <button class="button-react btn-prcs">
+                            <img src="../assets/bootstrap/icon/bootstrap-icons-1.11.3/emoji-neutral.svg" alt="icon">    
+                            React
+                        </button>
+                        <button class="button-comment btn-prcs">
+                            <img src="../assets/bootstrap/icon/bootstrap-icons-1.11.3/pencil.svg" alt="icon">
+                            Comment
+                        </button>
+                        <button class="button-share btn-prcs">
+                            <img src="../assets/bootstrap/icon/bootstrap-icons-1.11.3/share.svg" alt="icon">
+                            Share
+                        </button>
+                    </div>
                 </div>
                 
                 ';
