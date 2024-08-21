@@ -1,5 +1,7 @@
 .navbar{
     width: 100%;
+    min-height: 70px;
+    height: 7vh;
     border-bottom: 1px solid lightgray;
     font-weight: bold;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
@@ -47,6 +49,10 @@
     }
 }
 @media (max-width: 575px){
+    .navbar{
+        min-height: unset;
+        height: unset;
+    } 
     .settings-dialog{
         max-width: 50%;
         margin-right: 0;

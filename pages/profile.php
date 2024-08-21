@@ -71,8 +71,7 @@
 
             <!-- POST IN PROFILE PAGE -->
             <div id="profilePost" class="col-lg-8 pt-3">
-                
-
+                <!-- user posts are loaded here -->
             </div>
 
         </div>
