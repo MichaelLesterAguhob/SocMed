@@ -130,19 +130,19 @@
 }
 
 
-/* Posts column in profile tab */
+/* Posts column in profile tab =================================*/
 #profilePost{
     height: 100%;
     border-left: 1px solid lightgray;
     overflow: auto;
-    padding: 50px;
 }
 
 /* the container of post */
 .post{
     min-height: 20%; 
     max-height: 90%; 
-    width: 90%; 
+    width: 95%; 
+    max-width: 100%;
     background-color: #e4f6ff;
     padding: 10px;
     border-radius: 10px;
@@ -226,25 +226,20 @@
 
 
 /* reaction modal */
-/* #reactEmojiModal{
-   
-} */
-
 .reactEmojiModalDialog{
     position: fixed;
     /* bottom: 0; */
     margin: auto;
     margin-top: 50vh;
-    width: 100%; 
+    width: 95%; 
     left: 0;
     right: 0;
 }
 
-.reactEmojiModalHeader{
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.reactEmojiModalHeader {
+   padding: 2px;
+   padding-left: 10px;
+   padding-right: 10px;
 }
 
 .reactEmojiModalBody{
@@ -275,4 +270,30 @@
 }
 .btnReact:hover .react-text{
     display: block;
+}
+
+
+/* Comment modal */
+.write-comment-modal-dialog{
+    position: fixed;
+    margin: auto;
+    margin-top: 30vh;
+    width: 95%; 
+    left: 0;
+    right: 0;
+}
+
+#inputComment{
+    margin: auto;
+    width: 100%;
+    height: 250px;
+    max-height: 400px;
+}
+
+.write-comment-modal-footer{
+    display: flex;
+    justify-content:center;
+}
+.writeCommentBtn{
+    width: 100px;
 }

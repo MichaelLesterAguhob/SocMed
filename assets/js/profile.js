@@ -282,7 +282,7 @@ async function loadPosts()
     });
 }
 
-// React Button
+// Adding event listener mouseEnter and mouseLeave on React Button
 async function addButtonReactListener() {
     let hoveredTime;
     try {
@@ -304,8 +304,26 @@ async function addButtonReactListener() {
         console.error('Error loading posts:', error);
     }
 }
-
 addButtonReactListener();
+
+// Adding event listener mouseEnter and mouseLeave on Comment Button
+async function addButtonCommentListener() {
+
+    try {
+        await loadPosts();
+        let commentButton = document.querySelectorAll('.button-comment');
+        commentButton.forEach(function(button) {
+            button.addEventListener('click', function() {
+                $('#writeCommentModal').modal('show');
+            });
+
+        });
+    }
+    catch(error) {
+        console.error('Error loading posts:', error);
+    }
+}
+addButtonCommentListener();
 
 
 // Close the react modal when emoji is selected

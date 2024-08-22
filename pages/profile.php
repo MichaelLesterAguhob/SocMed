@@ -106,12 +106,13 @@
         </div>
 
 
-        <!-- Emoji Reaction Modal-->
+        <!-- Emoji Reaction Modal -->
          <div id="reactEmojiModal" class="modal fade">
             <div class="modal-dialog reactEmojiModalDialog">
                 <div class="modal-content">
                     <div class="modal-header reactEmojiModalHeader">
-                        <h5 class="user-select-none">Select Emoji</h5>
+                        <h5 class="modal-title user-select-none">Select Emoji</h5>
+                        <button class="btn-close" aria-label="Close" data-bs-dismiss="modal" data-bs-target="#reactEmojiModal"></button>
                     </div>
                     
                     <div class="modal-body reactEmojiModalBody">
@@ -119,10 +120,16 @@
                             <img src="../assets/image/like.png" alt=""><span class="react-text text-muted react-text-like">Like</span>    
                         </button>
                         <button class="btnReact">
+                            <img src="../assets/image/dislike.png" alt=""><span class="react-text text-muted react-text-boo">Dislike</span>    
+                        </button>
+                        <button class="btnReact">
                             <img src="../assets/image/haha.png" alt=""><span class="react-text text-muted react-text-haha">Haha</span>    
                         </button>
                         <button class="btnReact">
                             <img src="../assets/image/love.png" alt=""><span class="react-text text-muted react-text-love">Love</span>    
+                        </button>
+                        <button class="btnReact">
+                            <img src="../assets/image/eyesHeart.png" alt=""><span class="react-text text-muted react-text-love">InLove</span>    
                         </button>
                         <button class="btnReact">
                             <img src="../assets/image/wow.png" alt=""><span class="react-text text-muted react-text-wow">Wow</span>    
@@ -135,6 +142,27 @@
             </div>
          </div>
 
+         <!-- Write comment modal -->
+         <div id="writeCommentModal" class="modal fade">
+            <div class="modal-dialog write-comment-modal-dialog">
+                <div class="modal-content write-comment-modal-content">
+                    <div class="modal-header write-comment-modal-header">
+                        <h5 class="modal-title">Write a comment</h5>
+                        <button class="btn-close" aria-label="Close" data-bs-dismiss="modal" data-bs-target="#writeCommentModal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-floating">
+                            <textarea id="inputComment" class="form-control" placeholder=" "></textarea>
+                            <label for="inputComment">Comment...</label>
+                        </div>
+                    </div>
+                    <div class="modal-footer write-comment-modal-footer">
+                        <button class="btn btn-success writeCommentBtn">Submit</button>
+                        <button class="btn btn-warning writeCommentBtn" data-bs-dismiss="modal" data-bs-target="#writeCommentModal">Cancel</button>
+                    </div>
+                </div>
+            </div>
+         </div>
     </div>
 
 
