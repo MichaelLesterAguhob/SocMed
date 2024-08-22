@@ -107,6 +107,7 @@
     margin: auto;
 }
 
+/* Create Post Modal */
 .create-post-dialog{
     margin: auto;
     margin-top: 15vh;
@@ -198,9 +199,10 @@
     width: 90%;
     height: 280px;
     margin: auto;
-    border: 1px solid black;
+    margin-bottom: 10px;
+    border: 1px solid rgb(232, 228, 228);
     display: none;
-    display: block;
+    /* display: block; */
 }
 
 .post-reactions-comment-share{
@@ -215,7 +217,62 @@
     border: none;
     width: 25%;
     height: 100%;
+    border-radius: 10px;
 }
 .btn-prcs:hover{
     background-color: rgb(218, 235, 244);
+    color: blue;
+}
+
+
+/* reaction modal */
+/* #reactEmojiModal{
+   
+} */
+
+.reactEmojiModalDialog{
+    position: fixed;
+    /* bottom: 0; */
+    margin: auto;
+    margin-top: 50vh;
+    width: 100%; 
+    left: 0;
+    right: 0;
+}
+
+.reactEmojiModalHeader{
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.reactEmojiModalBody{
+    height: 60px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btnReact{
+    border: none;
+    background-color: transparent; 
+    border-radius: 50%;
+}
+.btnReact:hover{
+    border: none;
+    background-color: rgb(218, 235, 244);
+    height: 40px;
+    width: 40px;
+}
+.btnReact:hover img{
+    height: 30px;
+    width: 30px;
+}
+.react-text{
+    display: none;
+}
+.btnReact:hover .react-text{
+    display: block;
 }

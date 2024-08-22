@@ -50,7 +50,8 @@
                     </div>
 
                      <div class="post-reactions-comment-share">
-                        <button class="button-react btn-prcs">
+                        <button class="button-react btn-prcs" data-bs-toggle="modal" data-bs-target="#reactEmojiModal">
+                        
                             <img src="../assets/bootstrap/icon/bootstrap-icons-1.11.3/emoji-neutral.svg" alt="icon">    
                             React
                         </button>

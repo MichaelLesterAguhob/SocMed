@@ -69,6 +69,7 @@
                 </div>
             </div>
 
+
             <!-- POST IN PROFILE PAGE -->
             <div id="profilePost" class="col-lg-8 pt-3">
                 <!-- user posts are loaded here -->
@@ -104,6 +105,36 @@
             </div>
         </div>
 
+
+        <!-- Emoji Reaction Modal-->
+         <div id="reactEmojiModal" class="modal fade">
+            <div class="modal-dialog reactEmojiModalDialog">
+                <div class="modal-content">
+                    <div class="modal-header reactEmojiModalHeader">
+                        <h5 class="user-select-none">Select Emoji</h5>
+                    </div>
+                    
+                    <div class="modal-body reactEmojiModalBody">
+                        <button class="btnReact">
+                            <img src="../assets/image/like.png" alt=""><span class="react-text text-muted react-text-like">Like</span>    
+                        </button>
+                        <button class="btnReact">
+                            <img src="../assets/image/haha.png" alt=""><span class="react-text text-muted react-text-haha">Haha</span>    
+                        </button>
+                        <button class="btnReact">
+                            <img src="../assets/image/love.png" alt=""><span class="react-text text-muted react-text-love">Love</span>    
+                        </button>
+                        <button class="btnReact">
+                            <img src="../assets/image/wow.png" alt=""><span class="react-text text-muted react-text-wow">Wow</span>    
+                        </button>
+                        <button class="btnReact">
+                            <img src="../assets/image/angry.png" alt=""><span class="react-text text-muted react-text-angry">Angry</span>    
+                        </button>
+                    </div>
+                </div>
+            </div>
+         </div>
+
     </div>
 
 
@@ -113,6 +144,8 @@
 
     <!-- JAVASCRIPT -->
     <script src="../assets/bootstrap/bootstrap-5.3.3-dist/js/bootstrap.min.js"></script>
+    <script src="../assets/bootstrap/bootstrap-5.3.3-dist/js/jquery-3.7.1.js"></script>
+
     <script src="../assets/js/header.js"></script>
     <script src="../assets/js/profile.js"></script>
 </body>

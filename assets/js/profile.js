@@ -134,8 +134,6 @@ function loadProfile(){
                 {
                     imageSrc = response.userPicture;
                     profilePicture.src = imageSrc;
-
-                   
                 }
                 loadPosts();
             }
@@ -237,48 +235,82 @@ document.getElementById('btnPost').addEventListener('click', function()
 
 
 // Loading all posts
-function loadPosts()
+async function loadPosts()
 {
-    let xhr = new XMLHttpRequest();
-    xhr.open('POST', '../../backend/profile/loadPosts.php');
-    // xhr.setRequestHeader('Content-type', 'Application/x-www-form-urlencoded');
-    xhr.onreadystatechange = function()
-    {
-        if(xhr.readyState == XMLHttpRequest.DONE)
-        {
-            if(xhr.status == 200)
-            {
-                document.getElementById('profilePost').innerHTML = xhr.responseText;
-                
-                setTimeout(function()
+    await new Promise((resolve, reject) => {
+
+        let xhr = new XMLHttpRequest();
+        xhr.open('POST', '../../backend/profile/loadPosts.php');
+        xhr.onreadystatechange = function() {
+            if(xhr.readyState == XMLHttpRequest.DONE) {
+                if(xhr.status == 200) {
+                    document.getElementById('profilePost').innerHTML = xhr.responseText;
+                    
+                    setTimeout(function() {
+                        let postsImages = document.querySelectorAll('.postSmallImage');
+                        let postsNames = document.querySelectorAll('.postsNames');
+
+                        // Setting the names in every post
+                        postsNames.forEach(function(h6) {
+                            h6.innerHTML = userName;
+                        });
+
+                        // Setting the images in every post
+                        if(imageSrc != null || imageSrc != "") {
+                            postsImages.forEach(function(img) {
+                                img.src = imageSrc;
+                        });
+                        }
+                        else {
+                            // Setting the default mages in every post
+                            postsImages.forEach(function(img) {
+                                img.src = "../assets/image/default_image.jpg";
+                            });
+                        }
+
+                        resolve();
+                    }, 300);
+                    
+                }
+                else
                 {
-                    let postsImages = document.querySelectorAll('.postSmallImage');
-                    let postsNames = document.querySelectorAll('.postsNames');
-
-                    // Setting the names in every post
-                    postsNames.forEach(function(h6)
-                    {
-                        h6.innerHTML = userName;
-                    });
-
-                    // Setting the default mages in every post
-                    postsImages.forEach(function(img)
-                    {
-                        img.src = "../assets/image/default_image.jpg";
-                    });
-
-                    // Setting the images in every post
-                    postsImages.forEach(function(img)
-                    {
-                        img.src = imageSrc;
-                    });
-                }, 300);
-            }
-            else
-            {
-                console.log(xhr.responseText);
+                  reject(xhr.responseText);
+                }
             }
         }
-    }
-    xhr.send();
+        xhr.send();
+    });
 }
+
+// React Button
+async function addButtonReactListener() {
+    let hoveredTime;
+    try {
+        await loadPosts();
+        let reactButton = document.querySelectorAll('.button-react');
+        reactButton.forEach(function(button) {
+            button.addEventListener('mouseenter', function() {
+                hoveredTime = setTimeout(function() {
+                    $('#reactEmojiModal').modal('show');
+                }, 1000);
+            });
+
+            button.addEventListener('mouseleave', function() {
+                clearTimeout(hoveredTime);
+            });
+        });
+    }
+    catch(error) {
+        console.error('Error loading posts:', error);
+    }
+}
+
+addButtonReactListener();
+
+
+// Close the react modal when emoji is selected
+document.querySelectorAll('.btnReact').forEach(function(button) {
+    button.addEventListener('click', function() {
+        $('#reactEmojiModal').modal('hide');
+    });
+});
