@@ -177,6 +177,24 @@
     font-size: small;
 }
 
+.btn-edit-delete-container{
+    margin: auto;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.btn-edit-delete-post{
+    border: none;
+    background-color: inherit;
+    width: 17px;
+}
+
+.btn-edit-delete-post img{
+    width: 100%;
+}
+
 .post-captions{
     width: 90%;
     max-height: 300px;
@@ -296,4 +314,10 @@
 }
 .writeCommentBtn{
     width: 100px;
+}
+
+
+/* confirmation modal */
+.confirmation-modal-dialog{
+    margin-top: 25vh;
 }

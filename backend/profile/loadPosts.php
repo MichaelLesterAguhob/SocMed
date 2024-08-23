@@ -30,7 +30,16 @@ try {
                 <!-- posts container -->
                 <div class="post mt-3">
                     <div class="post-image-name">
-                        <img class="postSmallImage" src="" alt="Photo"><h5 class="postsNames">Your name here</h5>
+                        <img class="postSmallImage" src="" alt="Photo">
+                        <h5 class="postsNames">Your name here</h5>
+                        <div class="btn-edit-delete-container">
+                            <button type="button" postId="'.$postId.'" class="btn-edit-post btn-edit-delete-post">
+                                <img src="../../assets/image/edit.png" alt="button">
+                            </button>
+                            <button type="button" postId="'.$postId.'" class="btn-delete-post btn-edit-delete-post">
+                                <img src="../../assets/image/delete.png" alt="button">
+                            </button>
+                        </div>
                     </div>
 
                      <!-- Date and time -->

@@ -64,7 +64,7 @@
 
                 <!-- PROFILE EDIT PROFILE AND CREATE POST CONTAINER -->
                 <div id="btnCont">
-                    <button id="btnEditProfile" type="button" class="btn btn-warning btn-sm">Edit Profile</button>
+                    <button id="btnEditProfile" type="button"  class="btn btn-warning btn-sm">Edit Profile</button>
                     <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#createPostModal">Create Post</button>
                 </div>
             </div>
@@ -175,6 +175,25 @@
                 </div>
                 <div id="popupMessageBody" class="modal-body">
 
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confirmation Modal -->
+    <div id="confirmationModal" class="modal fade">
+        <div class="modal-dialog confirmation-modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title confirmationModalTitle"></h5>
+                    <button class="btn-close"></button>
+                </div>
+                <div class="modal-body">
+                    <p id="confirmationModalBody"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal" data-bs-target="#confirmationModal">Delete</button>
+                    <button type="button" class="btn btn-warning" data-bs-dismiss="modal" data-bs-target="#confirmationModal">Cancel</button>
                 </div>
             </div>
         </div>

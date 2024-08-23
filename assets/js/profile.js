@@ -79,21 +79,6 @@ function loadProfile() {
   xhr.send();
 }
 
-// popup message modal
-function popupMessageModal(title, titleColor, popupMessage, textColor) {
-    let modalTitle = document.querySelector('.popupMessageTitle');
-    modalTitle.innerText = title;
-    modalTitle.style.color = titleColor;
-
-    let message = document.getElementById('popupMessageBody');
-    message.innerText = popupMessage;
-    message.style.color = textColor;
-    $('#popupMessgaeModal').modal('show');
-    setTimeout(function() {
-        $('#popupMessgaeModal').modal('hide');
-    },2000);
-}
-
 // trigger the click on file input element with this upload button with icon
 document.getElementById("btnUploadProfilePic").addEventListener("click", function () {
     document.getElementById("profilePictureInput").click();
@@ -205,6 +190,7 @@ function uploadPost() {
                 document.getElementById("postCaptions").value = "";
                 document.getElementById("btnDiscardPost").click();
                 loadPosts();
+                addListenerToEditPost();
                 addButtonReactListener();
                 addButtonCommentListener();
             }else {
@@ -265,6 +251,24 @@ async function loadPosts() {
     xhr.send();
   });
 }
+addListenerToDeletePost();
+addButtonReactListener();
+addButtonCommentListener();
+
+// Edit and Delete button of post
+async function addListenerToDeletePost() {
+    try {
+        await loadPosts();
+        document.querySelectorAll('.btn-delete-post').forEach(function(button) {
+            button.addEventListener('click', function() {
+                let postId = this.getAttribute('postId');
+                confirmationModal("Please confirm","red","Are you sure you want to delete this post?", "red");
+            });
+        });
+    }catch(error) {
+        console.log(error);
+    }
+}
 
 // Adding event listener mouseEnter and mouseLeave on React Button
 async function addButtonReactListener() {
@@ -288,7 +292,6 @@ async function addButtonReactListener() {
         return;
   }
 }
-addButtonReactListener();
 
 // Adding event listener mouseEnter and mouseLeave on Comment Button
 async function addButtonCommentListener() {
@@ -305,7 +308,6 @@ async function addButtonCommentListener() {
         return;
     }
 }
-addButtonCommentListener();
 
 // Close the react modal when emoji is selected
 document.querySelectorAll(".btnReact").forEach(function (button) {
@@ -314,8 +316,34 @@ document.querySelectorAll(".btnReact").forEach(function (button) {
   });
 });
 
-// code the adding and editing of bio and social
+// popup message modal
+function popupMessageModal(title, titleColor, popupMessage, textColor) {
+    let modalTitle = document.querySelector('.popupMessageTitle');
+    modalTitle.innerText = title;
+    modalTitle.style.color = titleColor;
 
+    let message = document.getElementById('popupMessageBody');
+    message.innerText = popupMessage;
+    message.style.color = textColor;
+    $('#popupMessgaeModal').modal('show');
+    setTimeout(function() {
+        $('#popupMessgaeModal').modal('hide');
+    },2000);
+}
+
+// confirmation modal
+function confirmationModal(title, titleColor, confirmationMessage, textColor) {
+    let modalTitle = document.querySelector('.confirmationModalTitle');
+    modalTitle.innerText = title;
+    modalTitle.style.color = titleColor;
+
+    let message = document.getElementById('confirmationModalBody');
+    message.innerText = confirmationMessage;
+    message.style.color = textColor;
+    $('#confirmationModal').modal('show');
+}
+
+// toast modal
 function showToastNotification(toastMessage) {
   const toastElement = document.getElementById("myToast");
   const toast = new bootstrap.Toast(toastElement);
