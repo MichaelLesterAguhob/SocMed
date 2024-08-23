@@ -32,12 +32,12 @@
 
                     <!-- Upload and edit Button -->
                      <div class="uploadEditPictureCont">
-                         <button id="btnUploadProfilePic"></button>
-                         <button id="btnEditProfilePic"></button>
+                         <button type="button" id="btnUploadProfilePic"></button>
+                         <button type="button" id="btnEditProfilePic"></button>
 
                          <!-- save and cancel uploaded profile-->
-                         <button class="btn btn-sm btn-success btnSaveDiscard" id="btnSaveProfilePict">Save</button>
-                         <button class="btn btn-sm btn-warning btnSaveDiscard" id="btnDiscardDp">Discard</button>
+                         <button type="button" class="btn btn-sm btn-success btnSaveDiscard" id="btnSaveProfilePict">Save</button>
+                         <button type="button" class="btn btn-sm btn-warning btnSaveDiscard" id="btnDiscardDp">Discard</button>
                     </div>
                 </div>
 
@@ -64,8 +64,8 @@
 
                 <!-- PROFILE EDIT PROFILE AND CREATE POST CONTAINER -->
                 <div id="btnCont">
-                    <button class="btn btn-warning btn-sm">Edit Profile</button>
-                    <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#createPostModal">Create Post</button>
+                    <button type="button" class="btn btn-warning btn-sm">Edit Profile</button>
+                    <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#createPostModal">Create Post</button>
                 </div>
             </div>
 
@@ -83,7 +83,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h2 class="modal-title user-select-none">Post</h2>
-                        <button class="btn-close" aria-label="Close" data-bs-dismiss="modal" data-bs-target="#createPostModal"></button>
+                        <button type="button" class="btn-close" aria-label="Close" data-bs-dismiss="modal" data-bs-target="#createPostModal"></button>
                     </div>
                     <div class="modal-body create-post-modal-body">
                         <div class="form-floating mb-3">
@@ -98,8 +98,8 @@
                     </div>
 
                     <div class="modal-footer create-post-modal-footer">
-                        <button id="btnPost" class="btn btn-success createPostBtn">Post</button>
-                        <button id="btnDiscardPost" class="btn btn-warning createPostBtn" data-bs-dismiss="modal" data-bs-target="#createPostModal">Discard</button>
+                        <button type="button" id="btnPost" class="btn btn-success createPostBtn">Post</button>
+                        <button type="button" id="btnDiscardPost" class="btn btn-warning createPostBtn" data-bs-dismiss="modal" data-bs-target="#createPostModal">Discard</button>
                     </div>
                 </div>
             </div>
@@ -112,29 +112,29 @@
                 <div class="modal-content">
                     <div class="modal-header reactEmojiModalHeader">
                         <h5 class="modal-title user-select-none">Select Emoji</h5>
-                        <button class="btn-close" aria-label="Close" data-bs-dismiss="modal" data-bs-target="#reactEmojiModal"></button>
+                        <button type="button" class="btn-close" aria-label="Close" data-bs-dismiss="modal" data-bs-target="#reactEmojiModal"></button>
                     </div>
                     
                     <div class="modal-body reactEmojiModalBody">
-                        <button class="btnReact">
+                        <button type="button" class="btnReact">
                             <img src="../assets/image/like.png" alt=""><span class="react-text text-muted react-text-like">Like</span>    
                         </button>
-                        <button class="btnReact">
+                        <button type="button" class="btnReact">
                             <img src="../assets/image/dislike.png" alt=""><span class="react-text text-muted react-text-boo">Dislike</span>    
                         </button>
-                        <button class="btnReact">
+                        <button type="button" class="btnReact">
                             <img src="../assets/image/haha.png" alt=""><span class="react-text text-muted react-text-haha">Haha</span>    
                         </button>
-                        <button class="btnReact">
+                        <button type="button" class="btnReact">
                             <img src="../assets/image/love.png" alt=""><span class="react-text text-muted react-text-love">Love</span>    
                         </button>
-                        <button class="btnReact">
+                        <button type="button" class="btnReact">
                             <img src="../assets/image/eyesHeart.png" alt=""><span class="react-text text-muted react-text-love">InLove</span>    
                         </button>
-                        <button class="btnReact">
+                        <button type="button" class="btnReact">
                             <img src="../assets/image/wow.png" alt=""><span class="react-text text-muted react-text-wow">Wow</span>    
                         </button>
-                        <button class="btnReact">
+                        <button type="button" class="btnReact">
                             <img src="../assets/image/angry.png" alt=""><span class="react-text text-muted react-text-angry">Angry</span>    
                         </button>
                     </div>
@@ -148,7 +148,7 @@
                 <div class="modal-content write-comment-modal-content">
                     <div class="modal-header write-comment-modal-header">
                         <h5 class="modal-title">Write a comment</h5>
-                        <button class="btn-close" aria-label="Close" data-bs-dismiss="modal" data-bs-target="#writeCommentModal"></button>
+                        <button type="button" class="btn-close" aria-label="Close" data-bs-dismiss="modal" data-bs-target="#writeCommentModal"></button>
                     </div>
                     <div class="modal-body">
                         <div class="form-floating">
@@ -157,14 +157,42 @@
                         </div>
                     </div>
                     <div class="modal-footer write-comment-modal-footer">
-                        <button class="btn btn-success writeCommentBtn">Submit</button>
-                        <button class="btn btn-warning writeCommentBtn" data-bs-dismiss="modal" data-bs-target="#writeCommentModal">Cancel</button>
+                        <button type="button" class="btn btn-success writeCommentBtn">Submit</button>
+                        <button type="button" class="btn btn-warning writeCommentBtn" data-bs-dismiss="modal" data-bs-target="#writeCommentModal">Cancel</button>
                     </div>
                 </div>
             </div>
          </div>
     </div>
 
+    <!-- Modal popup message -->
+    <div id="popupMessgaeModal" class="modal fade">
+        <div class="modal-dialog popup-message-modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <strong class="modal-title popupMessageTitle"></strong>
+                    <button class="btn-close"></button>
+                </div>
+                <div id="popupMessageBody" class="modal-body">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast-container position-fixed bottom-0 start-0 p-3">
+        <div id="myToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="5000">
+            <div class="toast-header">
+                <strong class="me-auto">Notification</strong>
+                <small class="text-muted">Just now</small>
+               <button type="button" class="btn-close" aria-label="Close" data-bs-dismiss="toast"></button>
+            </div>
+            <div id="toastMessage" class="toast-body text-success">
+                <!-- Toast modal here -->
+            </div>
+        </div>
+    </div>
 
 
      <!-- FOOTER -->
