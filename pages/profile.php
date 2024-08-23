@@ -64,7 +64,7 @@
 
                 <!-- PROFILE EDIT PROFILE AND CREATE POST CONTAINER -->
                 <div id="btnCont">
-                    <button type="button" class="btn btn-warning btn-sm">Edit Profile</button>
+                    <button id="btnEditProfile" type="button" class="btn btn-warning btn-sm">Edit Profile</button>
                     <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#createPostModal">Create Post</button>
                 </div>
             </div>

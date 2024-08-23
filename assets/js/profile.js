@@ -10,26 +10,6 @@ document.addEventListener("DOMContentLoaded", function () {
   loadProfile();
 });
 
-//Get the date and time
-function getDateTime() {
-  const dateTimeConfig = {
-    hour: "numeric",
-    minute: "numeric",
-    hour12: true,
-    month: "long",
-    day: "numeric",
-    year: "numeric",
-    timeZone: "Asia/Manila",
-  };
-  const dateTime = new Date();
-  const formattedDateTime = dateTime
-    .toLocaleString("en-US", dateTimeConfig)
-    .replace("at", " | ")
-    .replace("AM", "am")
-    .replace("PM", "pm");
-  return formattedDateTime;
-}
-
 // show profile actions buttons
 function showProfileActionBtn() {
   document.getElementById("btnUploadProfilePic").style.display = "inline-flex";
@@ -179,9 +159,30 @@ function saveUploadedProfilePict() {
   xhr.send(formData);
 }
 
+//Get the date
+function getDate() {
+    const dateConfig = {
+      month: "long",
+      day: "numeric",
+      year: "numeric",
+      timeZone: "Asia/Manila",
+    };
+    return new Date().toLocaleString("en-US", dateConfig);
+  }
+
+// Get the time
+function getTime() {
+    const timeConfig = {
+      hour: "numeric",
+      minute: "numeric",
+      hour12: true,
+      timeZone: "Asia/Manila",
+    };
+    return new Date().toLocaleString("en-US", timeConfig);
+  }
+
 // posting created post
 function uploadPost() {
-  const dateTimeNow = getDateTime();
   let postCaptions = document.getElementById("postCaptions").value;
 
   let xhr = new XMLHttpRequest();
@@ -191,20 +192,31 @@ function uploadPost() {
   xhr.onreadystatechange = function () {
     if (xhr.readyState == XMLHttpRequest.DONE) {
       if (xhr.status == 200) {
-            showToastNotification(xhr.responseText);
-            document.getElementById("postCaptions").value = "";
-            document.getElementById("btnDiscardPost").click();
-            loadPosts();
-            addButtonReactListener();
-            addButtonCommentListener();
+            let response;
+            try {
+                response = JSON.parse(xhr.responseText);
+            }catch(error) {
+                console.log(error + " \n \n " + xhr.responseText)
+                return;
+            }
+
+            if(response.status == "success") {
+                showToastNotification(response.msg);
+                document.getElementById("postCaptions").value = "";
+                document.getElementById("btnDiscardPost").click();
+                loadPosts();
+                addButtonReactListener();
+                addButtonCommentListener();
+            }else {
+                console.log(response.msg)
+            }
         }
     }
   };
   xhr.send(
-        "dateTime=" +
-        encodeURIComponent(dateTimeNow) +
-        "&postCaptions=" +
-        encodeURIComponent(postCaptions)
+        "date=" + encodeURIComponent(getDate()) +
+        "&time=" + encodeURIComponent(getTime()) +
+        "&postCaptions=" + encodeURIComponent(postCaptions)
     );
 }
 
@@ -273,6 +285,7 @@ async function addButtonReactListener() {
     });
   } catch (error) {
         console.error("Error loading posts:", error);
+        return;
   }
 }
 addButtonReactListener();
@@ -289,6 +302,7 @@ async function addButtonCommentListener() {
         });
     } catch (error) {
         console.error("Error loading posts:", error);
+        return;
     }
 }
 addButtonCommentListener();
