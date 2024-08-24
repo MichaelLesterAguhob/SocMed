@@ -116,26 +116,33 @@
                     </div>
                     
                     <div class="modal-body reactEmojiModalBody">
-                        <button type="button" class="btnReact">
-                            <img src="../assets/image/like.png" alt=""><span class="react-text text-muted react-text-like">Like</span>    
+                        <button type="button" id="btnReactLike" class="btnReact">
+                            <img src="../assets/image/like.png" alt="emoji">
+                            <span class="react-text text-muted react-text-like">Like</span>    
                         </button>
-                        <button type="button" class="btnReact">
-                            <img src="../assets/image/dislike.png" alt=""><span class="react-text text-muted react-text-boo">Dislike</span>    
+                        <button type="button" id="btnReactDislike" class="btnReact">
+                            <img src="../assets/image/dislike.png" alt="emoji">
+                            <span class="react-text text-muted react-text-boo">Dislike</span>    
                         </button>
-                        <button type="button" class="btnReact">
-                            <img src="../assets/image/haha.png" alt=""><span class="react-text text-muted react-text-haha">Haha</span>    
+                        <button type="button" id="btnReactHaha" class="btnReact">
+                            <img src="../assets/image/haha.png" alt="emoji">
+                            <span class="react-text text-muted react-text-haha">Haha</span>    
                         </button>
-                        <button type="button" class="btnReact">
-                            <img src="../assets/image/love.png" alt=""><span class="react-text text-muted react-text-love">Love</span>    
+                        <button type="button" id="btnReactLove" class="btnReact">
+                            <img src="../assets/image/love.png" alt="emoji">
+                            <span class="react-text text-muted react-text-love">Love</span>    
                         </button>
-                        <button type="button" class="btnReact">
-                            <img src="../assets/image/eyesHeart.png" alt=""><span class="react-text text-muted react-text-love">InLove</span>    
+                        <button type="button" id="btnReactInlove" class="btnReact">
+                            <img src="../assets/image/eyesHeart.png" alt="emoji">
+                            <span class="react-text text-muted react-text-love">InLove</span>    
                         </button>
-                        <button type="button" class="btnReact">
-                            <img src="../assets/image/wow.png" alt=""><span class="react-text text-muted react-text-wow">Wow</span>    
+                        <button type="button" id="btnReactWow" class="btnReact">
+                            <img src="../assets/image/wow.png" alt="emoji">
+                            <span class="react-text text-muted react-text-wow">Wow</span>    
                         </button>
-                        <button type="button" class="btnReact">
-                            <img src="../assets/image/angry.png" alt=""><span class="react-text text-muted react-text-angry">Angry</span>    
+                        <button type="button" id="btnReactAngry" class="btnReact">
+                            <img src="../assets/image/angry.png" alt="emoji">
+                            <span class="react-text text-muted react-text-angry">Angry</span>    
                         </button>
                     </div>
                 </div>
@@ -186,13 +193,13 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title confirmationModalTitle"></h5>
-                    <button class="btn-close"></button>
+                    <button class="btn-close" aria-label="Close" data-bs-dismiss="modal" data-bs-target="#confirmationModal"></button>
                 </div>
                 <div class="modal-body">
                     <p id="confirmationModalBody"></p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal" data-bs-target="#confirmationModal">Delete</button>
+                    <button type="button" id="btnDeletePost" class="btn btn-danger" data-bs-dismiss="modal" data-bs-target="#confirmationModal">Delete</button>
                     <button type="button" class="btn btn-warning" data-bs-dismiss="modal" data-bs-target="#confirmationModal">Cancel</button>
                 </div>
             </div>

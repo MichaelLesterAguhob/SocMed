@@ -253,13 +253,11 @@
     left: 0;
     right: 0;
 }
-
 .reactEmojiModalHeader {
    padding: 2px;
    padding-left: 10px;
    padding-right: 10px;
 }
-
 .reactEmojiModalBody{
     height: 60px;
     border-radius: 5px;
@@ -267,11 +265,14 @@
     justify-content: space-between;
     align-items: center;
 }
-
 .btnReact{
     border: none;
     background-color: transparent; 
     border-radius: 50%;
+}
+.btnReact:focus, .btn-prcs:focus{
+    border: none;
+    outline: none;
 }
 .btnReact:hover{
     border: none;
@@ -300,14 +301,12 @@
     left: 0;
     right: 0;
 }
-
 #inputComment{
     margin: auto;
     width: 100%;
     height: 250px;
     max-height: 400px;
 }
-
 .write-comment-modal-footer{
     display: flex;
     justify-content:center;

@@ -57,16 +57,15 @@ try {
                     </div>
 
                      <div class="post-reactions-comment-share">
-                        <button class="button-react btn-prcs" data-bs-toggle="modal" data-bs-target="#reactEmojiModal">
-                        
+                        <button postId="'.$postId.'" class="button-react btn-prcs" data-bs-toggle="modal" data-bs-target="#reactEmojiModal">
                             <img src="../assets/bootstrap/icon/bootstrap-icons-1.11.3/emoji-neutral.svg" alt="icon">    
                             React
                         </button>
-                        <button class="button-comment btn-prcs">
+                        <button postId="'.$postId.'" class="button-comment btn-prcs">
                             <img src="../assets/bootstrap/icon/bootstrap-icons-1.11.3/pencil.svg" alt="icon">
                             Comment
                         </button>
-                        <button class="button-share btn-prcs">
+                        <button postId="'.$postId.'" class="button-share btn-prcs">
                             <img src="../assets/bootstrap/icon/bootstrap-icons-1.11.3/share.svg" alt="icon">
                             Share
                         </button>
