@@ -18,9 +18,9 @@ try {
     if(!$result) {
         // if has not yet reacted to post. Insert query will be executed
         // Save posts' reaction - get the reactions of user and save it to specific post
-        $query = "INSERT INTO `user_posts_reactions`(`post_id`, `reactions`) VALUES(?,?)";
+        $query = "INSERT INTO `user_posts_reactions`(`user_id`, `post_id`, `reactions`) VALUES(?,?,?)";
         $stmt2 = $con->prepare($query);
-        $stmt2->bind_param('ss', $reactToPostId, $emojiReaction);
+        $stmt2->bind_param('sss', $userID, $reactToPostId, $emojiReaction);
 
         // Save user reaction - get the details where user reacted and what reactions
         $query2 = "INSERT INTO `user_reacted_to_post`(`user_id`, `post_id`, `reaction`) VALUES(?,?,?)";
@@ -45,9 +45,9 @@ try {
         $stmt4 = $con->prepare($query3);
         $stmt4->bind_param('sss', $emojiReaction, $userID, $reactToPostId);
 
-        $query4 = "UPDATE `user_posts_reactions` SET reactions = ? WHERE post_id = ?";
+        $query4 = "UPDATE `user_posts_reactions` SET reactions = ? WHERE post_id = ? AND user_id = ?";
         $stmt5 = $con->prepare($query4);
-        $stmt5->bind_param('ss', $emojiReaction, $reactToPostId);
+        $stmt5->bind_param('sss', $emojiReaction, $reactToPostId, $userID);
 
         if($stmt4 === false || $stmt5 === false) {
             die( json_encode(['status'=>'failed' ,'msg'=>'stmt3 preparation failed']));

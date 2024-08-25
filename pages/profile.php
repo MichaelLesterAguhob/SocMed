@@ -111,7 +111,8 @@
             <div class="modal-dialog reactEmojiModalDialog">
                 <div class="modal-content">
                     <div class="modal-header reactEmojiModalHeader">
-                        <h5 class="modal-title user-select-none">Select Emoji</h5>
+                        <h5 class="modal-title user-select-none">Select Emoji |</h5>
+                        <img class="btn-delete-reaction" src="../assets/image/delete.png" alt="delete">
                         <button type="button" class="btn-close" aria-label="Close" data-bs-dismiss="modal" data-bs-target="#reactEmojiModal"></button>
                     </div>
                     

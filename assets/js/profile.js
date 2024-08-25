@@ -305,9 +305,10 @@ async function addButtonReactListener() {
       });
     
       button.addEventListener("mouseenter", function () {
+            reactToPostId = this.getAttribute('postId');
             hoveredTime = setTimeout(function () {
                 $("#reactEmojiModal").modal("show");
-            }, 1000);
+            }, 500);
         });
 
       button.addEventListener("mouseleave", function () {
@@ -423,8 +424,38 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
+// to delete reaction
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.btn-delete-reaction').forEach(function(imgBtn) {
+    imgBtn.addEventListener('mouseenter', function() {
+      imgBtn.style.cursor = "pointer";
+    });
+    imgBtn.addEventListener('click', function() {
+      removeReaction(reactToPostId);
+    });
+  });
+});
 
-
+// Delete the reaction to a post
+function removeReaction(reactionToRemove) {
+  try {
+      let xhr = new XMLHttpRequest();
+      xhr.open('POST', '../../backend/removeReaction.php');
+      xhr.setRequestHeader('Content-Type', 'Application/x-www-form-urlencoded');
+      xhr.onreadystatechange = function() {
+        if(xhr.readyState == XMLHttpRequest.DONE) {
+          if(xhr.status == 200) {
+             $("#reactEmojiModal").modal("hide");
+             loadPosts();
+             addListenerToDynamicElements();
+          }
+        }
+      }
+      xhr.send('reactionToRemove=' + encodeURIComponent(reactionToRemove));
+  }catch(error) {
+    console.log(error)
+  }
+}
 
 
 
