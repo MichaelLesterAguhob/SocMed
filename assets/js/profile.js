@@ -292,6 +292,7 @@ async function addListenerToBtnEditPost() {
 }
 
 // Adding event listener mouseEnter and mouseLeave on React Button
+let reactedEmoji;
 async function addButtonReactListener() {
   let hoveredTime;
   try {
@@ -306,8 +307,12 @@ async function addButtonReactListener() {
     
       button.addEventListener("mouseenter", function () {
             reactToPostId = this.getAttribute('postId');
+            reactedEmoji = button.className.split(' ').pop();
             hoveredTime = setTimeout(function () {
-                $("#reactEmojiModal").modal("show");
+            $("#reactEmojiModal").modal("show");
+            
+            highlighReactedEmoji(reactedEmoji);
+                
             }, 500);
         });
 
@@ -457,7 +462,34 @@ function removeReaction(reactionToRemove) {
   }
 }
 
+function highlighReactedEmoji(reactedEmoji) {
+  let likeEmoji = document.getElementById('btnReactLike');
+  let dislikeEmoji = document.getElementById('btnReactDislike');
 
+
+  let likeEmojiImage = document.querySelector('#btnReactLike img');
+  let dislikeEmojiImage = document.querySelector('#btnReactDislike img');
+  // highlight the reacted emoji
+  if(reactedEmoji == "reacted-emoji-like") {
+   
+        likeEmoji.style.backgroundColor = "rgb(218, 235, 244)";
+        likeEmoji.style.height = "40px";
+        likeEmoji.style.width = "40px";
+ 
+        likeEmojiImage.style.height = "30px";
+        likeEmojiImage.style.width = "30px";
+        document.querySelector('#btnReactLike .react-text').style.display = "block";
+  }else if(reactedEmoji == "reacted-emoji-dislike") {
+    
+        dislikeEmoji.style.backgroundColor = "rgb(218, 235, 244)";
+        dislikeEmoji.style.height = "40px";
+        dislikeEmoji.style.width = "40px";
+
+        dislikeEmojiImage.style.height = "30px";
+        dislikeEmojiImage.style.width = "30px";
+        document.querySelector('#btnReactDislike .react-text').style.display = "block";
+  }
+}
 
 
 

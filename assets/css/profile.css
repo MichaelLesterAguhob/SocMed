@@ -291,6 +291,47 @@
     display: block;
 }
 
+/* Highlight the post with emoji if already reacted*/
+.reacted-emoji-like{
+    background-color: #c7e5f1;
+}
+.reacted-emoji-dislike{
+    background-color: #b0c8d4;
+}
+.reacted-emoji-haha{
+    background-color: #f1eac7;
+}
+.reacted-emoji-love{
+    background-color: #f0b8a6;
+}
+.reacted-emoji-inlove{
+    background-color: #fbd9b8;
+}
+.reacted-emoji-wow{
+    background-color: #f1eac7;
+}
+.reacted-emoji-angry{
+    background-color: #f9d8ca;
+}
+
+/* Do the same with pop up emoji modal */
+.btnReact:hover{
+    border: none;
+    background-color: rgb(218, 235, 244);
+    height: 40px;
+    width: 40px;
+}
+.btnReact:hover img{
+    height: 30px;
+    width: 30px;
+}
+.react-text{
+    display: none;
+}
+.btnReact:hover .react-text{
+    display: block;
+}
+
 
 /* Comment modal */
 .write-comment-modal-dialog{

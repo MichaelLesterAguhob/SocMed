@@ -70,7 +70,7 @@ try {
                     </div>
 
                      <div class="post-reactions-comment-share">
-                        <button postId="'.$postId.'" class="button-react btn-prcs" data-bs-toggle="modal" data-bs-target="#reactEmojiModal">
+                        <button postId="'.$postId.'" class="button-react btn-prcs reacted-emoji-'.$row2['reaction'].'" data-bs-toggle="modal" data-bs-target="#reactEmojiModal">
                             '.$reactionImage.'
                             React
                         </button>
