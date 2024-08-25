@@ -66,7 +66,7 @@ try {
                             Comment
                         </button>
                         <button postId="'.$postId.'" class="button-share btn-prcs">
-                            <img src="../assets/bootstrap/icon/bootstrap-icons-1.11.3/share.svg" alt="icon">
+                            <img src="../assets/bootstrap/icon/bootstrap-icons-1.11.3/share.svg" alt="icon"> 
                             Share
                         </button>
                     </div>

@@ -4,7 +4,7 @@ let imageSrc = "";
 let selectedImage = document.getElementById("profilePictureInput");
 let profilePicture = document.getElementById("profilePicture");
 let postIdToDelete = "";
-let reactToPostId = "";
+let reactToPostId;
 let file;
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -298,6 +298,12 @@ async function addButtonReactListener() {
     await loadPosts();
     let reactButton = document.querySelectorAll(".button-react");
     reactButton.forEach(function (button) {
+
+      // Get the postId and save it to global variable when react button of post is click
+      button.addEventListener("click", function () {
+        reactToPostId = this.getAttribute('postId');
+      });
+    
       button.addEventListener("mouseenter", function () {
             hoveredTime = setTimeout(function () {
                 $("#reactEmojiModal").modal("show");
@@ -306,11 +312,6 @@ async function addButtonReactListener() {
 
       button.addEventListener("mouseleave", function () {
             clearTimeout(hoveredTime);
-        });
-
-      // Get the postId and save it to global variable when react button of post is click
-      button.addEventListener("click", function () {
-            reactToPostId = this.getAttribute('postId');
         });
     });
   } catch (error) {
@@ -326,7 +327,7 @@ async function addButtonCommentListener() {
         let commentButton = document.querySelectorAll(".button-comment");
             commentButton.forEach(function (button) {
             button.addEventListener("click", function () {
-                reactToPostId = this.getAttribute('postId');
+                // reactToPostId = this.getAttribute('postId'); - not react to post id
                 $("#writeCommentModal").modal("show");
             });
         });
@@ -343,7 +344,7 @@ async function addButtonShareListener() {
         let shareButton = document.querySelectorAll(".button-share");
             shareButton.forEach(function (button) {
             button.addEventListener("click", function () {
-                reactToPostId = this.getAttribute('postId');
+                // reactToPostId = this.getAttribute('postId'); - not react post id
             });
         });
     } catch (error) {
@@ -388,12 +389,36 @@ document.getElementById('btnDeletePost').addEventListener('click', function() {
 });
 
 // Reaction to a post
-// Close the react modal when emoji is selected
-document.querySelectorAll(".btnReact").forEach(function (button) {
-  button.addEventListener("click", function () {
-        // let btnReactId = this.getAttribute('id');
-        // alert(btnReactId);
-        // $("#reactEmojiModal").modal("hide");
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll(".btnReact").forEach(function (button) {
+    button.addEventListener("click", function () {
+            let emojiReaction = this.getAttribute('emojiReaction');
+            let postIdToReact = reactToPostId;
+            let response;
+            let xhr = new XMLHttpRequest();
+            xhr.open('POST', '../../backend/reactToPost.php');
+            xhr.setRequestHeader('Content-Type', 'Application/x-www-form-urlencoded');
+            xhr.onreadystatechange = function() {
+              if(xhr.readyState === XMLHttpRequest.DONE) {
+                if(xhr.status == 200) {
+                  try {
+                    response = JSON.parse(xhr.responseText);
+                  }catch(error) {
+                    console.log(error + "\n" + xhr.responseText);
+                    return;
+                  }
+
+                  if(response.status == "success") {
+                    $("#reactEmojiModal").modal("hide");
+                    popupMessageModal("Reacted", "green", response.msg, "green");
+                  }else {
+                    console.log(response.msg);
+                  }
+                }
+              }
+            }    
+            xhr.send('reactToPostId=' + encodeURIComponent(postIdToReact) + '&emojiReaction=' + encodeURIComponent(emojiReaction));
+    });
   });
 });
 
