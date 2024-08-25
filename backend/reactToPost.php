@@ -28,39 +28,43 @@ try {
         $stmt3->bind_param('sss', $userID, $reactToPostId, $emojiReaction);
 
         if($stmt2 === false || $stmt3 === false) {
-            echo json_encode(['status'=>'failed' ,'msg'=>'stmt3 preparation failed']);
-            return;
+            die( json_encode(['status'=>'failed' ,'msg'=>'stmt3 preparation failed']));
         }
         if($stmt2->execute() && $stmt3->execute()) {
             echo json_encode(['status'=>'success' ,'msg'=>'Reacted Successfully']);
         }else {
             echo json_encode(['status'=>'failed' ,'msg'=>'Problem Occurred']);
         }
+
+        $stmt2->close();
+        $stmt3->close();
+        $con->close();
     }else {
         // if already reacted to post. update query will be executed
-        echo json_encode(['status'=>'success' ,'msg'=>'Already reacted']);
+        $query3 = "UPDATE `user_reacted_to_post` SET reaction = ? WHERE user_id = ? AND post_id = ?";
+        $stmt4 = $con->prepare($query3);
+        $stmt4->bind_param('sss', $emojiReaction, $userID, $reactToPostId);
+
+        $query4 = "UPDATE `user_posts_reactions` SET reactions = ? WHERE post_id = ?";
+        $stmt5 = $con->prepare($query4);
+        $stmt5->bind_param('ss', $emojiReaction, $reactToPostId);
+
+        if($stmt4 === false || $stmt5 === false) {
+            die( json_encode(['status'=>'failed' ,'msg'=>'stmt3 preparation failed']));
+        }
+
+        if($stmt4->execute() && $stmt5->execute()) {
+            echo json_encode(['status'=>'success' ,'msg'=>'Reaction Updated']);
+        }
+
+        $stmt4->close();
+        $stmt5->close();
+        $con->close();
     }
-
-
-
-  
-
- 
-
-    // check the statements if successfull
-
-    // excutes all statements
-
-    // closing statements and connection
 }catch(Exception $ex) {
     die( json_encode(['status'=>'error', 'msg'=>$ex]));
 }
 
-
-
-
-// echo json_encode(['status'=>'success', 'msg'=>$reactToPostId]);
-// echo json_encode(['status'=>'success' ,'msg'=>'No Data']);
 ?>
 
 

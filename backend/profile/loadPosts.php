@@ -19,13 +19,26 @@ try {
         $postedTime = $row['posted_time'];
         // $postTime = $row['posted_time'];
 
-        $query2 = "SELECT * FROM `user_posts_content` WHERE `post_id` = ?";
+        $query2 = "SELECT user_posts.*, user_posts_content.captions , user_reacted_to_post.reaction 
+                    FROM `user_posts` 
+                    LEFT JOIN user_posts_content
+                        ON user_posts_content.post_id = user_posts.post_id 
+                    LEFT JOIN user_reacted_to_post 
+                        ON user_reacted_to_post.post_id = user_posts.post_id 
+                        AND user_reacted_to_post.user_id = user_posts.user_id 
+                    WHERE user_posts.post_id = ?";
         $stmt2 = $con->prepare($query2);
         $stmt2->bind_param("s", $postId);
         $stmt2->execute();
 
         $result2 = $stmt2->get_result();
         while ($row2 = $result2->fetch_assoc()) {
+            $reactionImage;
+            if($row2['reaction'] != null) {
+                $reactionImage = ' <img src="../assets/image/'.$row2['reaction'].'.png" alt="icon">  ';
+            } else {
+                $reactionImage = ' <img src="../assets/bootstrap/icon/bootstrap-icons-1.11.3/emoji-neutral.svg" alt="icon">  ';
+            }
             $htmlFormatPost .= '
                 <!-- posts container -->
                 <div class="post mt-3">
@@ -58,7 +71,7 @@ try {
 
                      <div class="post-reactions-comment-share">
                         <button postId="'.$postId.'" class="button-react btn-prcs" data-bs-toggle="modal" data-bs-target="#reactEmojiModal">
-                            <img src="../assets/bootstrap/icon/bootstrap-icons-1.11.3/emoji-neutral.svg" alt="icon">    
+                            '.$reactionImage.'
                             React
                         </button>
                         <button postId="'.$postId.'" class="button-comment btn-prcs">

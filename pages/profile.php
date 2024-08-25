@@ -116,31 +116,31 @@
                     </div>
                     
                     <div class="modal-body reactEmojiModalBody">
-                        <button type="button" emojiReaction="Like" id="btnReactLike" class="btnReact">
+                        <button type="button" emojiReaction="like" id="btnReactLike" class="btnReact">
                             <img src="../assets/image/like.png" alt="emoji">
                             <span class="react-text text-muted react-text-like">Like</span>    
                         </button>
-                        <button type="button" emojiReaction="Dislike" id="btnReactDislike" class="btnReact">
+                        <button type="button" emojiReaction="dislike" id="btnReactDislike" class="btnReact">
                             <img src="../assets/image/dislike.png" alt="emoji">
                             <span class="react-text text-muted react-text-boo">Dislike</span>    
                         </button>
-                        <button type="button" emojiReaction="Haha" id="btnReactHaha" class="btnReact">
+                        <button type="button" emojiReaction="haha" id="btnReactHaha" class="btnReact">
                             <img src="../assets/image/haha.png" alt="emoji">
                             <span class="react-text text-muted react-text-haha">Haha</span>    
                         </button>
-                        <button type="button" emojiReaction="Love" id="btnReactLove" class="btnReact">
+                        <button type="button" emojiReaction="love" id="btnReactLove" class="btnReact">
                             <img src="../assets/image/love.png" alt="emoji">
                             <span class="react-text text-muted react-text-love">Love</span>    
                         </button>
-                        <button type="button" emojiReaction="Inlove" id="btnReactInlove" class="btnReact">
-                            <img src="../assets/image/eyesHeart.png" alt="emoji">
+                        <button type="button" emojiReaction="inlove" id="btnReactInlove" class="btnReact">
+                            <img src="../assets/image/inlove.png" alt="emoji">
                             <span class="react-text text-muted react-text-love">InLove</span>    
                         </button>
-                        <button type="button" emojiReaction="Wow" id="btnReactWow" class="btnReact">
+                        <button type="button" emojiReaction="wow" id="btnReactWow" class="btnReact">
                             <img src="../assets/image/wow.png" alt="emoji">
                             <span class="react-text text-muted react-text-wow">Wow</span>    
                         </button>
-                        <button type="button" emojiReaction="Angry" id="btnReactAngry" class="btnReact">
+                        <button type="button" emojiReaction="angry" id="btnReactAngry" class="btnReact">
                             <img src="../assets/image/angry.png" alt="emoji">
                             <span class="react-text text-muted react-text-angry">Angry</span>    
                         </button>

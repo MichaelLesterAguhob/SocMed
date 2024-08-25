@@ -410,7 +410,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
                   if(response.status == "success") {
                     $("#reactEmojiModal").modal("hide");
-                    popupMessageModal("Reacted", "green", response.msg, "green");
+                    loadPosts();
+                    addListenerToDynamicElements();
                   }else {
                     console.log(response.msg);
                   }
