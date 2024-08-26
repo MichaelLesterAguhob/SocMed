@@ -303,6 +303,9 @@ async function addButtonReactListener() {
       // Get the postId and save it to global variable when react button of post is click
       button.addEventListener("click", function () {
         reactToPostId = this.getAttribute('postId');
+        reactedEmoji = button.className.split(' ').pop();
+        highlighReactedEmoji(reactedEmoji);
+        // unhighlightReactedButtons();
       });
     
       button.addEventListener("mouseenter", function () {
@@ -310,9 +313,7 @@ async function addButtonReactListener() {
             reactedEmoji = button.className.split(' ').pop();
             hoveredTime = setTimeout(function () {
             $("#reactEmojiModal").modal("show");
-            
-            highlighReactedEmoji(reactedEmoji);
-                
+            highlighReactedEmoji(reactedEmoji);   
             }, 500);
         });
 
@@ -462,37 +463,90 @@ function removeReaction(reactionToRemove) {
   }
 }
 
+// highlight the pop react button if selected
 function highlighReactedEmoji(reactedEmoji) {
-  let likeEmoji = document.getElementById('btnReactLike');
-  let dislikeEmoji = document.getElementById('btnReactDislike');
+    let likeEmoji = document.getElementById('btnReactLike');
+    let dislikeEmoji = document.getElementById('btnReactDislike');
+    let hahaEmoji = document.getElementById('btnReactHaha');
+    let loveEmoji = document.getElementById('btnReactLove');
+    let inloveEmoji = document.getElementById('btnReactInlove');
+    let wowEmoji = document.getElementById('btnReactWow');
+    let angryEmoji = document.getElementById('btnReactAngry');
 
+    let likeEmojiImage = document.querySelector('#btnReactLike img');
+    let dislikeEmojiImage = document.querySelector('#btnReactDislike img');
+    let hahaEmojiImage = document.querySelector('#btnReactHaha img');
+    let loveEmojiImage = document.querySelector('#btnReactLove img');
+    let inloveEmojiImage = document.querySelector('#btnReactInlove img');
+    let wowEmojiImage = document.querySelector('#btnReactWow img');
+    let angryEmojiImage = document.querySelector('#btnReactAngry img');
+  
+    // highlight the reacted emoji
+    if(reactedEmoji == "reacted-emoji-like") {
+      likeEmoji.style.backgroundColor = "rgb(218, 235, 244)";
+      likeEmoji.style.height = "40px";
+      likeEmoji.style.width = "40px";
 
-  let likeEmojiImage = document.querySelector('#btnReactLike img');
-  let dislikeEmojiImage = document.querySelector('#btnReactDislike img');
-  // highlight the reacted emoji
-  if(reactedEmoji == "reacted-emoji-like") {
-   
-        likeEmoji.style.backgroundColor = "rgb(218, 235, 244)";
-        likeEmoji.style.height = "40px";
-        likeEmoji.style.width = "40px";
- 
-        likeEmojiImage.style.height = "30px";
-        likeEmojiImage.style.width = "30px";
-        document.querySelector('#btnReactLike .react-text').style.display = "block";
-  }else if(reactedEmoji == "reacted-emoji-dislike") {
-    
-        dislikeEmoji.style.backgroundColor = "rgb(218, 235, 244)";
-        dislikeEmoji.style.height = "40px";
-        dislikeEmoji.style.width = "40px";
+      likeEmojiImage.style.height = "30px";
+      likeEmojiImage.style.width = "30px";
+      document.querySelector('#btnReactLike .react-text').style.display = "block";
+    }else if(reactedEmoji == "reacted-emoji-dislike") {
+      dislikeEmoji.style.backgroundColor = "rgb(218, 235, 244)";
+      dislikeEmoji.style.height = "40px";
+      dislikeEmoji.style.width = "40px";
 
-        dislikeEmojiImage.style.height = "30px";
-        dislikeEmojiImage.style.width = "30px";
-        document.querySelector('#btnReactDislike .react-text').style.display = "block";
+      dislikeEmojiImage.style.height = "30px";
+      dislikeEmojiImage.style.width = "30px";
+      document.querySelector('#btnReactDislike .react-text').style.display = "block";
+    }else if(reactedEmoji == "reacted-emoji-haha") {
+      hahaEmoji.style.backgroundColor = "rgb(218, 235, 244)";
+      hahaEmoji.style.height = "40px";
+      hahaEmoji.style.width = "40px";
+
+      hahaEmojiImage.style.height = "30px";
+      hahaEmojiImage.style.width = "30px";
+      document.querySelector('#btnReactHaha .react-text').style.display = "block";
+  }else if(reactedEmoji == "reacted-emoji-love") {
+      loveEmoji.style.backgroundColor = "rgb(218, 235, 244)";
+      loveEmoji.style.height = "40px";
+      loveEmoji.style.width = "40px";
+
+      loveEmojiImage.style.height = "30px";
+      loveEmojiImage.style.width = "30px";
+      document.querySelector('#btnReactLove .react-text').style.display = "block";
+  }else if(reactedEmoji == "reacted-emoji-inlove") {
+      inloveEmoji.style.backgroundColor = "rgb(218, 235, 244)";
+      inloveEmoji.style.height = "40px";
+      inloveEmoji.style.width = "40px";
+
+      inloveEmojiImage.style.height = "30px";
+      inloveEmojiImage.style.width = "30px";
+      document.querySelector('#btnReactInlove .react-text').style.display = "block";
+  }else if(reactedEmoji == "reacted-emoji-wow") {
+    wowEmoji.style.backgroundColor = "rgb(218, 235, 244)";
+    wowEmoji.style.height = "40px";
+    wowEmoji.style.width = "40px";
+
+    wowEmojiImage.style.height = "30px";
+    wowEmojiImage.style.width = "30px";
+    document.querySelector('#btnReactWow .react-text').style.display = "block";
+  }else if(reactedEmoji == "reacted-emoji-angry") {
+    angryEmoji.style.backgroundColor = "rgb(218, 235, 244)";
+    angryEmoji.style.height = "40px";
+    angryEmoji.style.width = "40px";
+
+    angryEmojiImage.style.height = "30px";
+    angryEmojiImage.style.width = "30px";
+    document.querySelector('#btnReactAngry .react-text').style.display = "block";
   }
 }
 
-
-
+// Unhighlight the reacted button in pop reaction window
+function unhighlightReactedButtons() {
+  document.querySelectorAll('.reactEmojiModalBody .btnReact img').forEach(function(reactButtonImg) {
+  // Undo all css made by JS
+  });
+}
 
 
 
