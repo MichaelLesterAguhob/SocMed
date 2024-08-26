@@ -274,22 +274,23 @@
     border: none;
     outline: none;
 }
-.btnReact:hover{
+.react-text{
+    display: none;
+}
+/* .btnReact:hover{
     border: none;
     background-color: rgb(218, 235, 244);
     height: 40px;
     width: 40px;
-}
-.btnReact:hover img{
+} */
+/* .btnReact:hover img{
     height: 30px;
     width: 30px;
-}
-.react-text{
-    display: none;
-}
-.btnReact:hover .react-text{
+} */
+
+/* .btnReact:hover .react-text{
     display: block;
-}
+} */
 
 /* Highlight the post with emoji if already reacted*/
 .reacted-emoji-like{
@@ -312,24 +313,6 @@
 }
 .reacted-emoji-angry{
     background-color: #f9d8ca;
-}
-
-/* Do the same with pop up emoji modal */
-.btnReact:hover{
-    border: none;
-    background-color: rgb(218, 235, 244);
-    height: 40px;
-    width: 40px;
-}
-.btnReact:hover img{
-    height: 30px;
-    width: 30px;
-}
-.react-text{
-    display: none;
-}
-.btnReact:hover .react-text{
-    display: block;
 }
 
 

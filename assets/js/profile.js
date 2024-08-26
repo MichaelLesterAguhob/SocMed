@@ -304,8 +304,8 @@ async function addButtonReactListener() {
       button.addEventListener("click", function () {
         reactToPostId = this.getAttribute('postId');
         reactedEmoji = button.className.split(' ').pop();
+        unhighlightReactedButtons();
         highlighReactedEmoji(reactedEmoji);
-        // unhighlightReactedButtons();
       });
     
       button.addEventListener("mouseenter", function () {
@@ -313,6 +313,7 @@ async function addButtonReactListener() {
             reactedEmoji = button.className.split(' ').pop();
             hoveredTime = setTimeout(function () {
             $("#reactEmojiModal").modal("show");
+            unhighlightReactedButtons();
             highlighReactedEmoji(reactedEmoji);   
             }, 500);
         });
@@ -483,6 +484,7 @@ function highlighReactedEmoji(reactedEmoji) {
   
     // highlight the reacted emoji
     if(reactedEmoji == "reacted-emoji-like") {
+      likeEmoji.setAttribute("isSelected", "true");
       likeEmoji.style.backgroundColor = "rgb(218, 235, 244)";
       likeEmoji.style.height = "40px";
       likeEmoji.style.width = "40px";
@@ -491,6 +493,7 @@ function highlighReactedEmoji(reactedEmoji) {
       likeEmojiImage.style.width = "30px";
       document.querySelector('#btnReactLike .react-text').style.display = "block";
     }else if(reactedEmoji == "reacted-emoji-dislike") {
+      dislikeEmoji.setAttribute("isSelected", "true");
       dislikeEmoji.style.backgroundColor = "rgb(218, 235, 244)";
       dislikeEmoji.style.height = "40px";
       dislikeEmoji.style.width = "40px";
@@ -499,6 +502,7 @@ function highlighReactedEmoji(reactedEmoji) {
       dislikeEmojiImage.style.width = "30px";
       document.querySelector('#btnReactDislike .react-text').style.display = "block";
     }else if(reactedEmoji == "reacted-emoji-haha") {
+      hahaEmoji.setAttribute("isSelected", "true");
       hahaEmoji.style.backgroundColor = "rgb(218, 235, 244)";
       hahaEmoji.style.height = "40px";
       hahaEmoji.style.width = "40px";
@@ -507,6 +511,7 @@ function highlighReactedEmoji(reactedEmoji) {
       hahaEmojiImage.style.width = "30px";
       document.querySelector('#btnReactHaha .react-text').style.display = "block";
   }else if(reactedEmoji == "reacted-emoji-love") {
+      loveEmoji.setAttribute("isSelected", "true");
       loveEmoji.style.backgroundColor = "rgb(218, 235, 244)";
       loveEmoji.style.height = "40px";
       loveEmoji.style.width = "40px";
@@ -515,6 +520,7 @@ function highlighReactedEmoji(reactedEmoji) {
       loveEmojiImage.style.width = "30px";
       document.querySelector('#btnReactLove .react-text').style.display = "block";
   }else if(reactedEmoji == "reacted-emoji-inlove") {
+      inloveEmoji.setAttribute("isSelected", "true");
       inloveEmoji.style.backgroundColor = "rgb(218, 235, 244)";
       inloveEmoji.style.height = "40px";
       inloveEmoji.style.width = "40px";
@@ -523,6 +529,7 @@ function highlighReactedEmoji(reactedEmoji) {
       inloveEmojiImage.style.width = "30px";
       document.querySelector('#btnReactInlove .react-text').style.display = "block";
   }else if(reactedEmoji == "reacted-emoji-wow") {
+    wowEmoji.setAttribute("isSelected", "true");
     wowEmoji.style.backgroundColor = "rgb(218, 235, 244)";
     wowEmoji.style.height = "40px";
     wowEmoji.style.width = "40px";
@@ -531,6 +538,7 @@ function highlighReactedEmoji(reactedEmoji) {
     wowEmojiImage.style.width = "30px";
     document.querySelector('#btnReactWow .react-text').style.display = "block";
   }else if(reactedEmoji == "reacted-emoji-angry") {
+    angryEmoji.setAttribute("isSelected", "true");
     angryEmoji.style.backgroundColor = "rgb(218, 235, 244)";
     angryEmoji.style.height = "40px";
     angryEmoji.style.width = "40px";
@@ -543,9 +551,62 @@ function highlighReactedEmoji(reactedEmoji) {
 
 // Unhighlight the reacted button in pop reaction window
 function unhighlightReactedButtons() {
-  document.querySelectorAll('.reactEmojiModalBody .btnReact img').forEach(function(reactButtonImg) {
-  // Undo all css made by JS
+  document.querySelectorAll('.reactEmojiModalBody .btnReact').forEach(function(reactButton) {
+    reactButton.style.border = "none";
+    reactButton.style.backgroundColor = "transparent";
+    reactButton.style.borderRadius = "50%";
+    reactButton.style.height = "unset";
+    reactButton.style.width = "unset";
   });
+  document.querySelectorAll('.reactEmojiModalBody .btnReact img').forEach(function(reactButtonImg) {
+    reactButtonImg.style.height = "30px";
+    reactButtonImg.style.width = "30px";
+  });
+  document.querySelectorAll('.reactEmojiModalBody .btnReact .react-text').forEach(function(reactButtonSpan) {
+    reactButtonSpan.style.display = "none";
+  });
+}
+
+// highlight or unhigkight emojis when hovered and unhovered
+emojisWhenHovered();
+function emojisWhenHovered() {
+  document.querySelectorAll('.btnReact').forEach(btnReact => {
+    btnReact.addEventListener('mouseenter', function() {
+      let btnID = this.getAttribute('id');
+
+      btnReact.style.backgroundColor = "rgb(218, 235, 244)";
+      btnReact.style.borderRadius = "50%";
+      btnReact.style.width = "40px";
+      btnReact.style.height = "40px";
+
+      let img = document.querySelector('#'+btnID+ ' img');
+      img.style.width = "30px";
+      img.style.height = "30px";
+
+      let textSpan = document.querySelector('#'+btnID+ ' span');
+      textSpan.style.display = "block";
+    });
+
+    // when mouse leave the react button
+    btnReact.addEventListener('mouseleave', function() {
+      let btnID = this.getAttribute('id');
+      let isSelected = this.getAttribute('isSelected');
+      if(!isSelected) {
+        btnReact.style.backgroundColor = "transparent";
+        btnReact.style.borderRadius = "50%";
+        btnReact.style.width = "unset";
+        btnReact.style.height = "unset";
+  
+        let img = document.querySelector('#'+btnID+ ' img');
+        img.style.width = "unset";
+        img.style.height = "unset";
+  
+        let textSpan = document.querySelector('#'+btnID+ ' span');
+        textSpan.style.display = "none";
+      }
+    });
+  });
+  
 }
 
 
