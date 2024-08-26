@@ -165,7 +165,7 @@
                         </div>
                     </div>
                     <div class="modal-footer write-comment-modal-footer">
-                        <button type="button" class="btn btn-success writeCommentBtn">Submit</button>
+                        <button type="button" class="btn btn-success writeCommentBtn" onclick="commentToPost()">Submit</button>
                         <button type="button" class="btn btn-warning writeCommentBtn" data-bs-dismiss="modal" data-bs-target="#writeCommentModal">Cancel</button>
                     </div>
                 </div>

@@ -5,6 +5,7 @@ let selectedImage = document.getElementById("profilePictureInput");
 let profilePicture = document.getElementById("profilePicture");
 let postIdToDelete = "";
 let reactToPostId;
+let commentToPostId;
 let file;
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -323,7 +324,7 @@ async function addButtonReactListener() {
         });
     });
   } catch (error) {
-        console.error("Error loading posts:", error);
+        console.error("Error adding listener to react button:", error);
         return;
   }
 }
@@ -335,12 +336,12 @@ async function addButtonCommentListener() {
         let commentButton = document.querySelectorAll(".button-comment");
             commentButton.forEach(function (button) {
             button.addEventListener("click", function () {
-                // reactToPostId = this.getAttribute('postId'); - not react to post id
+                commentToPostId = this.getAttribute('postId');
                 $("#writeCommentModal").modal("show");
             });
         });
     } catch (error) {
-        console.error("Error loading posts:", error);
+        console.error("Error adding listener to comment button:", error);
         return;
     }
 }
@@ -609,7 +610,20 @@ function emojisWhenHovered() {
   
 }
 
-
+// Add and save comment to a post
+function commentToPost() {
+  let xhr = new XMLHttpRequest();
+  xhr.open('POST', '../../backend/commentToPost.php');
+  xhr.setRequestHeader('Content-Type', 'Application/x-www-form-urlencoded');
+  xhr.onreadystatechange = function() {
+    if(xhr.readyState == XMLHttpRequest.DONE) {
+      if(xhr.status == 200) {
+        alert(xhr.responseText);
+      }
+    }
+  }
+  xhr.send('commentToPostId=' + encodeURIComponent(commentToPostId));
+}
 
 
 // MODALS and TOAST =========================================
@@ -625,7 +639,7 @@ function popupMessageModal(title, titleColor, popupMessage, textColor) {
     $('#popupMessgaeModal').modal('show');
     setTimeout(function() {
         $('#popupMessgaeModal').modal('hide');
-    },2000);
+    },1500);
 }
 
 // confirmation modal
