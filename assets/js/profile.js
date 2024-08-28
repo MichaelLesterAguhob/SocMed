@@ -612,6 +612,7 @@ function emojisWhenHovered() {
 
 // Add and save comment to a post
 function commentToPost() {
+  let comment = document.getElementById('inputComment').value;
   let xhr = new XMLHttpRequest();
   xhr.open('POST', '../../backend/commentToPost.php');
   xhr.setRequestHeader('Content-Type', 'Application/x-www-form-urlencoded');
@@ -622,7 +623,7 @@ function commentToPost() {
       }
     }
   }
-  xhr.send('commentToPostId=' + encodeURIComponent(commentToPostId));
+  xhr.send('commentToPostId=' + encodeURIComponent(commentToPostId) + '&comment=' + encodeURIComponent(comment) + '&time=' + encodeURIComponent(getTime()) + '&date=' + encodeURIComponent(getDate()));
 }
 
 
