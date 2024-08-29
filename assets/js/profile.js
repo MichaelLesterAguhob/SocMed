@@ -612,18 +612,30 @@ function emojisWhenHovered() {
 
 // Add and save comment to a post
 function commentToPost() {
-  let comment = document.getElementById('inputComment').value;
+  let comment = document.getElementById('inputComment');
   let xhr = new XMLHttpRequest();
   xhr.open('POST', '../../backend/commentToPost.php');
   xhr.setRequestHeader('Content-Type', 'Application/x-www-form-urlencoded');
   xhr.onreadystatechange = function() {
     if(xhr.readyState == XMLHttpRequest.DONE) {
+      let response;
       if(xhr.status == 200) {
-        alert(xhr.responseText);
+        try {
+          response = JSON.parse(xhr.responseText);
+        }catch(error) {
+          console.log(xhr.responseText);
+          return;
+        }
+
+        if(response.status != "success") {
+          console.log(response.msg);
+        }
+        comment.value = "";
+        // loadPostComment();
       }
     }
   }
-  xhr.send('commentToPostId=' + encodeURIComponent(commentToPostId) + '&comment=' + encodeURIComponent(comment) + '&time=' + encodeURIComponent(getTime()) + '&date=' + encodeURIComponent(getDate()));
+  xhr.send('commentToPostId=' + encodeURIComponent(commentToPostId) + '&comment=' + encodeURIComponent(comment.value) + '&time=' + encodeURIComponent(getTime()) + '&date=' + encodeURIComponent(getDate()));
 }
 
 
