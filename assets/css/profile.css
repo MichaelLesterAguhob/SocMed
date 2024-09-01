@@ -318,25 +318,44 @@
 
 /* Comment modal */
 .write-comment-modal-dialog{
-    position: fixed;
     margin: auto;
-    margin-top: 30vh;
+    margin-top: 5vh;
     width: 95%; 
-    left: 0;
-    right: 0;
 }
-#inputComment{
+.write-comment-body{
+    overflow: auto;
+    height: 65vh;
+}
+.user-comments-container{
+    padding: 4px;
+    border-radius: 10px;
+}
+.user-comments-name-date{
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.user-comments-name-date h5{
     margin: auto;
-    width: 100%;
-    height: 250px;
-    max-height: 400px;
+    margin-right: 20px;
+}
+.user-comments-name-date small{
+    font-size: x-small;
 }
 .write-comment-modal-footer{
-    display: flex;
-    justify-content:center;
+    padding: 0;
+    display: inline-flex;
+    justify-content: flex-start;
+}
+#inputComment{
+    /* margin: auto; */
+    width: 73%;
+    min-height: 70px;
+    max-height: 100px;
 }
 .writeCommentBtn{
-    width: 100px;
+    width: 20%;
 }
 
 

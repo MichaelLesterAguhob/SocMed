@@ -329,7 +329,7 @@ async function addButtonReactListener() {
   }
 }
 
-// Adding event listener mouseEnter and mouseLeave on Comment Button
+// Adding event listener click on Comment Button
 async function addButtonCommentListener() {
   try {
         await loadPosts();
@@ -346,7 +346,7 @@ async function addButtonCommentListener() {
     }
 }
 
-// Adding event listener mouseEnter and mouseLeave on Comment Button
+// Adding event listener click on share Button
 async function addButtonShareListener() {
   try {
         await loadPosts();
@@ -636,6 +636,11 @@ function commentToPost() {
     }
   }
   xhr.send('commentToPostId=' + encodeURIComponent(commentToPostId) + '&comment=' + encodeURIComponent(comment.value) + '&time=' + encodeURIComponent(getTime()) + '&date=' + encodeURIComponent(getDate()));
+}
+
+// Load all comments to a specific post
+function loadPostComment() {
+  
 }
 
 
