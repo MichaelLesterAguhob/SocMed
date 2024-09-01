@@ -12,7 +12,7 @@ try {
 
     $query = "INSERT INTO `user_posts_comments` (`comment_id`, `post_id`, `user_id`, `comments`, `date_commented`, `time_commented`) VALUES (?,?,?,?,?,?)";
     $stmt = $con->prepare($query);
-    $stmt->bind_param('ssssss', $commentID, $userID, $commentToPostid, $comment, $date, $time);
+    $stmt->bind_param('ssssss', $commentID, $commentToPostid, $userID, $comment, $time, $date);
     if($stmt === false) {
         die(json_encode(['status'=>'failed', 'msg'=>'Statement preparation failed.']));
     }

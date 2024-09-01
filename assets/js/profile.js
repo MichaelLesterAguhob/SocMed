@@ -337,7 +337,11 @@ async function addButtonCommentListener() {
             commentButton.forEach(function (button) {
             button.addEventListener("click", function () {
                 commentToPostId = this.getAttribute('postId');
+                document.getElementById('userComments').innerHTML = "....";
                 $("#writeCommentModal").modal("show");
+                setTimeout(function() {
+                  loadPostComment();
+                }, 1000);
             });
         });
     } catch (error) {
@@ -631,7 +635,7 @@ function commentToPost() {
           console.log(response.msg);
         }
         comment.value = "";
-        // loadPostComment();
+        loadPostComment();
       }
     }
   }
@@ -640,7 +644,17 @@ function commentToPost() {
 
 // Load all comments to a specific post
 function loadPostComment() {
-  
+  let xhr = new XMLHttpRequest();
+  xhr.open('POST', '../../backend/loadPostComment.php');
+  xhr.setRequestHeader('Content-Type', 'Application/x-www-form-urlencoded');
+  xhr.onreadystatechange = function() {
+    if(xhr.readyState == XMLHttpRequest.DONE) {
+      if(xhr.status == 200) {
+        document.getElementById('userComments').innerHTML = xhr.responseText;
+      }
+    }
+  }
+  xhr.send('postID=' + encodeURIComponent(commentToPostId));
 }
 
 

@@ -327,6 +327,7 @@
     height: 65vh;
 }
 .user-comments-container{
+    overflow: auto;
     padding: 4px;
     border-radius: 10px;
 }
@@ -336,12 +337,16 @@
     align-items: center;
     margin-bottom: 10px;
 }
-.user-comments-name-date h5{
+.user-comments-name-date h6{
     margin: auto;
     margin-right: 20px;
 }
 .user-comments-name-date small{
     font-size: x-small;
+}
+.user-comments-container p{
+    font-size: smaller;
+    word-wrap: break-word;
 }
 .write-comment-modal-footer{
     padding: 0;

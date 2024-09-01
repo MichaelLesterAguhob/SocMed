@@ -158,14 +158,8 @@
                         <h5 class="modal-title">Write a comment</h5>
                         <button type="button" class="btn-close" aria-label="Close" data-bs-dismiss="modal" data-bs-target="#writeCommentModal"></button>
                     </div>
-                    <div class="modal-body write-comment-body">
-                        <div class="user-comments-container border">
-                            <div class="user-comments-name-date">
-                                <h5>Michael lester c. aguhob</h5>
-                                <small>10/20/24 10:45 am</small>
-                            </div>
-                            <p>HI Blog welcome to my guys</p>
-                        </div> 
+                    <div id="userComments" class="modal-body write-comment-body">
+                        
                     </div>
                     <div class="modal-footer write-comment-modal-footer">
                         <!-- comment area -->
