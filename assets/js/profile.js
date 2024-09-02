@@ -357,7 +357,7 @@ async function addButtonShareListener() {
         let shareButton = document.querySelectorAll(".button-share");
             shareButton.forEach(function (button) {
             button.addEventListener("click", function () {
-                // reactToPostId = this.getAttribute('postId'); - not react post id
+                
             });
         });
     } catch (error) {
@@ -457,9 +457,20 @@ function removeReaction(reactionToRemove) {
       xhr.onreadystatechange = function() {
         if(xhr.readyState == XMLHttpRequest.DONE) {
           if(xhr.status == 200) {
-             $("#reactEmojiModal").modal("hide");
-             loadPosts();
-             addListenerToDynamicElements();
+            let response;
+            try {
+              response = JSON.parse(xhr.responseText);
+            }catch(error) {
+              console.log(error + "\n" + xhr.responseText);
+              return;
+            }
+
+            if(response.status == 'success') {
+              $("#reactEmojiModal").modal("hide");
+              loadPosts();
+              addListenerToDynamicElements();
+            }
+        
           }
         }
       }
@@ -617,6 +628,11 @@ function emojisWhenHovered() {
 // Add and save comment to a post
 function commentToPost() {
   let comment = document.getElementById('inputComment');
+
+  if(comment.value == "") {
+    return;
+  }
+
   let xhr = new XMLHttpRequest();
   xhr.open('POST', '../../backend/commentToPost.php');
   xhr.setRequestHeader('Content-Type', 'Application/x-www-form-urlencoded');
