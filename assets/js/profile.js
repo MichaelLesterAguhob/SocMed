@@ -175,7 +175,11 @@ document.getElementById("btnPost").addEventListener("click", function () {
 });
 
 function uploadPost() {
-  let postCaptions = document.getElementById("postCaptions").value;
+  let postCaptions = document.getElementById("postCaptions");
+  
+  if(postCaptions.value == "") {
+    return;
+  }
 
   let xhr = new XMLHttpRequest();
   xhr.open("POST", "../../backend/createPost.php");
@@ -207,7 +211,7 @@ function uploadPost() {
   xhr.send(
         "date=" + encodeURIComponent(getDate()) +
         "&time=" + encodeURIComponent(getTime()) +
-        "&postCaptions=" + encodeURIComponent(postCaptions)
+        "&postCaptions=" + encodeURIComponent(postCaptions.value)
     );
 }
 

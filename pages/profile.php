@@ -47,24 +47,24 @@
                 <h2 id="userName" class="pt-4 pb-4">Your Name here</h2>
 
                 <!-- USER BIO -->
-                <div id="bioCont">
+                <!-- <div id="bioCont">
                     <h6 class="text-primary cont">Bio</h6>
                     <p id="bioContent" class="text-muted">I am Web Developer</p>
-                </div>
+                </div> -->
 
                 <!-- USER SOCIALS/CONTACT -->
-                <div id="socialCont">
+                <!-- <div id="socialCont">
                     <h6 class="text-primary cont">Social</h6>
                     <p id="socialContent" class="text-muted">My facebook</p>
                 </div>
                 <div id="contactCont">
                     <h6 class="text-primary cont">Contact</h6>
                     <p id="contactContent" class="text-muted">My Email</p>
-                </div>
+                </div> -->
 
                 <!-- PROFILE EDIT PROFILE AND CREATE POST CONTAINER -->
                 <div id="btnCont">
-                    <button id="btnEditProfile" type="button"  class="btn btn-warning btn-sm">Edit Profile</button>
+                    <!-- <button id="btnEditProfile" type="button"  class="btn btn-warning btn-sm">Edit Profile</button> -->
                     <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#createPostModal">Create Post</button>
                 </div>
             </div>
@@ -104,7 +104,6 @@
                 </div>
             </div>
         </div>
-
 
         <!-- Emoji Reaction Modal -->
          <div id="reactEmojiModal" class="modal fade">
@@ -155,7 +154,7 @@
             <div class="modal-dialog write-comment-modal-dialog">
                 <div class="modal-content write-comment-modal-content">
                     <div class="modal-header write-comment-modal-header">
-                        <h5 class="modal-title">Write a comment</h5>
+                        <h5 class="modal-title">Comments</h5>
                         <button type="button" class="btn-close" aria-label="Close" data-bs-dismiss="modal" data-bs-target="#writeCommentModal"></button>
                     </div>
                     <div id="userComments" class="modal-body write-comment-body">

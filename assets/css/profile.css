@@ -135,6 +135,7 @@
     height: 100%;
     border-left: 1px solid lightgray;
     overflow: auto;
+    padding-bottom: 50px;
 }
 
 /* the container of post */
@@ -325,6 +326,9 @@
 .write-comment-body{
     overflow: auto;
     height: 65vh;
+}
+.own-comment{
+    background-color: rgb(224, 239, 222);
 }
 .user-comments-container{
     overflow: auto;
